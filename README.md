@@ -157,7 +157,7 @@ Para un negocio local esto pesa más que cualquier optimización de código.
 
 - [ ] Crear y **verificar por video** el perfil en [business.google.com](https://business.google.com).
 - [ ] NAP idéntico carácter por carácter al del sitio y del schema:
-      `ISANAT Escuela de Natación` / `Calle Hurón 409, Urb. Rinconada del Lago, La Molina, Lima, Perú` / `+51 992 705 564`
+      `ISANAT Escuela de Natación` / `Calle Hurón 409, Urb. Rinconada del Lago, La Molina, Lima, Perú` / `+51 915 236 322`
 - [ ] Cargar 5+ fotos, descripción, horarios y los tres programas.
 - [ ] Meta: **10 reseñas de 5 estrellas en 30 días**, pedidas por WhatsApp a clientes recientes.
 - [ ] Copiar las coordenadas reales del perfil verificado y reemplazarlas en el sitio
