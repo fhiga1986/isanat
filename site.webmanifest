@@ -1,0 +1,15 @@
+{
+  "name": "ISANAT Escuela de Natación",
+  "short_name": "ISANAT",
+  "description": "Clases de natación para niños y adultos, y membresía de nado libre en La Molina, Lima.",
+  "lang": "es-PE",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#102A5C",
+  "icons": [
+    { "src": "/img/logo-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/img/logo-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

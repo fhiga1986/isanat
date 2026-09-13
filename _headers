@@ -1,0 +1,28 @@
+# Cabeceras HTTP para Cloudflare Pages.
+# Este archivo va en la raíz del repo y Cloudflare lo lee en cada deploy.
+# Máximo 100 reglas; hoy usamos 6.
+
+# Seguridad, para todo el sitio
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+# Fuentes e imágenes: nunca cambian sin cambiar de nombre, así que cache de un año
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.ico
+  Cache-Control: public, max-age=604800
+
+# El HTML se revalida siempre, para que un cambio se vea apenas hagas push
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/404.html
+  Cache-Control: public, max-age=0, must-revalidate

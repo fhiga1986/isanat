@@ -1,0 +1,20 @@
+# Cloudflare
+.wrangler
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Dependencias (por si más adelante se agrega un build)
+node_modules/
+npm-debug.log*
+
+# Variables de entorno
+.env
+.env.local

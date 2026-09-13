@@ -1,0 +1,10 @@
+# Normaliza saltos de línea: LF en el repo, lo que corresponda en tu disco.
+# Evita el warning "LF will be replaced by CRLF" al trabajar desde Windows.
+* text=auto eol=lf
+
+# Binarios: que Git no los toque
+*.png binary
+*.jpg binary
+*.webp binary
+*.ico binary
+*.woff2 binary

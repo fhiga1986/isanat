@@ -1,0 +1,14 @@
+Poppins
+Diseñada por Indian Type Foundry, Jonny Pinhorn.
+Distribuida bajo la SIL Open Font License, Version 1.1.
+
+Los archivos poppins-400.woff2, poppins-500.woff2 y poppins-700.woff2 incluidos en
+este repositorio son subconjuntos (subsets) de la fuente original, limitados al
+rango latino y latino-1 para reducir su peso. La OFL permite este uso, la
+modificación y la redistribución.
+
+Texto completo de la licencia:
+https://openfontlicense.org/open-font-license-official-text/
+
+Fuente original:
+https://fonts.google.com/specimen/Poppins
