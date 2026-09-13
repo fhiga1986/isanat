@@ -1,0 +1,10 @@
+# Redirecciones de Cloudflare Pages. Una por línea: origen destino codigo
+#
+# /nado-libre-la-molina/ existió unas horas en la v1.1.0 y se retiró en la v1.2.0:
+# ISANAT alquila la piscina y presta servicios de academia, no opera un club con
+# membresía de nado libre, así que el servicio no existe. La URL casi con certeza
+# nunca llegó a indexarse (el dominio no estaba conectado y no se había enviado el
+# sitemap), pero la 301 cuesta una línea y cubre el caso de que algún rastreador
+# la haya visto.
+/nado-libre-la-molina/  /horarios-y-precios/  301
+/nado-libre-la-molina   /horarios-y-precios/  301

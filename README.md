@@ -1,9 +1,9 @@
 # ISANAT — Escuela de Natación · La Molina, Lima
 
 Sitio web estático de ISANAT. Sin build, sin dependencias: son archivos HTML, CSS y
-JS planos que se suben tal cual. Cuatro páginas indexables.
+JS planos que se suben tal cual. Cinco páginas indexables.
 
-**Versión actual: `1.1.0`** — ver [`CAMBIOS.md`](CAMBIOS.md).
+**Versión actual: `1.2.0`** — ver [`CAMBIOS.md`](CAMBIOS.md).
 
 Dominio de producción: **https://isanat.pe**
 
@@ -20,8 +20,11 @@ Dominio de producción: **https://isanat.pe**
 │   └── index.html                          Clases para niños
 ├── natacion-para-adultos-la-molina/
 │   └── index.html                          Clases para adultos
-├── nado-libre-la-molina/
-│   └── index.html                          Membresía de nado libre
+├── natacion-para-bebes-la-molina/
+│   └── index.html                          Aquabebé, 6 meses a 2 años
+├── horarios-y-precios/
+│   └── index.html                          Horarios y tarifas, en tablas HTML
+├── _redirects                              301 de la URL retirada en la v1.2.0
 ├── 404.html                                Error, la sirve Cloudflare sola. Autocontenida
 ├── css/
 │   └── site.v1.css                         TODO el CSS del sitio (excepto el 404)
@@ -246,35 +249,40 @@ recomienda no se puede ejecutar sin estos datos, y ninguno depende de programar.
 
 | # | Pendiente | Qué desbloquea | Dónde se cambia |
 |---|---|---|---|
-| 1 | **Coordenadas GPS reales.** Las actuales son aproximadas de la zona Rinconada del Lago. Salen de la URL de la ficha verificada en Google Maps: los números tras `!3d` (latitud) y `!4d` (longitud). | Que el mapa y el schema apunten a la puerta y no a la manzana | Las 4 páginas: meta `geo.position`, meta `ICBM` y `geo` del schema |
-| 2 | **Horarios de atención.** | La página `/horarios-y-precios/`, el bloque `openingHoursSpecification` y la ficha de Google | Sección Ubicación + schema |
-| 3 | **Horarios por programa** (niños, adultos, nado libre), con periodo de vigencia. | La página `/horarios-y-precios/` con tablas reales, que es la P1 que más tráfico capta | Página nueva |
-| 4 | **Precios por frecuencia semanal.** Referencia de mercado en la zona: S/ 150 a S/ 580 según frecuencia y edad — **es referencia, no el precio de ISANAT**. | Lo mismo, más `priceRange` en el schema | Página nueva + schema |
-| 5 | **Edad mínima** de las clases de niños, y cómo quedan armados los niveles. | Las FAQ de `/natacion-para-ninos-la-molina/` y el `audience` del schema | FAQ visible **y** `FAQPage` del `<head>` — las dos, idénticas |
-| 6 | **¿Se atienden bebés?** Si sí: edad mínima, si va acompañado, temperatura del agua. | La página `/natacion-para-bebes-la-molina/`. Es el hueco de contenido más limpio del distrito | Página nueva |
-| 7 | **¿Hay clases particulares?** | La página `/clases-particulares-natacion-la-molina/` | Página nueva |
-| 8 | **Requisitos del nado libre**: edad mínima y nivel exigido. | Las FAQ de `/nado-libre-la-molina/`, hoy contestadas con "consúltanos" | FAQ visible y schema |
-| 9 | **Instructores**: nombres, foto, certificaciones verificables y **consentimiento por escrito**. | La página `/instructores/`, que es donde vive el E-E-A-T. Ningún competidor nombra a los suyos: es la ventaja más grande disponible | Página nueva + schema `Person` |
-| 10 | **Fotos reales** de la piscina y de las clases (15+). | El hero, las tarjetas, `og-image.jpg`, la ficha de Google y el `image[]` del schema | Todas |
-| 11 | **Datos de la piscina**: si es temperada, techada, medidas, carriles, vestuarios, estacionamiento. | El bloque "Por qué elegir" con ventajas reales y la página de la piscina | Home + página nueva |
-| 12 | **URLs de Facebook e Instagram.** | El `sameAs` del schema y los iconos del pie, hoy eliminados por no tener destino | Pie + schema |
-| 13 | **Meta Pixel ID**, si se va a hacer Meta Ads. | El píxel, hoy apagado a propósito | `var PIXEL_ID = ''` del `<head>` |
-| 14 | **Proceso real de inscripción.** Los 3 pasos de "Cómo empezar" son una suposición razonable sin validar. | Que la home no describa un proceso que no existe | Sección Cómo empezar + FAQ "¿Cómo reservo?" |
-| 15 | **Política de reprogramación** y formas de pago. | Dos FAQ que la competencia tampoco responde | FAQ + página de precios |
-| 16 | **Relación contractual con el colegio** y con AquaXtreme, que opera en la misma dirección. | La ficha de Google: dos negocios en una dirección compiten por el mismo pack de mapas, y la verificación puede exigir cartelería física con el nombre ISANAT | Ficha de Google |
-| 17 | **Código postal** de la dirección. Se quitó del schema por no estar verificado: un NAP con un dato inventado es peor que sin él. | `postalCode` del `PostalAddress` | Schema de las 4 páginas |
+| 1 | ⚠️ **¿Los precios son mensuales?** El cliente da "1 vez por semana - S/ 280" sin decir el periodo. Se publica con su misma redacción, sin añadir "mensual". **Es lo primero que hay que confirmar.** | Que el cuadro de precios diga el periodo | `datos` de las tablas · las FAQ de precio de las 5 páginas |
+| 2 | ⚠️ **¿Hay matrícula o cuota de inscripción?** No se menciona en ninguna de las dos fuentes. | La sección "Cómo matricularse" | `/horarios-y-precios/` |
+| 3 | ⚠️ **Discrepancia flyer ↔ WhatsApp en niños.** El flyer separa "Menores 3-5" e "Infantiles 6-15" y da sábado desde las 06:00; el WhatsApp los junta en 3-15 con sábados de 9 a 12. **Se publicó el WhatsApp** por ser más reciente y más conservador. | Que los horarios de niños sean exactos | Tabla de niños |
+| 4 | **Duración de las clases** de niños y de adultos. Solo consta la de aquabebé (45 min, del flyer). | Una respuesta que los padres preguntan siempre | FAQ de niños y adultos |
+| 5 | **Aquabebé: ¿entra mamá o papá al agua?** y qué llevar (pañal de agua, gorro). | Cerrar el aviso de la página de bebés | `/natacion-para-bebes-la-molina/` |
+| 6 | **Calificación MINSA:** número de resolución y fecha. Hoy se publica la afirmación tal como está en el flyer del cliente. | Poder respaldarla si alguien pregunta | Home, bloque "Por qué elegir" |
+| 7 | **Coordenadas GPS reales.** Salen de la URL de la ficha verificada en Google Maps: los números tras `!3d` y `!4d`. | Que el mapa apunte a la puerta y no a la manzana | Las 5 páginas: `geo.position`, `ICBM` y `geo` del schema |
+| 8 | **Instructores**: nombres, foto, certificaciones y **consentimiento por escrito**. | `/instructores/`, donde vive el E-E-A-T. Ningún competidor nombra a los suyos | Página nueva + schema `Person` |
+| 9 | **Fotos reales** de la piscina y las clases (15+). | Hero, tarjetas, `og-image.jpg`, ficha de Google y `image[]` del schema | Todas |
+| 10 | **Datos de la piscina**: temperada, techada, medidas, carriles, vestuarios, estacionamiento. | Ventajas verificables y `/piscina-villa-caritas/` | Home + página nueva |
+| 11 | **¿Hay clases particulares?** No se mencionan en ninguna fuente. | `/clases-particulares-natacion-la-molina/` | Página nueva |
+| 12 | **Política de reprogramación** si el alumno falta. | Una FAQ que la competencia tampoco responde | `/horarios-y-precios/` |
+| 13 | **URLs de Facebook e Instagram.** | El `sameAs` del schema y los iconos del pie | Pie + schema |
+| 14 | **Meta Pixel ID**, si se va a hacer Meta Ads. | El píxel, hoy apagado a propósito | `var PIXEL_ID = ''` del `<head>` |
+| 15 | **Relación contractual con el colegio** y con AquaXtreme, que opera en la misma dirección. | La ficha de Google: dos negocios en una dirección compiten por el mismo pack de mapas | Ficha de Google |
+| 16 | **Código postal.** Se quitó del schema por no estar verificado. | `postalCode` del `PostalAddress` | Schema de las 5 páginas |
+
+### Resuelto en la v1.2.0 con los datos del cliente
+
+Horarios por programa · precios por frecuencia · edades exactas (6 m–2 a, 3–15, 16+) ·
+que **sí** se atienden bebés · el descuento del 40 % de la comunidad VCSP · el proceso
+real de matrícula · las formas de pago · el RUC · el segundo teléfono · la calificación
+MINSA · y que **no** existe nado libre.
 
 ### Páginas que ya están diseñadas y NO se publicaron
 
 Se decidió no crearlas porque **serían páginas vacías**, y una página delgada posiciona
 peor que ninguna y arrastra al resto del sitio:
 
-`/horarios-y-precios/` · `/instructores/` · `/natacion-para-bebes-la-molina/` ·
-`/clases-particulares-natacion-la-molina/` · `/piscina-villa-caritas/` · `/verano/` ·
-`/blog/` · `/libro-de-reclamaciones/`
+`/instructores/` · `/clases-particulares-natacion-la-molina/` ·
+`/piscina-villa-caritas/` · `/verano/` · `/blog/` · `/libro-de-reclamaciones/`
 
-El orden de impacto, si los datos llegan en partes: **9 (instructores) → 3 y 4
-(horarios y precios) → 6 (bebés) → 10 y 11 (fotos y piscina)**.
+El orden de impacto, si los datos llegan en partes: **8 (instructores) → 9 y 10
+(fotos y datos de la piscina) → 11 (particulares)**.
 
 ---
 

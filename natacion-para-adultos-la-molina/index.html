@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ISANAT v1.1.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
+<!-- ISANAT v1.2.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
      que version esta realmente desplegada. Tiene que coincidir con el archivo
      VERSION del repo y con el nombre del zip de la entrega. -->
-<meta name="version" content="1.1.0">
+<meta name="version" content="1.2.0">
 
 <title>Natación para Adultos en La Molina | ISANAT</title>
-<meta name="description" content="Clases de natación para adultos en La Molina: aprende a nadar desde cero o mejora tu técnica. Piscina del Colegio Villa Caritas, Rinconada del Lago.">
+<meta name="description" content="Clases de natación para adultos en La Molina desde los 16 años: 6 y 7 a. m. o 6, 7 y 8 p. m. Aprende desde cero o mejora tu técnica. Desde S/ 280.">
 <link rel="canonical" href="https://isanat.pe/natacion-para-adultos-la-molina/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="ISANAT Escuela de Natación">
@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="ISANAT">
 <meta property="og:locale" content="es_PE">
 <meta property="og:title" content="Natación para Adultos en La Molina | ISANAT">
-<meta property="og:description" content="Clases de natación para adultos en La Molina: aprende a nadar desde cero o mejora tu técnica. Piscina del Colegio Villa Caritas, Rinconada del Lago.">
+<meta property="og:description" content="Clases de natación para adultos en La Molina desde los 16 años: 6 y 7 a. m. o 6, 7 y 8 p. m. Aprende desde cero o mejora tu técnica. Desde S/ 280.">
 <meta property="og:url" content="https://isanat.pe/natacion-para-adultos-la-molina/">
 <meta property="og:image" content="https://isanat.pe/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -37,7 +37,7 @@
 <meta property="og:image:alt" content="ISANAT Escuela de Natación — La Molina, Lima">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Natación para Adultos en La Molina | ISANAT">
-<meta name="twitter:description" content="Clases de natación para adultos en La Molina: aprende a nadar desde cero o mejora tu técnica. Piscina del Colegio Villa Caritas, Rinconada del Lago.">
+<meta name="twitter:description" content="Clases de natación para adultos en La Molina desde los 16 años: 6 y 7 a. m. o 6, 7 y 8 p. m. Aprende desde cero o mejora tu técnica. Desde S/ 280.">
 <meta name="twitter:image" content="https://isanat.pe/img/og-image.jpg">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -60,7 +60,7 @@
       "@id": "https://isanat.pe/#business",
       "name": "ISANAT Escuela de Natación",
       "alternateName": "ISANAT Swimming School",
-      "description": "Escuela de natación en La Molina, Lima. Clases de natación para niños y adultos, y membresía de nado libre sin instructor.",
+      "description": "Academia de natación en La Molina, Lima. Clases con profesor para bebés desde 6 meses (Aquabebé), niños de 3 a 15 años y adultos desde 16, en la piscina del Colegio Villa Caritas, Urb. Rinconada del Lago.",
       "url": "https://isanat.pe/",
       "image": [
         "https://isanat.pe/img/og-image.jpg"
@@ -91,6 +91,41 @@
         }
       ],
       "currenciesAccepted": "PEN",
+      "priceRange": "S/ 280 - S/ 580",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "06:00",
+          "closes": "08:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "14:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday"
+          ],
+          "opens": "06:00",
+          "closes": "13:00"
+        }
+      ],
       "potentialAction": {
         "@type": "CommunicateAction",
         "name": "Escribir por WhatsApp",
@@ -116,6 +151,24 @@
         }
       ],
       "url": "https://isanat.pe/natacion-para-adultos-la-molina/",
+      "audience": {
+        "@type": "PeopleAudience",
+        "suggestedMinAge": 16,
+        "audienceType": "Adultos desde 16 años"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "PEN",
+        "price": "280",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 280,
+          "maxPrice": 580,
+          "priceCurrency": "PEN"
+        },
+        "availability": "https://schema.org/InStock",
+        "url": "https://isanat.pe/horarios-y-precios/"
+      },
       "availableChannel": {
         "@type": "ServiceChannel",
         "serviceUrl": "https://wa.me/51915236322",
@@ -133,10 +186,26 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "¿Qué horarios hay para adultos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "De lunes a viernes a las 6:00 y 7:00 a. m., y a las 6:00, 7:00 y 8:00 p. m. Los sábados a las 6:00, 7:00 y 8:00 a. m. El horario de 7:00 a. m. de lunes a viernes es sin duchas."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Nunca he nadado y me da vergüenza empezar de adulto. ¿Hay clases para principiantes?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Sí. Las clases para adultos incluyen a quienes nunca han nadado. Se empieza por soltar el cuerpo, la respiración y la flotación, en ese orden, sin apuro y sin exponerte a nada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Desde qué edad se considera adulto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Desde los 16 años. De 3 a 15 años corresponde el programa de niños, que va de lunes a viernes por la tarde y sábados por la mañana."
           }
         },
         {
@@ -149,26 +218,10 @@
         },
         {
           "@type": "Question",
-          "name": "¿Cuántas veces por semana debería ir?",
+          "name": "¿Cuánto cuestan las clases de natación para adultos?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Depende de tu objetivo y del tiempo que tengas. Con más frecuencia el avance es más rápido y hay menos que recuperar entre sesión y sesión. Escríbenos y vemos qué frecuencia te calza."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué horarios hay para adultos?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Los horarios cambian según el ciclo y el cupo disponible. Escríbenos por WhatsApp al +51 915 236 322 con los días y las franjas que te acomodan y te decimos qué hay libre."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuánto cuestan las clases para adultos?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "El precio depende de la frecuencia semanal y del programa. Te pasamos las tarifas vigentes por WhatsApp al +51 915 236 322, junto con los horarios que queden libres."
+            "text": "S/ 280 por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. La comunidad VCSP tiene 40 % de descuento sobre esos precios."
           }
         }
       ]
@@ -234,11 +287,12 @@
       <details class="nav__group">
         <summary>Programas</summary>
         <ul class="nav__sub">
-        <li><a href="/natacion-para-ninos-la-molina/">Natación para niños</a></li>
-        <li><a href="/natacion-para-adultos-la-molina/" aria-current="page">Natación para adultos</a></li>
-        <li><a href="/nado-libre-la-molina/">Nado libre (membresía)</a></li>
+        <li><a href="/natacion-para-bebes-la-molina/">Aquabebé (6 meses a 2 años)</a></li>
+        <li><a href="/natacion-para-ninos-la-molina/">Natación para niños (3 a 15)</a></li>
+        <li><a href="/natacion-para-adultos-la-molina/" aria-current="page">Natación para adultos (16+)</a></li>
         </ul>
       </details>
+      <a href="/horarios-y-precios/">Horarios y precios</a>
       <a href="/#preguntas">Preguntas</a>
       <a href="/#ubicacion">Ubicación</a>
       <a class="btn btn--primary btn--sm" href="https://wa.me/51915236322?text=Hola%2C%20vengo%20de%20la%20web%20de%20ISANAT%20y%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
@@ -268,7 +322,7 @@
   <section class="section page-head">
     <div class="wrap wrap--narrow">
       <h1>Clases de natación para adultos en La Molina</h1>
-      <p class="lead">Clases con instructor para adultos en la piscina del <strong>Colegio Villa Caritas</strong>, Rinconada del Lago, La Molina. Sirve igual si nunca entraste a una piscina que si ya nadas y quieres arreglar la respiración.</p>
+      <p class="lead">Clases con profesor <strong>desde los 16 años</strong> en la piscina del <strong>Colegio Villa Caritas</strong>, Rinconada del Lago, La Molina. Temprano por la mañana o al final del día: sirve igual si nunca entraste a una piscina que si ya nadas y quieres arreglar la respiración.</p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20las%20clases%20de%20nataci%C3%B3n%20para%20adultos%20en%20ISANAT%20%28Villa%20Caritas%2C%20La%20Molina%29."
    target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="hero"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>Escríbenos por WhatsApp</a>
@@ -282,7 +336,7 @@
       <div class="prose">
 
       <h2>Aprender a nadar de adulto: nunca es tarde</h2>
-      <p>Casi nadie llega a una escuela de natación de adulto para competir. Llega porque le
+      <p>Casi nadie llega a una academia de natación de adulto para competir. Llega porque le
          tiene miedo al mar y ya se cansó de tenerlo, porque el médico le recomendó un ejercicio
          sin impacto, porque sus hijos entran al agua y él se queda en la orilla, o simplemente
          porque le quedó pendiente desde chico. Ninguna de esas razones llega tarde.</p>
@@ -311,34 +365,60 @@
             sale de la cadera y no de la rodilla.</li>
         <li><strong>Resistencia</strong>, subiendo distancia sin perder la técnica por el camino.</li>
       </ul>
-      <div class="callout">
-        <p><strong>Lo que se coordina contigo, no acá.</strong> Los horarios de adultos, la
-           frecuencia semanal que te conviene y el precio dependen del ciclo y del grupo.
-           Escríbenos con los días y las franjas que te acomodan y te decimos qué hay libre.</p>
-      </div>
+
+      <h2>Horarios de natación para adultos en La Molina</h2>
+      <p>Horarios de la temporada de invierno 2026. ISANAT dicta clases todo el año; confirma el cupo por WhatsApp antes de matricularte.</p>
+      <div class="table-wrap">
+    <table>
+      <caption>Horarios · 16 años a más</caption>
+      <thead><tr><th scope="col">Días</th><th scope="col">Horas de inicio</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Lunes a viernes</th><td>6:00 a. m. · 7:00 a. m. (sin duchas) · 6:00 p. m. · 7:00 p. m. · 8:00 p. m.</td></tr>
+        <tr><th scope="row">Sábados</th><td>6:00 a. m. · 7:00 a. m. · 8:00 a. m.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+      <h2>Precios</h2>
+      <p>El precio depende de cuántas veces por semana vengas. Son las mismas tarifas
+         para todos los programas con profesor.</p>
+      <div class="table-wrap">
+    <table>
+      <caption>Precios regulares · clases con profesor</caption>
+      <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">1 vez por semana</th><td>S/ 280</td></tr>
+        <tr><th scope="row">2 veces por semana</th><td>S/ 380</td></tr>
+        <tr><th scope="row">3 veces por semana</th><td>S/ 480</td></tr>
+        <tr><th scope="row">5 veces por semana</th><td>S/ 580</td></tr>
+      </tbody>
+    </table>
+  </div>
+      <p>La comunidad VCSP —alumnos, ex alumnos y padres de familia de los colegios Villa Caritas y San Pedro— tiene 40 % de descuento sobre los precios regulares. Si eres colaborador de los colegios, pregúntanos por los beneficios.</p>
+      <p><a href="/horarios-y-precios/" data-event="ver_horarios_click" data-origen="cuerpo">Ver todos los horarios y precios</a>, con los de los otros programas y las formas de pago.</p>
 
       <h2>Preguntas frecuentes</h2>
       </div>
       <div class="faq">
         <details>
+          <summary>¿Qué horarios hay para adultos?</summary>
+          <div class="faq__a"><p>De lunes a viernes a las 6:00 y 7:00 a. m., y a las 6:00, 7:00 y 8:00 p. m. Los sábados a las 6:00, 7:00 y 8:00 a. m. El horario de 7:00 a. m. de lunes a viernes es sin duchas.</p></div>
+        </details>
+        <details>
           <summary>Nunca he nadado y me da vergüenza empezar de adulto. ¿Hay clases para principiantes?</summary>
           <div class="faq__a"><p>Sí. Las clases para adultos incluyen a quienes nunca han nadado. Se empieza por soltar el cuerpo, la respiración y la flotación, en ese orden, sin apuro y sin exponerte a nada.</p></div>
+        </details>
+        <details>
+          <summary>¿Desde qué edad se considera adulto?</summary>
+          <div class="faq__a"><p>Desde los 16 años. De 3 a 15 años corresponde el programa de niños, que va de lunes a viernes por la tarde y sábados por la mañana.</p></div>
         </details>
         <details>
           <summary>¿Necesito estar en forma para empezar?</summary>
           <div class="faq__a"><p>No. Nadar es de los ejercicios que menos exigen a las articulaciones, y por eso suele ser el que se recomienda cuando correr o el gimnasio no son opción. Si tienes alguna condición médica, coméntala antes de la primera clase.</p></div>
         </details>
         <details>
-          <summary>¿Cuántas veces por semana debería ir?</summary>
-          <div class="faq__a"><p>Depende de tu objetivo y del tiempo que tengas. Con más frecuencia el avance es más rápido y hay menos que recuperar entre sesión y sesión. Escríbenos y vemos qué frecuencia te calza.</p></div>
-        </details>
-        <details>
-          <summary>¿Qué horarios hay para adultos?</summary>
-          <div class="faq__a"><p>Los horarios cambian según el ciclo y el cupo disponible. Escríbenos por WhatsApp al +51 915 236 322 con los días y las franjas que te acomodan y te decimos qué hay libre.</p></div>
-        </details>
-        <details>
-          <summary>¿Cuánto cuestan las clases para adultos?</summary>
-          <div class="faq__a"><p>El precio depende de la frecuencia semanal y del programa. Te pasamos las tarifas vigentes por WhatsApp al +51 915 236 322, junto con los horarios que queden libres.</p></div>
+          <summary>¿Cuánto cuestan las clases de natación para adultos?</summary>
+          <div class="faq__a"><p>S/ 280 por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. La comunidad VCSP tiene 40 % de descuento sobre esos precios.</p></div>
         </details>
       </div>
     </div>
@@ -361,12 +441,12 @@
       </p>
       </div>
       <div style="margin-top:2rem">
-        <a class="btn btn--navy" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20empezar%20clases%20de%20nataci%C3%B3n%20para%20adultos%20en%20ISANAT.%20%C2%BFMe%20orientan%3F"
+        <a class="btn btn--navy" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20matricularme%20en%20las%20clases%20de%20nataci%C3%B3n%20para%20adultos%20de%20ISANAT.%20Me%20acomoda%20el%20horario%20de%20___."
    target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="cierre"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>Escríbenos por WhatsApp</a>
       </div>
   <ul class="crosslinks">
-    <li><a href="/natacion-para-ninos-la-molina/" data-event="ver_programa_click" data-origen="crosslink_ninos">Natación para niños<span>Clases para niños en la misma piscina, desde la familiarización con el agua.</span></a></li>
-    <li><a href="/nado-libre-la-molina/" data-event="ver_programa_click" data-origen="crosslink_nado_libre">Membresía de nado libre<span>Si ya nadas y solo quieres el carril para entrenar por tu cuenta.</span></a></li>
+    <li><a href="/natacion-para-ninos-la-molina/" data-event="ver_programa_click" data-origen="crosslink_ninos">Natación para niños<span>De 3 a 15 años, en la misma piscina, por la tarde y los sábados.</span></a></li>
+    <li><a href="/horarios-y-precios/" data-event="ver_programa_click" data-origen="crosslink_precios">Horarios y precios<span>Los tres programas y las tarifas por frecuencia, en una sola página.</span></a></li>
   </ul>
     </div>
   </section>
@@ -380,16 +460,16 @@
           <img src="/img/logo.webp" width="52" height="52" alt="Logo de ISANAT Escuela de Natación" loading="lazy">
           <span><strong>ISANAT</strong><small>Swimming School</small></span>
         </div>
-        <p>Escuela de natación en La Molina, Lima. Clases para niños y adultos,
-           y membresía de nado libre.</p>
+        <p>Academia de natación en La Molina, Lima. Aquabebé desde 6 meses,
+           niños de 3 a 15 años y adultos desde 16.</p>
       </div>
 
       <div>
         <h3>Programas</h3>
         <ul class="ft__links">
-          <li><a href="/natacion-para-ninos-la-molina/">Natación para niños</a></li>
-          <li><a href="/natacion-para-adultos-la-molina/">Natación para adultos</a></li>
-          <li><a href="/nado-libre-la-molina/">Nado libre (membresía)</a></li>
+          <li><a href="/natacion-para-bebes-la-molina/">Aquabebé (6 meses a 2 años)</a></li>
+          <li><a href="/natacion-para-ninos-la-molina/">Natación para niños (3 a 15)</a></li>
+          <li><a href="/natacion-para-adultos-la-molina/">Natación para adultos (16+)</a></li>
         </ul>
       </div>
 
@@ -402,6 +482,7 @@
           La Molina, Lima, Perú
           <span class="nap__links">
             <a href="tel:+51915236322" data-event="tel_click" data-origen="footer">+51 915 236 322</a>
+            <a href="tel:+51992705564" data-event="tel_click" data-origen="footer_2">+51 992 705 564</a>
             <a href="https://wa.me/51915236322" target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="footer">WhatsApp</a>
             <a href="https://www.google.com/maps/search/?api=1&amp;query=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA" target="_blank" rel="noopener" data-event="como_llegar_click" data-origen="footer">Cómo llegar</a>
             <a href="https://waze.com/ul?q=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA&amp;navigate=yes" target="_blank" rel="noopener" data-event="waze_click" data-origen="footer">Waze</a>
@@ -411,7 +492,7 @@
     </div>
 
     <div class="ft__bottom">
-      <span>&copy; <span id="year">2026</span> ISANAT Escuela de Natación. Todos los derechos reservados.</span>
+      <span>&copy; <span id="year">2026</span> ISANAT Escuela de Natación · RUC 20613584928</span>
       <span>La Molina, Lima — Perú</span>
     </div>
   </div>
@@ -422,7 +503,7 @@
    data-event="whatsapp_click" data-origen="flotante"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg></a>
 
 <div class="cta-bar">
-  <a class="btn btn--primary btn--block" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20empezar%20clases%20de%20nataci%C3%B3n%20para%20adultos%20en%20ISANAT.%20%C2%BFMe%20orientan%3F"
+  <a class="btn btn--primary btn--block" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20matricularme%20en%20las%20clases%20de%20nataci%C3%B3n%20para%20adultos%20de%20ISANAT.%20Me%20acomoda%20el%20horario%20de%20___."
    target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="cta_bar"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>Escríbenos por WhatsApp</a>
 </div>
 

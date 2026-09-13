@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ISANAT v1.1.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
+<!-- ISANAT v1.2.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
      que version esta realmente desplegada. Tiene que coincidir con el archivo
      VERSION del repo y con el nombre del zip de la entrega. -->
-<meta name="version" content="1.1.0">
+<meta name="version" content="1.2.0">
 
 <!-- ============================================================
      META TAGS ESENCIALES  (§3.1 del playbook)
@@ -15,7 +15,7 @@
      NO CAMBIAR EL TÍTULO POR AL MENOS 6 MESES (§8)
      ============================================================ -->
 <title>Clases de Natación en La Molina | ISANAT</title>
-<meta name="description" content="Escuela de natación en La Molina, Lima. Clases para niños y adultos, y membresía de nado libre sin instructor. Reserva tu horario por WhatsApp.">
+<meta name="description" content="Academia de natación en La Molina: aquabebé desde 6 meses, niños de 3 a 15 y adultos. Piscina saludable MINSA en el Colegio Villa Caritas.">
 <link rel="canonical" href="https://isanat.pe/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="ISANAT Escuela de Natación">
@@ -39,7 +39,7 @@
 <meta property="og:site_name" content="ISANAT">
 <meta property="og:locale" content="es_PE">
 <meta property="og:title" content="Clases de Natación en La Molina | ISANAT">
-<meta property="og:description" content="Clases de natación para niños y adultos, y membresía de nado libre en La Molina, Lima.">
+<meta property="og:description" content="Academia de natación en La Molina: aquabebé, niños y adultos. Piscina saludable MINSA en el Colegio Villa Caritas, Rinconada del Lago.">
 <meta property="og:url" content="https://isanat.pe/">
 <meta property="og:image" content="https://isanat.pe/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -49,7 +49,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Clases de Natación en La Molina | ISANAT">
-<meta name="twitter:description" content="Clases de natación para niños y adultos, y membresía de nado libre en La Molina, Lima.">
+<meta name="twitter:description" content="Academia de natación en La Molina: aquabebé, niños y adultos. Piscina saludable MINSA en el Colegio Villa Caritas, Rinconada del Lago.">
 <meta name="twitter:image" content="https://isanat.pe/img/og-image.jpg">
 
 <!-- Iconos -->
@@ -79,7 +79,7 @@
       "@id": "https://isanat.pe/#business",
       "name": "ISANAT Escuela de Natación",
       "alternateName": "ISANAT Swimming School",
-      "description": "Escuela de natación en La Molina, Lima. Clases de natación para niños y adultos, y membresía de nado libre sin instructor.",
+      "description": "Academia de natación en La Molina, Lima. Clases con profesor para bebés desde 6 meses (Aquabebé), niños de 3 a 15 años y adultos desde 16, en la piscina del Colegio Villa Caritas, Urb. Rinconada del Lago.",
       "url": "https://isanat.pe/",
       "logo": "https://isanat.pe/img/logo.png",
       "image": [
@@ -114,13 +114,48 @@
         "target": "https://wa.me/51915236322",
         "name": "Escribir por WhatsApp"
       },
-      "hasMap": "https://www.google.com/maps/search/?api=1&amp;query=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA"
+      "hasMap": "https://www.google.com/maps/search/?api=1&amp;query=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA",
+      "priceRange": "S/ 280 - S/ 580",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "06:00",
+          "closes": "08:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "14:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday"
+          ],
+          "opens": "06:00",
+          "closes": "13:00"
+        }
+      ]
     },
     {
       "@type": "Service",
       "@id": "https://isanat.pe/#servicios",
       "serviceType": "Clases de natación",
-      "name": "Clases de natación y nado libre en La Molina",
+      "name": "Clases de natación en La Molina",
       "provider": {
         "@id": "https://isanat.pe/#business"
       },
@@ -151,44 +186,92 @@
         "itemListElement": [
           {
             "@type": "Offer",
+            "priceCurrency": "PEN",
+            "price": "280",
+            "availability": "https://schema.org/InStock",
             "itemOffered": {
               "@type": "Service",
-              "name": "Natación para niños",
-              "description": "Clases de natación para niños, desde quienes recién se familiarizan con el agua hasta quienes ya nadan y quieren mejorar su técnica.",
-              "url": "https://isanat.pe/natacion-para-ninos-la-molina/",
+              "@id": "https://isanat.pe/natacion-para-bebes-la-molina/#service",
+              "name": "Aquabebé — natación para bebés",
+              "description": "Clases de natación de 45 minutos para bebés de 6 meses a 2 años, martes y jueves por la tarde y sábados al mediodía.",
+              "url": "https://isanat.pe/natacion-para-bebes-la-molina/",
+              "provider": {
+                "@id": "https://isanat.pe/#business"
+              },
+              "audience": {
+                "@type": "PeopleAudience",
+                "suggestedMinAge": 0.5,
+                "suggestedMaxAge": 2
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "La Molina"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "priceCurrency": "PEN",
+            "price": "280",
+            "availability": "https://schema.org/InStock",
+            "itemOffered": {
+              "@type": "Service",
               "@id": "https://isanat.pe/natacion-para-ninos-la-molina/#service",
+              "name": "Natación para niños",
+              "description": "Clases de natación para niños de 3 a 15 años, de lunes a viernes por la tarde y sábados por la mañana, desde la familiarización con el agua hasta la técnica de los cuatro estilos.",
+              "url": "https://isanat.pe/natacion-para-ninos-la-molina/",
               "provider": {
                 "@id": "https://isanat.pe/#business"
+              },
+              "audience": {
+                "@type": "PeopleAudience",
+                "suggestedMinAge": 3,
+                "suggestedMaxAge": 15
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "La Molina"
               }
             }
           },
           {
             "@type": "Offer",
+            "priceCurrency": "PEN",
+            "price": "280",
+            "availability": "https://schema.org/InStock",
             "itemOffered": {
               "@type": "Service",
-              "name": "Natación para adultos",
-              "description": "Clases de natación para adultos, tanto para quienes empiezan desde cero como para quienes buscan perfeccionar su técnica.",
-              "url": "https://isanat.pe/natacion-para-adultos-la-molina/",
               "@id": "https://isanat.pe/natacion-para-adultos-la-molina/#service",
+              "name": "Natación para adultos",
+              "description": "Clases de natación para adultos desde los 16 años, temprano por la mañana o al final del día, tanto para quienes empiezan desde cero como para quienes buscan técnica y acondicionamiento.",
+              "url": "https://isanat.pe/natacion-para-adultos-la-molina/",
               "provider": {
                 "@id": "https://isanat.pe/#business"
-              }
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Membresía de nado libre",
-              "description": "Acceso a la piscina para nadar por cuenta propia, sin instructor, en la modalidad libre.",
-              "url": "https://isanat.pe/nado-libre-la-molina/",
-              "@id": "https://isanat.pe/nado-libre-la-molina/#service",
-              "provider": {
-                "@id": "https://isanat.pe/#business"
+              },
+              "audience": {
+                "@type": "PeopleAudience",
+                "suggestedMinAge": 16
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "La Molina"
               }
             }
           }
         ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "PEN",
+        "price": "280",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 280,
+          "maxPrice": 580,
+          "priceCurrency": "PEN"
+        },
+        "availability": "https://schema.org/InStock",
+        "url": "https://isanat.pe/horarios-y-precios/"
       }
     },
     {
@@ -215,42 +298,42 @@
         },
         {
           "@type": "Question",
-          "name": "¿Dan clases para niños y para adultos?",
+          "name": "¿Para qué edades hay clases de natación?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí. Tenemos clases de natación para niños y clases para adultos, tanto para quienes empiezan desde cero como para quienes ya nadan y quieren mejorar su técnica."
+            "text": "Tenemos tres programas: Aquabebé para bebés de 6 meses a 2 años, natación para niños de 3 a 15 años y natación para adultos desde los 16. Todas son clases con profesor."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Qué incluye la membresía de nado libre?",
+          "name": "¿Desde cuánto cuestan las clases?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La membresía de nado libre te da acceso a la piscina para nadar por tu cuenta, a tu propio ritmo y sin instructor. Es la modalidad para quienes ya saben nadar y buscan entrenar o relajarse."
+            "text": "Desde S/ 280 por una vez a la semana, y hasta S/ 580 por cinco veces. Es la misma tarifa para los tres programas. Puedes ver el cuadro completo en la página de horarios y precios."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Necesito saber nadar para tomar clases?",
+          "name": "¿Necesito saber nadar para empezar?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Las clases están abiertas tanto a quienes nunca han nadado como a quienes ya tienen experiencia. Si no sabes nadar, la modalidad indicada es la clase con instructor y no la membresía de nado libre."
+            "text": "No. Las clases están abiertas tanto a quienes nunca han nadado como a quienes ya tienen experiencia y quieren mejorar su técnica. Cuéntanos tu caso al escribirnos y te ubicamos en el grupo que corresponde."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cuáles son los horarios y los precios?",
+          "name": "¿Cómo me matriculo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Los horarios disponibles y los precios dependen del programa, la frecuencia semanal y la edad. Escríbenos por WhatsApp al +51 915 236 322 y te pasamos la información actualizada."
+            "text": "Escoge el programa, el horario y con qué frecuencia quieres venir, y escríbenos por WhatsApp al +51 915 236 322. Te confirmamos el cupo y te enviamos los datos para el pago."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cómo reservo una clase?",
+          "name": "¿Qué es el descuento de la comunidad VCSP?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Escríbenos por WhatsApp al +51 915 236 322, cuéntanos para quién es la clase y qué días te acomodan, y coordinamos tu horario."
+            "text": "Alumnos, ex alumnos y padres de familia de los colegios Villa Caritas y San Pedro tienen 40 % de descuento sobre los precios regulares. Si eres colaborador de los colegios, escríbenos y te contamos qué beneficios te corresponden."
           }
         }
       ]
@@ -298,11 +381,12 @@
       <details class="nav__group">
         <summary>Programas</summary>
         <ul class="nav__sub">
-        <li><a href="/natacion-para-ninos-la-molina/">Natación para niños</a></li>
-        <li><a href="/natacion-para-adultos-la-molina/">Natación para adultos</a></li>
-        <li><a href="/nado-libre-la-molina/">Nado libre (membresía)</a></li>
+        <li><a href="/natacion-para-bebes-la-molina/">Aquabebé (6 meses a 2 años)</a></li>
+        <li><a href="/natacion-para-ninos-la-molina/">Natación para niños (3 a 15)</a></li>
+        <li><a href="/natacion-para-adultos-la-molina/">Natación para adultos (16+)</a></li>
         </ul>
       </details>
+      <a href="/horarios-y-precios/">Horarios y precios</a>
       <a href="/#preguntas">Preguntas</a>
       <a href="/#ubicacion">Ubicación</a>
       <a class="btn btn--primary btn--sm" href="https://wa.me/51915236322?text=Hola%2C%20vengo%20de%20la%20web%20de%20ISANAT%20y%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
@@ -325,8 +409,9 @@
   <section class="hero" id="inicio">
     <div class="wrap">
       <h1>Clases de natación en La Molina <em>para niños y adultos</em></h1>
-      <p>Aprende a nadar con instructores, o nada por tu cuenta con nuestra membresía
-         de modalidad libre. Estamos en la piscina del Colegio Villa Caritas.</p>
+      <p>Clases con profesor para bebés desde 6 meses, niños de 3 a 15 años y adultos,
+         en la piscina del Colegio Villa Caritas, Rinconada del Lago. Desde S/ 280 por
+         una vez a la semana.</p>
 
       <div class="hero__actions">
         <a class="btn btn--primary" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20inscribirme%20en%20las%20clases%20de%20nataci%C3%B3n%20de%20ISANAT."
@@ -334,7 +419,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
           Reserva tu clase por WhatsApp
         </a>
-        <a class="btn btn--ghost" href="#programas" data-event="ver_programas_click" data-origen="hero">Ver programas</a>
+        <a class="btn btn--ghost" href="/horarios-y-precios/" data-event="ver_horarios_click" data-origen="hero">Ver horarios y precios</a>
       </div>
 
       <ul class="hero__facts">
@@ -344,11 +429,11 @@
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 17c1.8 0 1.8 1.4 3.6 1.4S7.4 17 9.2 17s1.8 1.4 3.6 1.4S14.6 17 16.4 17s1.8 1.4 3.6 1.4"/><path d="M2 12.5c1.8 0 1.8 1.4 3.6 1.4s1.8-1.4 3.6-1.4 1.8 1.4 3.6 1.4 1.8-1.4 3.6-1.4 1.8 1.4 3.6 1.4"/><circle cx="15" cy="6" r="2"/><path d="m6 11 4-3 3 2"/></svg>
-          Niños y adultos
+          De 6 meses a adultos
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12.5 11 14.5 15.5 10"/><circle cx="12" cy="12" r="9"/></svg>
-          Con instructor o nado libre
+          Piscina saludable · MINSA
         </li>
       </ul>
     </div>
@@ -389,20 +474,21 @@
           <div class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16.5 3.1a4 4 0 0 1 0 7.8"/></svg>
           </div>
-          <h3>Tres modalidades en el mismo lugar</h3>
-          <p>Clases para niños, clases para adultos y membresía de nado libre. Si en casa
-             nadan dos personas con necesidades distintas, se coordina todo en una sola
-             conversación y en una sola piscina.</p>
+          <h3>De 6 meses a adultos, en la misma piscina</h3>
+          <p>Aquabebé desde los 6 meses, niños de 3 a 15 años y adultos desde los 16.
+             Si en casa nadan dos personas de edades distintas, se coordina todo en una
+             sola conversación y en un solo lugar.</p>
         </article>
 
         <article class="card">
           <div class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 20.5l1.5-5.1A8.4 8.4 0 0 1 3.6 11.5a8.4 8.4 0 0 1 8.4-8.4 8.4 8.4 0 0 1 9 8.4Z"/></svg>
           </div>
-          <h3>Sin formularios ni trámites: todo por WhatsApp</h3>
-          <p>Escribes, te respondemos con los horarios que hay libres y reservas. No hay
-             que crear una cuenta, ni descargar una aplicación, ni esperar a que te
-             devuelvan la llamada.</p>
+          <h3>Piscina saludable, calificada por el MINSA</h3>
+          <p>La piscina donde damos clases está calificada como <strong>piscina
+             saludable</strong> por el Ministerio de Salud. Los horarios van de 6 de la
+             mañana a 9 de la noche, y la matrícula se coordina por WhatsApp sin
+             formularios ni trámites.</p>
         </article>
       </div>
     </div>
@@ -424,15 +510,15 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M2 17c1.5 0 1.5 1.2 3 1.2"/><path d="M19 18.2c1.5 0 1.5-1.2 3-1.2"/></svg>
           </div>
           <h3>Natación para niños</h3>
-          <p>Para los que recién se familiarizan con el agua y también para los que ya nadan
-             y quieren avanzar en su técnica.</p>
+          <p>De 3 a 15 años, para los que recién se familiarizan con el agua y también para
+             los que ya nadan y quieren avanzar en su técnica.</p>
           <ul class="card__list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Clases con instructor</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Desde cero o para mejorar</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Piscina del Colegio Villa Caritas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>De 3 a 15 años</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Lunes a viernes por la tarde</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Sábados por la mañana</li>
           </ul>
           <a class="btn btn--outline btn--block" href="/natacion-para-ninos-la-molina/"
-             data-event="ver_programa_click" data-origen="tarjeta_ninos">Ver clases de natación para niños</a>
+             data-event="ver_programa_click" data-origen="tarjeta_ninos">Ver natación para niños</a>
         </article>
 
         <!-- Adultos (destacada) -->
@@ -442,15 +528,15 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="6" r="2.2"/><path d="m4 12 5-4 4 3 3-1"/><path d="M2 18c1.8 0 1.8 1.5 3.6 1.5S7.4 18 9.2 18s1.8 1.5 3.6 1.5S14.6 18 16.4 18s1.8 1.5 3.6 1.5"/></svg>
           </div>
           <h3>Natación para adultos</h3>
-          <p>Empieza desde cero o perfecciona tu técnica. Vas a tu ritmo, con un instructor
-             acompañando cada avance.</p>
+          <p>Desde los 16 años. Empieza desde cero o perfecciona tu técnica, temprano por la
+             mañana o al final del día.</p>
           <ul class="card__list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Clases con instructor</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Principiantes bienvenidos</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Técnica y acondicionamiento</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Desde los 16 años</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>6 y 7 a. m. · 6, 7 y 8 p. m.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Sábados 6, 7 y 8 a. m.</li>
           </ul>
           <a class="btn btn--primary btn--block" href="/natacion-para-adultos-la-molina/"
-             data-event="ver_programa_click" data-origen="tarjeta_adultos">Ver clases de natación para adultos</a>
+             data-event="ver_programa_click" data-origen="tarjeta_adultos">Ver natación para adultos</a>
         </article>
 
         <!-- Membresía -->
@@ -458,17 +544,50 @@
           <div class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19"/><path d="M6.5 14.5h4"/></svg>
           </div>
-          <h3>Membresía de nado libre</h3>
-          <p>Acceso a la piscina para nadar por tu cuenta, sin instructor. Ideal si ya sabes
-             nadar y quieres entrenar a tu ritmo.</p>
+          <h3>Aquabebé</h3>
+          <p>Nuestro programa para bebés de 6 meses a 2 años. Clases de 45 minutos, martes
+             y jueves por la tarde y sábados al mediodía.</p>
           <ul class="card__list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Sin instructor</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Nadas a tu propio ritmo</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Entrenamiento o relajación</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>De 6 meses a 2 años</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Clases de 45 minutos</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Martes, jueves y sábados</li>
           </ul>
-          <a class="btn btn--outline btn--block" href="/nado-libre-la-molina/"
-             data-event="ver_programa_click" data-origen="tarjeta_membresia">Ver la membresía de nado libre</a>
+          <a class="btn btn--outline btn--block" href="/natacion-para-bebes-la-molina/"
+             data-event="ver_programa_click" data-origen="tarjeta_bebes">Ver el programa Aquabebé</a>
         </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== PRECIOS =====================
+       Ningún competidor de La Molina publica precios en texto indexable
+       (auditoría §21.1). Esto es la ventaja: no convertirlo en imagen.
+       Los datos salen del mensaje del cliente del 13/09/2026.
+  -->
+  <section class="section" id="precios">
+    <div class="wrap wrap--narrow">
+      <div class="head-center">
+        <span class="eyebrow">Precios</span>
+        <h2>Cuánto cuestan las clases de natación</h2>
+        <p class="lead">La misma tarifa para aquabebé, niños y adultos: todas son clases
+           con profesor. El precio depende de cuántas veces por semana vengas.</p>
+      </div>
+      <div class="prose">
+        <div class="table-wrap">
+    <table>
+      <caption>Precios regulares · clases con profesor</caption>
+      <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">1 vez por semana</th><td>S/ 280</td></tr>
+        <tr><th scope="row">2 veces por semana</th><td>S/ 380</td></tr>
+        <tr><th scope="row">3 veces por semana</th><td>S/ 480</td></tr>
+        <tr><th scope="row">5 veces por semana</th><td>S/ 580</td></tr>
+      </tbody>
+    </table>
+  </div>
+        <p>La comunidad VCSP —alumnos, ex alumnos y padres de familia de los colegios Villa Caritas y San Pedro— tiene 40 % de descuento sobre los precios regulares. Si eres colaborador de los colegios, pregúntanos por los beneficios.</p>
+        <p><a href="/horarios-y-precios/" data-event="ver_horarios_click" data-origen="seccion_precios">Ver los horarios de cada programa y las formas de pago</a>.</p>
       </div>
     </div>
   </section>
@@ -496,7 +615,7 @@
         <li class="step">
           <div class="step__n">2</div>
           <h3>Definimos tu modalidad</h3>
-          <p>Vemos si te conviene clase con instructor o membresía de nado libre, y con qué frecuencia.</p>
+          <p>Vemos qué programa te corresponde por edad y con qué frecuencia te conviene venir.</p>
         </li>
         <li class="step">
           <div class="step__n">3</div>
@@ -532,30 +651,25 @@
           <summary>¿Dónde queda ISANAT?</summary>
           <div class="faq__a"><p>Estamos en La Molina, Lima, en la piscina del Colegio Villa Caritas: Calle Hurón 409, Urb. Rinconada del Lago.</p></div>
         </details>
-
         <details>
-          <summary>¿Dan clases para niños y para adultos?</summary>
-          <div class="faq__a"><p>Sí. Tenemos clases de natación para niños y clases para adultos, tanto para quienes empiezan desde cero como para quienes ya nadan y quieren mejorar su técnica.</p></div>
+          <summary>¿Para qué edades hay clases de natación?</summary>
+          <div class="faq__a"><p>Tenemos tres programas: Aquabebé para bebés de 6 meses a 2 años, natación para niños de 3 a 15 años y natación para adultos desde los 16. Todas son clases con profesor.</p></div>
         </details>
-
         <details>
-          <summary>¿Qué incluye la membresía de nado libre?</summary>
-          <div class="faq__a"><p>La membresía de nado libre te da acceso a la piscina para nadar por tu cuenta, a tu propio ritmo y sin instructor. Es la modalidad para quienes ya saben nadar y buscan entrenar o relajarse.</p></div>
+          <summary>¿Desde cuánto cuestan las clases?</summary>
+          <div class="faq__a"><p>Desde S/ 280 por una vez a la semana, y hasta S/ 580 por cinco veces. Es la misma tarifa para los tres programas. Puedes ver el cuadro completo en la página de horarios y precios.</p></div>
         </details>
-
         <details>
-          <summary>¿Necesito saber nadar para tomar clases?</summary>
-          <div class="faq__a"><p>No. Las clases están abiertas tanto a quienes nunca han nadado como a quienes ya tienen experiencia. Si no sabes nadar, la modalidad indicada es la clase con instructor y no la membresía de nado libre.</p></div>
+          <summary>¿Necesito saber nadar para empezar?</summary>
+          <div class="faq__a"><p>No. Las clases están abiertas tanto a quienes nunca han nadado como a quienes ya tienen experiencia y quieren mejorar su técnica. Cuéntanos tu caso al escribirnos y te ubicamos en el grupo que corresponde.</p></div>
         </details>
-
         <details>
-          <summary>¿Cuáles son los horarios y los precios?</summary>
-          <div class="faq__a"><p>Los horarios disponibles y los precios dependen del programa, la frecuencia semanal y la edad. Escríbenos por WhatsApp al +51 915 236 322 y te pasamos la información actualizada.</p></div>
+          <summary>¿Cómo me matriculo?</summary>
+          <div class="faq__a"><p>Escoge el programa, el horario y con qué frecuencia quieres venir, y escríbenos por WhatsApp al +51 915 236 322. Te confirmamos el cupo y te enviamos los datos para el pago.</p></div>
         </details>
-
         <details>
-          <summary>¿Cómo reservo una clase?</summary>
-          <div class="faq__a"><p>Escríbenos por WhatsApp al +51 915 236 322, cuéntanos para quién es la clase y qué días te acomodan, y coordinamos tu horario.</p></div>
+          <summary>¿Qué es el descuento de la comunidad VCSP?</summary>
+          <div class="faq__a"><p>Alumnos, ex alumnos y padres de familia de los colegios Villa Caritas y San Pedro tienen 40 % de descuento sobre los precios regulares. Si eres colaborador de los colegios, escríbenos y te contamos qué beneficios te corresponden.</p></div>
         </details>
       </div>
     </div>
@@ -632,16 +746,16 @@
           <img src="/img/logo.webp" width="52" height="52" alt="Logo de ISANAT Escuela de Natación" loading="lazy">
           <span><strong>ISANAT</strong><small>Swimming School</small></span>
         </div>
-        <p>Escuela de natación en La Molina, Lima. Clases para niños y adultos,
-           y membresía de nado libre.</p>
+        <p>Academia de natación en La Molina, Lima. Aquabebé desde 6 meses,
+           niños de 3 a 15 años y adultos desde 16.</p>
       </div>
 
       <div>
         <h3>Programas</h3>
         <ul class="ft__links">
-          <li><a href="/natacion-para-ninos-la-molina/">Natación para niños</a></li>
-          <li><a href="/natacion-para-adultos-la-molina/">Natación para adultos</a></li>
-          <li><a href="/nado-libre-la-molina/">Nado libre (membresía)</a></li>
+          <li><a href="/natacion-para-bebes-la-molina/">Aquabebé (6 meses a 2 años)</a></li>
+          <li><a href="/natacion-para-ninos-la-molina/">Natación para niños (3 a 15)</a></li>
+          <li><a href="/natacion-para-adultos-la-molina/">Natación para adultos (16+)</a></li>
         </ul>
       </div>
 
@@ -654,6 +768,7 @@
           La Molina, Lima, Perú
           <span class="nap__links">
             <a href="tel:+51915236322" data-event="tel_click" data-origen="footer">+51 915 236 322</a>
+            <a href="tel:+51992705564" data-event="tel_click" data-origen="footer_2">+51 992 705 564</a>
             <a href="https://wa.me/51915236322" target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="footer">WhatsApp</a>
             <a href="https://www.google.com/maps/search/?api=1&amp;query=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA" target="_blank" rel="noopener" data-event="como_llegar_click" data-origen="footer">Cómo llegar</a>
             <a href="https://waze.com/ul?q=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA&amp;navigate=yes" target="_blank" rel="noopener" data-event="waze_click" data-origen="footer">Waze</a>
@@ -663,7 +778,7 @@
     </div>
 
     <div class="ft__bottom">
-      <span>&copy; <span id="year">2026</span> ISANAT Escuela de Natación. Todos los derechos reservados.</span>
+      <span>&copy; <span id="year">2026</span> ISANAT Escuela de Natación · RUC 20613584928</span>
       <span>La Molina, Lima — Perú</span>
     </div>
   </div>

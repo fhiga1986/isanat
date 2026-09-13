@@ -16,9 +16,53 @@ tienen que coincidir:
 
 | Versión | Fecha | Deploy en Cloudflare | Qué cambió |
 |---|---|---|---|
-| **1.1.0** | 13/09/2026 | *(anotar el hash tras el push)* | El sitio pasa de una página a cuatro |
+| **1.2.0** | 13/09/2026 | *(anotar el hash tras el push)* | Llegaron los datos del cliente: horarios, precios y edades reales. Sale nado libre, entran Aquabebé y horarios-y-precios |
+| 1.1.0 | 13/09/2026 | *(anotar el hash tras el push)* | El sitio pasa de una página a cuatro |
 | 1.0.1 | 13/09/2026 | `fb3d371` | Corrección del número de WhatsApp a +51 915 236 322 |
 | 1.0.0 | 12/09/2026 | `6e879c3` | Publicación inicial (one-page) y salida de la configuración de Vercel |
+
+---
+
+## 1.2.0 — 13/09/2026
+
+El cliente envió los horarios, los precios y las edades reales. Todo lo que aquí se
+publica sale de su mensaje de WhatsApp del 13/09 ("Temporada Invierno 2026") cruzado
+con su flyer "CLASES 2026".
+
+### Añadido
+
+- **`/horarios-y-precios/`** — la página que la auditoría marcaba como P1 de mayor
+  tráfico y que estaba bloqueada. Cuatro tablas HTML reales (nunca imágenes), periodo
+  de vigencia visible, cómo matricularse y formas de pago.
+- **`/natacion-para-bebes-la-molina/`** — Aquabebé, 6 meses a 2 años. Ningún competidor
+  de La Molina tiene una URL dedicada a bebés: es el hueco de contenido más limpio del
+  distrito.
+- **Sección de precios en la home**, con el cuadro por frecuencia. Ningún competidor
+  del distrito publica precios en texto indexable.
+- **`_redirects`** con la 301 de la URL retirada.
+- Segundo teléfono (+51 992 705 564) y **RUC 20613584928** en el pie.
+- Schema: `openingHoursSpecification`, `priceRange`, `Offer` con precio real y
+  `PeopleAudience` con las edades de cada programa.
+
+### Quitado
+
+- **`/nado-libre-la-molina/` y toda mención a la membresía.** ISANAT alquila la piscina
+  y presta servicios de academia; no opera un club con membresía, y ni el flyer ni el
+  mensaje del cliente mencionan ese servicio. Publicar un servicio que no se presta es
+  la primera regla que rompe la confianza. La URL vivió unas horas y casi con certeza
+  nunca se indexó (el dominio no está conectado y el sitemap no se ha enviado), así que
+  el retiro no cuesta posicionamiento; aun así queda la 301.
+
+### Cambiado
+
+- Tercera tarjeta de la home: nado libre → **Aquabebé**.
+- Meta description de la home, `og:description` y `twitter:description`: ya no mencionan
+  nado libre; ahora dicen los tres programas y la calificación MINSA.
+- Las seis FAQ de la home, con precios, edades y el proceso real de matrícula.
+- Bloque "Por qué elegir": entra **piscina saludable calificada por el MINSA**, que es
+  la primera señal de confianza verificable que tiene el sitio.
+- Las tarjetas de programa muestran edades y franjas horarias reales.
+- El `<title>` de la home **no cambió**.
 
 ---
 
