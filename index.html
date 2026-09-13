@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- ISANAT v1.1.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
+     que version esta realmente desplegada. Tiene que coincidir con el archivo
+     VERSION del repo y con el nombre del zip de la entrega. -->
+<meta name="version" content="1.1.0">
+
 <!-- ============================================================
      META TAGS ESENCIALES  (§3.1 del playbook)
      Título: 40 caracteres · keyword al inicio · marca en el char 35
@@ -57,237 +62,7 @@
 <link rel="preload" href="/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
 
-<style>
-@font-face{font-family:'Poppins';src:url('/fonts/poppins-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Poppins';src:url('/fonts/poppins-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:'Poppins';src:url('/fonts/poppins-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
-
-:root{
-  --navy-950:#07162F; --navy-900:#0A1E42; --navy-800:#102A5C;
-  --navy-700:#16376F; --navy-600:#1E4A92;
-  --teal-400:#6FCEDD; --teal-500:#4EBDCE; --teal-600:#2E9FB4; --teal-700:#10788B;
-  --teal-050:#EAF7FA;
-  --ink:#152033; --body:#4A566B; --muted:#6B7891;
-  --line:#E2E8F1; --soft:#F4F8FB; --white:#fff;
-  --wa:#1EA855; --wa-dark:#177F41;
-  --wrap:1160px; --r:16px; --r-lg:24px;
-  --shadow-sm:0 1px 2px rgba(10,30,66,.06),0 2px 8px rgba(10,30,66,.05);
-  --shadow-md:0 4px 12px rgba(10,30,66,.08),0 12px 28px rgba(10,30,66,.08);
-  --shadow-lg:0 18px 48px rgba(10,30,66,.16);
-}
-
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
-body{margin:0;font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  color:var(--body);background:var(--white);line-height:1.65;font-size:16px;
-  -webkit-font-smoothing:antialiased}
-img,svg,iframe{max-width:100%;display:block}
-img{height:auto}
-a{color:var(--teal-700);text-decoration:none}
-h1,h2,h3,h4{color:var(--ink);line-height:1.18;margin:0 0 .6em;font-weight:700;letter-spacing:-.02em}
-h2{font-size:clamp(1.65rem,1.1rem + 2.2vw,2.5rem)}
-h3{font-size:1.2rem;letter-spacing:-.01em}
-p{margin:0 0 1.1em}
-ul,ol{margin:0;padding:0;list-style:none}
-
-.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:20px}
-.section{padding-block:clamp(56px,7vw,104px)}
-.section--soft{background:var(--soft)}
-.eyebrow{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--teal-700);margin-bottom:.9rem}
-.lead{font-size:1.06rem;color:var(--body);max-width:60ch}
-.head-center{text-align:center;max-width:660px;margin:0 auto clamp(36px,4vw,60px)}
-.head-center .lead{margin-inline:auto}
-
-/* ---------- Botones ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
-  font-weight:700;font-size:1rem;line-height:1;padding:1rem 1.6rem;border-radius:999px;
-  border:2px solid transparent;cursor:pointer;transition:transform .18s ease,
-  background-color .18s ease,box-shadow .18s ease,color .18s ease;text-align:center}
-.btn svg{width:20px;height:20px;flex:none}
-.btn:hover{transform:translateY(-2px)}
-.btn--primary{background:var(--teal-500);color:var(--navy-950);box-shadow:0 6px 20px rgba(78,189,206,.32)}
-.btn--primary:hover{background:var(--teal-400);box-shadow:0 10px 26px rgba(78,189,206,.4)}
-.btn--navy{background:var(--navy-800);color:#fff;box-shadow:var(--shadow-sm)}
-.btn--navy:hover{background:var(--navy-700);box-shadow:var(--shadow-md)}
-.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
-.btn--ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
-.btn--outline{background:#fff;color:var(--navy-800);border-color:var(--line)}
-.btn--outline:hover{border-color:var(--teal-500);color:var(--teal-700)}
-.btn--sm{padding:.7rem 1.25rem;font-size:.92rem}
-.btn--block{width:100%}
-
-:where(a,button,summary,details):focus-visible{outline:3px solid var(--teal-600);
-  outline-offset:3px;border-radius:6px}
-
-.skip{position:absolute;left:-9999px;top:0;background:var(--navy-800);color:#fff;
-  padding:.8rem 1.2rem;z-index:200;border-radius:0 0 8px 0;font-weight:600}
-.skip:focus{left:0}
-
-/* ---------- Header ---------- */
-.hdr{position:fixed;inset:0 0 auto;z-index:100;background:rgba(255,255,255,.94);
-  backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
-.hdr__in{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:72px}
-.brand{display:flex;align-items:center;gap:.65rem;font-weight:700;color:var(--navy-800);
-  letter-spacing:-.02em;font-size:1.12rem}
-.brand img{width:44px;height:44px}
-.brand span small{display:block;font-size:.62rem;font-weight:500;color:var(--muted);
-  letter-spacing:.1em;text-transform:uppercase;line-height:1.3}
-.nav{display:flex;align-items:center;gap:2rem}
-.nav a{color:var(--navy-800);font-weight:500;font-size:.96rem;position:relative;padding-block:.3rem}
-.nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
-  background:var(--teal-500);transition:width .22s ease}
-.nav a:hover::after{width:100%}
-.nav .btn{display:none}  /* solo aparece dentro del menú móvil */
-.hdr__cta{display:flex;align-items:center;gap:.75rem}
-.burger{display:none;background:none;border:0;padding:.5rem;cursor:pointer;color:var(--navy-800)}
-.burger svg{width:26px;height:26px}
-
-/* ---------- Hero ---------- */
-.hero{position:relative;background:
-    radial-gradient(1100px 520px at 78% -8%,rgba(78,189,206,.34),transparent 62%),
-    radial-gradient(760px 420px at 6% 104%,rgba(30,74,146,.5),transparent 66%),
-    linear-gradient(168deg,var(--navy-800) 0%,var(--navy-900) 52%,var(--navy-950) 100%);
-  color:#fff;padding-top:clamp(120px,14vw,170px);padding-bottom:clamp(110px,13vw,160px);
-  overflow:hidden;isolation:isolate}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
-  background-image:
-    repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 1px,transparent 1px 62px);}
-.hero h1{color:#fff;font-size:clamp(2.1rem,1.2rem + 3.9vw,3.65rem);margin-bottom:.45em;max-width:16ch}
-.hero h1 em{font-style:normal;color:var(--teal-500);display:block}
-.hero p{color:#CFDAEA;font-size:clamp(1.02rem,.97rem + .3vw,1.2rem);max-width:54ch;margin-bottom:2.1rem}
-.hero__actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2.6rem}
-.hero__facts{display:flex;flex-wrap:wrap;gap:.6rem 2rem;padding-top:1.6rem;
-  border-top:1px solid rgba(255,255,255,.16)}
-.hero__facts li{display:flex;align-items:center;gap:.55rem;color:#CFDAEA;font-size:.94rem}
-.hero__facts svg{width:19px;height:19px;color:var(--teal-500);flex:none}
-.waves{position:absolute;left:0;right:0;bottom:-1px;z-index:1;width:100%;height:auto;
-  pointer-events:none;display:block}
-
-/* ---------- Programas ---------- */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:2rem 1.75rem;
-  height:100%;display:flex;flex-direction:column;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
-.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:transparent}
-.card__icon{width:56px;height:56px;border-radius:16px;background:var(--teal-050);
-  display:grid;place-items:center;margin-bottom:1.4rem;color:var(--teal-700)}
-.card__icon svg{width:28px;height:28px}
-.card p{font-size:.97rem;margin-bottom:1.5rem}
-.card__list{margin-bottom:1.75rem;display:grid;gap:.5rem}
-.card__list li{display:flex;gap:.6rem;font-size:.93rem;color:var(--body)}
-.card__list svg{width:17px;height:17px;color:var(--teal-600);flex:none;margin-top:.28rem}
-.card .btn{margin-top:auto}
-.card--feature{background:linear-gradient(165deg,var(--navy-800),var(--navy-950));
-  border-color:transparent;color:#CFDAEA;box-shadow:var(--shadow-lg)}
-.card--feature h3{color:#fff}
-.card--feature p,.card--feature .card__list li{color:#BECCE2}
-.card--feature .card__icon{background:rgba(78,189,206,.16);color:var(--teal-500)}
-.card--feature .card__list svg{color:var(--teal-500)}
-.card--feature:hover{box-shadow:0 24px 60px rgba(7,22,47,.3)}
-.tag{align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  background:var(--teal-500);color:var(--navy-950);padding:.35rem .8rem;border-radius:999px;margin-bottom:1.1rem}
-
-/* ---------- Pasos ---------- */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;list-style:none}
-.step{position:relative;padding-top:.4rem}
-.step__n{width:46px;height:46px;border-radius:14px;background:var(--navy-800);color:#fff;
-  font-weight:700;display:grid;place-items:center;margin-bottom:1.1rem;font-size:1.05rem}
-.step h3{font-size:1.08rem;margin-bottom:.4rem}
-.step p{font-size:.95rem;margin:0}
-
-/* ---------- FAQ ---------- */
-.faq{max-width:820px;margin-inline:auto;display:grid;gap:.85rem}
-.faq details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
-  transition:border-color .2s ease,box-shadow .2s ease}
-.faq details[open]{border-color:var(--teal-500);box-shadow:var(--shadow-sm)}
-.faq summary{cursor:pointer;list-style:none;padding:1.15rem 3.2rem 1.15rem 1.4rem;
-  font-weight:600;color:var(--ink);position:relative;font-size:1rem;line-height:1.45}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";position:absolute;right:1.4rem;top:1.45rem;width:11px;height:11px;
-  border-right:2.5px solid var(--teal-600);border-bottom:2.5px solid var(--teal-600);
-  transform:rotate(45deg);transition:transform .22s ease}
-.faq details[open] summary::after{transform:rotate(-135deg);top:1.6rem}
-.faq__a{padding:0 1.4rem 1.35rem;font-size:.96rem}
-.faq__a p:last-child{margin-bottom:0}
-
-/* ---------- Ubicación ---------- */
-.place{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;
-  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
-.place__info{padding:clamp(28px,3.4vw,52px)}
-.place__info h2{margin-bottom:.5em}
-.data{display:grid;gap:1.35rem;margin:2rem 0}
-.data li{display:flex;gap:1rem}
-.data svg{width:22px;height:22px;color:var(--teal-600);flex:none;margin-top:.2rem}
-.data h3{font-size:.94rem;margin:0 0 .15rem;color:var(--ink)}
-.data p{margin:0;font-size:.95rem}
-.map{position:relative;min-height:380px;background:
-    linear-gradient(150deg,#DCE9F2 0%,#C9DEEB 48%,#B9D3E4 100%);display:grid;place-items:center}
-.map::before{content:"";position:absolute;inset:0;opacity:.5;background-image:
-  linear-gradient(rgba(255,255,255,.55) 1.5px,transparent 1.5px),
-  linear-gradient(90deg,rgba(255,255,255,.55) 1.5px,transparent 1.5px);background-size:46px 46px}
-.map__facade{position:relative;text-align:center;padding:1.5rem}
-.map__pin{width:54px;height:54px;margin:0 auto 1rem;border-radius:50%;background:var(--navy-800);
-  display:grid;place-items:center;box-shadow:0 8px 22px rgba(10,30,66,.28)}
-.map__pin svg{width:26px;height:26px;color:var(--teal-500)}
-.map__facade p{color:var(--navy-800);font-weight:600;font-size:.95rem;margin-bottom:1rem}
-.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-
-/* ---------- Footer ---------- */
-.ft{background:var(--navy-950);color:#93A3BE;padding-block:clamp(44px,5vw,68px) 28px;font-size:.92rem}
-.ft__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem}
-.ft h4{color:#fff;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.1rem}
-.ft a{color:#93A3BE;transition:color .18s ease}
-.ft a:hover{color:var(--teal-500)}
-.ft__brand{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
-.ft__brand img{width:52px;height:52px}
-.ft__brand strong{color:#fff;font-size:1.15rem;display:block;letter-spacing:-.02em}
-.ft__brand small{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#93A3BE}
-.ft__links{display:grid;gap:.6rem}
-.ft__social{display:flex;gap:.75rem;margin-top:1.2rem}
-.ft__social a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.07);
-  display:grid;place-items:center;transition:background .18s ease,transform .18s ease}
-.ft__social a:hover{background:var(--teal-600);transform:translateY(-2px)}
-.ft__social svg{width:19px;height:19px;color:#fff}
-.ft__bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.6rem;
-  display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;font-size:.85rem}
-
-/* ---------- WhatsApp flotante ---------- */
-.wa-float{position:fixed;right:18px;bottom:18px;z-index:99;width:58px;height:58px;border-radius:50%;
-  background:var(--wa);display:grid;place-items:center;box-shadow:0 8px 26px rgba(30,168,85,.42);
-  transition:transform .2s ease,background .2s ease}
-.wa-float:hover{background:var(--wa-dark);transform:scale(1.07)}
-.wa-float svg{width:30px;height:30px;color:#fff}
-.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;
-  border:2px solid var(--wa);animation:ping 2.6s cubic-bezier(0,0,.2,1) infinite}
-@keyframes ping{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(1.55);opacity:0}}
-
-/* ---------- Responsive ---------- */
-@media (max-width:900px){
-  .place{grid-template-columns:1fr}
-  .map{min-height:300px}
-  .ft__grid{grid-template-columns:1fr 1fr;gap:2rem}
-}
-@media (max-width:768px){
-  .burger{display:block}
-  .nav{position:fixed;inset:72px 0 auto;flex-direction:column;align-items:stretch;gap:0;
-    background:#fff;border-bottom:1px solid var(--line);padding:.5rem 20px 1.25rem;
-    box-shadow:var(--shadow-md);transform:translateY(-130%);transition:transform .28s ease;visibility:hidden}
-  .nav[data-open="true"]{transform:translateY(0);visibility:visible}
-  .nav a{padding:.95rem 0;border-bottom:1px solid var(--line);font-size:1.02rem}
-  .nav a::after{display:none}
-  .nav .btn{display:inline-flex;margin-top:1rem;border-bottom:0}
-  .hdr__cta .btn{display:none}
-  .hero__actions .btn{width:100%}
-  .ft__grid{grid-template-columns:1fr}
-  .ft__bottom{justify-content:center;text-align:center}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
-    transition-duration:.001ms!important}
-  .btn:hover,.card:hover,.wa-float:hover{transform:none}
-}
-</style>
+<link rel="stylesheet" href="/css/site.v1.css">
 
 <!-- ============================================================
      SCHEMA JSON-LD  (§3.3) — validar en search.google.com/test/rich-results
@@ -297,14 +72,19 @@ ul,ol{margin:0;padding:0;list-style:none}
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["LocalBusiness", "SportsActivityLocation"],
+      "@type": [
+        "LocalBusiness",
+        "SportsActivityLocation"
+      ],
       "@id": "https://isanat.pe/#business",
       "name": "ISANAT Escuela de Natación",
       "alternateName": "ISANAT Swimming School",
       "description": "Escuela de natación en La Molina, Lima. Clases de natación para niños y adultos, y membresía de nado libre sin instructor.",
       "url": "https://isanat.pe/",
       "logo": "https://isanat.pe/img/logo.png",
-      "image": ["https://isanat.pe/img/og-image.jpg"],
+      "image": [
+        "https://isanat.pe/img/og-image.jpg"
+      ],
       "telephone": "+51915236322",
       "currenciesAccepted": "PEN",
       "address": {
@@ -312,7 +92,6 @@ ul,ol{margin:0;padding:0;list-style:none}
         "streetAddress": "Calle Hurón 409, Urb. Rinconada del Lago (Colegio Villa Caritas)",
         "addressLocality": "La Molina",
         "addressRegion": "Lima",
-        "postalCode": "15026",
         "addressCountry": "PE"
       },
       "geo": {
@@ -321,25 +100,50 @@ ul,ol{margin:0;padding:0;list-style:none}
         "longitude": -76.9235
       },
       "areaServed": [
-        { "@type": "City", "name": "La Molina" },
-        { "@type": "City", "name": "Lima" }
+        {
+          "@type": "City",
+          "name": "La Molina"
+        },
+        {
+          "@type": "City",
+          "name": "Lima"
+        }
       ],
       "potentialAction": {
         "@type": "CommunicateAction",
-        "target": "https://wa.me/51915236322"
-      }
+        "target": "https://wa.me/51915236322",
+        "name": "Escribir por WhatsApp"
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&amp;query=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA"
     },
     {
       "@type": "Service",
       "@id": "https://isanat.pe/#servicios",
       "serviceType": "Clases de natación",
       "name": "Clases de natación y nado libre en La Molina",
-      "provider": { "@id": "https://isanat.pe/#business" },
-      "areaServed": { "@type": "City", "name": "La Molina, Lima, Perú" },
+      "provider": {
+        "@id": "https://isanat.pe/#business"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "La Molina"
+        },
+        {
+          "@type": "City",
+          "name": "Lima"
+        }
+      ],
       "availableChannel": {
         "@type": "ServiceChannel",
         "serviceUrl": "https://isanat.pe/",
-        "servicePhone": "+51915236322"
+        "servicePhone": {
+          "@type": "ContactPoint",
+          "telephone": "+51915236322",
+          "contactType": "customer service",
+          "areaServed": "PE",
+          "availableLanguage": "Spanish"
+        }
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -350,7 +154,12 @@ ul,ol{margin:0;padding:0;list-style:none}
             "itemOffered": {
               "@type": "Service",
               "name": "Natación para niños",
-              "description": "Clases de natación para niños, desde quienes recién se familiarizan con el agua hasta quienes ya nadan y quieren mejorar su técnica."
+              "description": "Clases de natación para niños, desde quienes recién se familiarizan con el agua hasta quienes ya nadan y quieren mejorar su técnica.",
+              "url": "https://isanat.pe/natacion-para-ninos-la-molina/",
+              "@id": "https://isanat.pe/natacion-para-ninos-la-molina/#service",
+              "provider": {
+                "@id": "https://isanat.pe/#business"
+              }
             }
           },
           {
@@ -358,7 +167,12 @@ ul,ol{margin:0;padding:0;list-style:none}
             "itemOffered": {
               "@type": "Service",
               "name": "Natación para adultos",
-              "description": "Clases de natación para adultos, tanto para quienes empiezan desde cero como para quienes buscan perfeccionar su técnica."
+              "description": "Clases de natación para adultos, tanto para quienes empiezan desde cero como para quienes buscan perfeccionar su técnica.",
+              "url": "https://isanat.pe/natacion-para-adultos-la-molina/",
+              "@id": "https://isanat.pe/natacion-para-adultos-la-molina/#service",
+              "provider": {
+                "@id": "https://isanat.pe/#business"
+              }
             }
           },
           {
@@ -366,7 +180,12 @@ ul,ol{margin:0;padding:0;list-style:none}
             "itemOffered": {
               "@type": "Service",
               "name": "Membresía de nado libre",
-              "description": "Acceso a la piscina para nadar por cuenta propia, sin instructor, en la modalidad libre."
+              "description": "Acceso a la piscina para nadar por cuenta propia, sin instructor, en la modalidad libre.",
+              "url": "https://isanat.pe/nado-libre-la-molina/",
+              "@id": "https://isanat.pe/nado-libre-la-molina/#service",
+              "provider": {
+                "@id": "https://isanat.pe/#business"
+              }
             }
           }
         ]
@@ -378,7 +197,9 @@ ul,ol{margin:0;padding:0;list-style:none}
       "url": "https://isanat.pe/",
       "name": "ISANAT Escuela de Natación",
       "inLanguage": "es-PE",
-      "publisher": { "@id": "https://isanat.pe/#business" }
+      "publisher": {
+        "@id": "https://isanat.pe/#business"
+      }
     },
     {
       "@type": "FAQPage",
@@ -463,32 +284,34 @@ ul,ol{margin:0;padding:0;list-style:none}
 </script>
 </head>
 
-<body>
+<body data-pagina="home">
 <a class="skip" href="#main">Saltar al contenido</a>
 
-<!-- ===================== HEADER ===================== -->
 <header class="hdr">
   <div class="wrap hdr__in">
-    <a class="brand" href="#inicio" aria-label="ISANAT — inicio">
+    <a class="brand" href="/" aria-label="ISANAT — inicio">
       <img src="/img/logo.webp" width="44" height="44" alt="Logo de ISANAT Escuela de Natación" fetchpriority="high">
       <span>ISANAT<small>Swimming School</small></span>
     </a>
 
     <nav class="nav" id="nav" aria-label="Navegación principal">
-      <a href="#programas">Programas</a>
-      <a href="#como-empezar">Cómo empezar</a>
-      <a href="#preguntas">Preguntas</a>
-      <a href="#ubicacion">Ubicación</a>
+      <details class="nav__group">
+        <summary>Programas</summary>
+        <ul class="nav__sub">
+        <li><a href="/natacion-para-ninos-la-molina/">Natación para niños</a></li>
+        <li><a href="/natacion-para-adultos-la-molina/">Natación para adultos</a></li>
+        <li><a href="/nado-libre-la-molina/">Nado libre (membresía)</a></li>
+        </ul>
+      </details>
+      <a href="/#preguntas">Preguntas</a>
+      <a href="/#ubicacion">Ubicación</a>
       <a class="btn btn--primary btn--sm" href="https://wa.me/51915236322?text=Hola%2C%20vengo%20de%20la%20web%20de%20ISANAT%20y%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
-         target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="menu_movil">Escríbenos</a>
+   target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="menu_movil">Escríbenos</a>
     </nav>
 
     <div class="hdr__cta">
       <a class="btn btn--navy btn--sm" href="https://wa.me/51915236322?text=Hola%2C%20vengo%20de%20la%20web%20de%20ISANAT%20y%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
-         target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="header">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
-        Escríbenos
-      </a>
+   target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="header"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>Escríbenos</a>
       <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -537,12 +360,60 @@ ul,ol{margin:0;padding:0;list-style:none}
     </svg>
   </section>
 
+
+  <!-- ===================== POR QUÉ ELEGIRNOS =====================
+       Solo ventajas verificables hoy. NO agregar aquí "piscina temperada",
+       "grupos de máximo N" ni "instructores certificados" hasta que el
+       cliente lo confirme: son las tres cosas que más se prometen sin dato.
+  -->
+  <section class="section" id="por-que">
+    <div class="wrap">
+      <div class="head-center">
+        <span class="eyebrow">Por qué ISANAT</span>
+        <h2>Por qué elegir nuestra academia de natación en La Molina</h2>
+        <p class="lead">Tres razones concretas, sin promesas que no podamos sostener.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Dentro de La Molina, en Rinconada del Lago</h3>
+          <p>Las clases son en la piscina del Colegio Villa Caritas, en Calle Hurón 409.
+             No tienes que cruzar la ciudad ni salir del distrito para que tu hijo aprenda
+             a nadar —ni para nadar tú.</p>
+        </article>
+
+        <article class="card">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16.5 3.1a4 4 0 0 1 0 7.8"/></svg>
+          </div>
+          <h3>Tres modalidades en el mismo lugar</h3>
+          <p>Clases para niños, clases para adultos y membresía de nado libre. Si en casa
+             nadan dos personas con necesidades distintas, se coordina todo en una sola
+             conversación y en una sola piscina.</p>
+        </article>
+
+        <article class="card">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 20.5l1.5-5.1A8.4 8.4 0 0 1 3.6 11.5a8.4 8.4 0 0 1 8.4-8.4 8.4 8.4 0 0 1 9 8.4Z"/></svg>
+          </div>
+          <h3>Sin formularios ni trámites: todo por WhatsApp</h3>
+          <p>Escribes, te respondemos con los horarios que hay libres y reservas. No hay
+             que crear una cuenta, ni descargar una aplicación, ni esperar a que te
+             devuelvan la llamada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== PROGRAMAS ===================== -->
   <section class="section" id="programas">
     <div class="wrap">
       <div class="head-center">
         <span class="eyebrow">Nuestros programas</span>
-        <h2>Tres formas de entrar al agua</h2>
+        <h2>Programas de natación en La Molina</h2>
         <p class="lead">Elige la modalidad que va contigo y coordinamos el resto por WhatsApp.</p>
       </div>
 
@@ -560,8 +431,8 @@ ul,ol{margin:0;padding:0;list-style:none}
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Desde cero o para mejorar</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Piscina del Colegio Villa Caritas</li>
           </ul>
-          <a class="btn btn--outline btn--block" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20las%20clases%20de%20nataci%C3%B3n%20para%20ni%C3%B1os."
-             target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="programa_ninos">Consultar horarios</a>
+          <a class="btn btn--outline btn--block" href="/natacion-para-ninos-la-molina/"
+             data-event="ver_programa_click" data-origen="tarjeta_ninos">Ver clases de natación para niños</a>
         </article>
 
         <!-- Adultos (destacada) -->
@@ -578,8 +449,8 @@ ul,ol{margin:0;padding:0;list-style:none}
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Principiantes bienvenidos</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Técnica y acondicionamiento</li>
           </ul>
-          <a class="btn btn--primary btn--block" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20las%20clases%20de%20nataci%C3%B3n%20para%20adultos."
-             target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="programa_adultos">Consultar horarios</a>
+          <a class="btn btn--primary btn--block" href="/natacion-para-adultos-la-molina/"
+             data-event="ver_programa_click" data-origen="tarjeta_adultos">Ver clases de natación para adultos</a>
         </article>
 
         <!-- Membresía -->
@@ -595,8 +466,8 @@ ul,ol{margin:0;padding:0;list-style:none}
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Nadas a tu propio ritmo</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Entrenamiento o relajación</li>
           </ul>
-          <a class="btn btn--outline btn--block" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20conocer%20los%20planes%20de%20la%20membres%C3%ADa%20de%20nado%20libre."
-             target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="programa_membresia">Ver planes</a>
+          <a class="btn btn--outline btn--block" href="/nado-libre-la-molina/"
+             data-event="ver_programa_click" data-origen="tarjeta_membresia">Ver la membresía de nado libre</a>
         </article>
       </div>
     </div>
@@ -612,7 +483,7 @@ ul,ol{margin:0;padding:0;list-style:none}
     <div class="wrap">
       <div class="head-center">
         <span class="eyebrow">Cómo empezar</span>
-        <h2>Tres pasos y estás en el agua</h2>
+        <h2>Cómo empezar tus clases de natación</h2>
         <p class="lead">Todo se coordina por WhatsApp, sin formularios ni trámites.</p>
       </div>
 
@@ -653,7 +524,7 @@ ul,ol{margin:0;padding:0;list-style:none}
     <div class="wrap">
       <div class="head-center">
         <span class="eyebrow">Preguntas frecuentes</span>
-        <h2>Lo que más nos consultan</h2>
+        <h2>Preguntas frecuentes sobre nuestras clases de natación</h2>
       </div>
 
       <div class="faq">
@@ -696,9 +567,15 @@ ul,ol{margin:0;padding:0;list-style:none}
       <div class="place">
         <div class="place__info">
           <span class="eyebrow">Ubicación</span>
-          <h2>Encuéntranos en La Molina</h2>
+          <h2>Dónde estamos: piscina del Colegio Villa Caritas, Rinconada del Lago</h2>
           <p>Nuestras clases se dictan en la piscina del Colegio Villa Caritas, en la
-             urbanización Rinconada del Lago.</p>
+             urbanización Rinconada del Lago. El acceso es por Calle Hurón. Si vienes en
+             auto, escríbenos antes y te confirmamos dónde estacionar ese día.</p>
+          <p class="nap-body">
+            <a href="tel:+51915236322" data-event="tel_click" data-origen="ubicacion">+51 915 236 322</a> ·
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA" target="_blank" rel="noopener" data-event="como_llegar_click" data-origen="ubicacion">Cómo llegar (Google Maps)</a> ·
+            <a href="https://waze.com/ul?q=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA&amp;navigate=yes" target="_blank" rel="noopener" data-event="waze_click" data-origen="ubicacion">Abrir en Waze</a>
+          </p>
 
           <ul class="data">
             <li>
@@ -747,7 +624,6 @@ ul,ol{margin:0;padding:0;list-style:none}
   </section>
 </main>
 
-<!-- ===================== FOOTER ===================== -->
 <footer class="ft">
   <div class="wrap">
     <div class="ft__grid">
@@ -758,35 +634,31 @@ ul,ol{margin:0;padding:0;list-style:none}
         </div>
         <p>Escuela de natación en La Molina, Lima. Clases para niños y adultos,
            y membresía de nado libre.</p>
-        <!-- TODO: reemplazar "#" por las URLs reales de Facebook e Instagram,
-             y agregarlas también en "sameAs" del schema LocalBusiness. -->
-        <div class="ft__social">
-          <a href="#" aria-label="Facebook de ISANAT" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg>
-          </a>
-          <a href="#" aria-label="Instagram de ISANAT" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2a3.8 3.8 0 0 1-2.3 2.3c-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4a3.8 3.8 0 0 1-2.3-2.3c-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.8-.1Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.3-.6.7-.8 1.2-.2.4-.3 1-.4 2.1C2.7 9.6 2.7 10 2.7 13s0 3.4.1 4.6c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.3.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.3.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.6s0-3.4-.1-4.6c-.1-1.1-.2-1.7-.4-2.1a3.2 3.2 0 0 0-2-2c-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Zm5.2-3.1a1.2 1.2 0 1 1 0 2.3 1.2 1.2 0 0 1 0-2.3Z"/></svg>
-          </a>
-        </div>
       </div>
 
       <div>
-        <h4>Programas</h4>
+        <h3>Programas</h3>
         <ul class="ft__links">
-          <li><a href="#programas">Natación para niños</a></li>
-          <li><a href="#programas">Natación para adultos</a></li>
-          <li><a href="#programas">Membresía de nado libre</a></li>
+          <li><a href="/natacion-para-ninos-la-molina/">Natación para niños</a></li>
+          <li><a href="/natacion-para-adultos-la-molina/">Natación para adultos</a></li>
+          <li><a href="/nado-libre-la-molina/">Nado libre (membresía)</a></li>
         </ul>
       </div>
 
       <div>
-        <h4>Contacto</h4>
-        <ul class="ft__links">
-          <li><a href="https://wa.me/51915236322" target="_blank" rel="noopener"
-                 data-event="whatsapp_click" data-origen="footer">WhatsApp +51 915 236 322</a></li>
-          <li><a href="#ubicacion">Calle Hurón 409, La Molina</a></li>
-          <li><a href="#preguntas">Preguntas frecuentes</a></li>
-        </ul>
+        <h3>Dónde estamos</h3>
+        <address class="nap">
+          <strong>ISANAT Escuela de Natación</strong>
+          Colegio Villa Caritas<br>
+          Calle Hurón 409, Urb. Rinconada del Lago<br>
+          La Molina, Lima, Perú
+          <span class="nap__links">
+            <a href="tel:+51915236322" data-event="tel_click" data-origen="footer">+51 915 236 322</a>
+            <a href="https://wa.me/51915236322" target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="footer">WhatsApp</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA" target="_blank" rel="noopener" data-event="como_llegar_click" data-origen="footer">Cómo llegar</a>
+            <a href="https://waze.com/ul?q=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA&amp;navigate=yes" target="_blank" rel="noopener" data-event="waze_click" data-origen="footer">Waze</a>
+          </span>
+        </address>
       </div>
     </div>
 
@@ -797,80 +669,10 @@ ul,ol{margin:0;padding:0;list-style:none}
   </div>
 </footer>
 
-<!-- WhatsApp flotante -->
 <a class="wa-float" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20ISANAT."
    target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"
-   data-event="whatsapp_click" data-origen="flotante">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
-</a>
+   data-event="whatsapp_click" data-origen="flotante"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg></a>
 
-<script>
-(function () {
-  'use strict';
-
-  /* ---- Año del footer ---- */
-  var y = document.getElementById('year');
-  if (y) y.textContent = new Date().getFullYear();
-
-  /* ---- Menú móvil ---- */
-  var burger = document.getElementById('burger');
-  var nav = document.getElementById('nav');
-  if (burger && nav) {
-    burger.addEventListener('click', function () {
-      var open = nav.getAttribute('data-open') === 'true';
-      nav.setAttribute('data-open', String(!open));
-      burger.setAttribute('aria-expanded', String(!open));
-      burger.setAttribute('aria-label', !open ? 'Cerrar menú' : 'Abrir menú');
-    });
-    nav.addEventListener('click', function (e) {
-      if (e.target.closest('a')) {
-        nav.setAttribute('data-open', 'false');
-        burger.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  /* ---- Mapa bajo demanda ---- */
-  var mapBtn = document.getElementById('map-load');
-  if (mapBtn) {
-    mapBtn.addEventListener('click', function () {
-      var box = document.getElementById('map');
-      var f = document.createElement('iframe');
-      f.src = 'https://www.google.com/maps?q=' +
-        encodeURIComponent('Calle Hurón 409, Urb. Rinconada del Lago, La Molina, Lima, Perú') +
-        '&z=16&output=embed';
-      f.title = 'Mapa de la ubicación de ISANAT en La Molina';
-      f.loading = 'lazy';
-      f.referrerPolicy = 'no-referrer-when-downgrade';
-      f.setAttribute('allowfullscreen', '');
-      box.innerHTML = '';
-      box.appendChild(f);
-    });
-  }
-
-  /* ---- Tracking de conversiones (§5.2) ----
-     Un solo nombre de evento por conversión + parámetro "origen" para segmentar.
-     RECORDATORIO: en GA4 hay que marcar "whatsapp_click" como EVENTO CLAVE y crear
-     la dimensión personalizada "origen" (ámbito Evento). Sin eso no se cuenta
-     como conversión. Ver §5.3 del playbook.                                        */
-  document.addEventListener('click', function (e) {
-    var el = e.target.closest('[data-event]');
-    if (!el) return;
-    var name = el.getAttribute('data-event');
-    var origen = el.getAttribute('data-origen') || 'general';
-
-    if (typeof gtag !== 'undefined') {
-      gtag('event', name, {
-        event_category: name === 'whatsapp_click' ? 'conversion' : 'engagement',
-        origen: origen
-      });
-    }
-    if (name === 'whatsapp_click' && typeof fbq !== 'undefined') {
-      fbq('track', 'Contact', { origen: origen });
-      fbq('track', 'Lead', { origen: origen });
-    }
-  }, { passive: true });
-})();
-</script>
+<script src="/js/site.v1.js" defer></script>
 </body>
 </html>

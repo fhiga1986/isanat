@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ISANAT v1.1.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
+     que version esta realmente desplegada. Tiene que coincidir con el archivo
+     VERSION del repo y con el nombre del zip de la entrega. -->
+<meta name="version" content="1.1.0">
 <title>Página no encontrada | ISANAT</title>
 <meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#102A5C">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
 <style>
@@ -29,12 +35,25 @@ a.btn:hover{transform:translateY(-2px)}
 .p:hover{background:#6FCEDD}
 .g{color:#fff;border-color:rgba(255,255,255,.55)}
 .g:hover{background:rgba(255,255,255,.12)}
+.links{margin:2.25rem 0 0;padding:1.5rem 0 0;border-top:1px solid rgba(255,255,255,.16);
+  list-style:none;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:center;font-size:.95rem}
+.links li{margin:0}
+.links a{color:#6FCEDD;text-decoration:none}
+.links a:hover{color:#fff;text-decoration:underline}
 @media (prefers-reduced-motion:reduce){a.btn:hover{transform:none}}
 </style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2J8YN9N4J3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2J8YN9N4J3');
+</script>
 </head>
 <body>
   <main>
-    <img src="/img/logo.webp" width="112" height="112" alt="Logo de ISANAT Escuela de Natación">
+    <img src="/img/logo.webp" width="112" height="112" alt="Logo de ISANAT Escuela de Natación" fetchpriority="high">
     <span class="code">Error 404</span>
     <h1>Esta página se fue a nadar</h1>
     <p>No encontramos lo que buscabas. Vuelve al inicio o escríbenos por WhatsApp
@@ -42,8 +61,16 @@ a.btn:hover{transform:translateY(-2px)}
     <div class="actions">
       <a class="btn p" href="/">Volver al inicio</a>
       <a class="btn g" href="https://wa.me/51915236322?text=Hola%2C%20necesito%20ayuda%20con%20la%20web%20de%20ISANAT."
-         target="_blank" rel="noopener">Escribir por WhatsApp</a>
+         target="_blank" rel="noopener"
+         data-event="whatsapp_click" data-origen="error_404">Escribir por WhatsApp</a>
     </div>
+    <ul class="links">
+      <li><a href="/natacion-para-ninos-la-molina/">Natación para niños</a></li>
+      <li><a href="/natacion-para-adultos-la-molina/">Natación para adultos</a></li>
+      <li><a href="/nado-libre-la-molina/">Nado libre (membresía)</a></li>
+      <li><a href="/#ubicacion">Dónde estamos</a></li>
+    </ul>
   </main>
+<script src="/js/site.v1.js" defer></script>
 </body>
 </html>

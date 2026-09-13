@@ -1,6 +1,6 @@
 # Cabeceras HTTP para Cloudflare Pages.
 # Este archivo va en la raíz del repo y Cloudflare lo lee en cada deploy.
-# Máximo 100 reglas; hoy usamos 6.
+# Máximo 100 reglas; hoy usamos 8.
 
 # Seguridad, para todo el sitio
 /*
@@ -9,6 +9,17 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+# CSS y JS: el nombre lleva versión (site.v1.css), así que se puede cachear un año.
+# ⚠️ Al cambiar el contenido hay que SUBIR EL NÚMERO DEL NOMBRE (site.v2.css) y
+# actualizar el <link> y el <script> de TODAS las páginas. Si cambias el archivo
+# sin cambiar el nombre, los visitantes que ya lo tienen seguirán viendo el viejo
+# hasta dentro de un año.
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
 
 # Fuentes e imágenes: nunca cambian sin cambiar de nombre, así que cache de un año
 /fonts/*
@@ -22,6 +33,9 @@
 
 # El HTML se revalida siempre, para que un cambio se vea apenas hagas push
 /
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*/
   Cache-Control: public, max-age=0, must-revalidate
 
 /404.html
