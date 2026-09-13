@@ -16,11 +16,59 @@ tienen que coincidir:
 
 | Versión | Fecha | Deploy en Cloudflare | Qué cambió |
 |---|---|---|---|
-| **1.2.1** | 13/09/2026 | *(anotar el hash tras el push)* | Los precios son **mensuales** y **no hay matrícula**: confirmado por el cliente |
+| **1.3.0** | 13/09/2026 | *(anotar el hash tras el push)* | IGV incluido · CSP con hashes · Speculation Rules · View Transitions · WCAG 2.2 |
+| 1.2.1 | 13/09/2026 | *(anotar el hash)* | Los precios son **mensuales** y **no hay matrícula**: confirmado por el cliente |
 | 1.2.0 | 13/09/2026 | *(no desplegada)* | Llegaron los datos del cliente: horarios, precios y edades reales. Sale nado libre, entran Aquabebé y horarios-y-precios |
 | 1.1.0 | 13/09/2026 | *(anotar el hash tras el push)* | El sitio pasa de una página a cuatro |
 | 1.0.1 | 13/09/2026 | `fb3d371` | Corrección del número de WhatsApp a +51 915 236 322 |
 | 1.0.0 | 12/09/2026 | `6e879c3` | Publicación inicial (one-page) y salida de la configuración de Vercel |
+
+---
+
+## 1.3.0 — 13/09/2026
+
+Un dato más del cliente y las seis mejoras técnicas que salieron de auditar el sitio
+contra el checklist de calidad (doc 6).
+
+### Añadido
+
+- **`Content-Security-Policy`**, la única cabecera de seguridad que faltaba. Con el
+  **hash de cada script en línea** en vez de `'unsafe-inline'`, `frame-src` limitado a
+  google.com (el mapa) y `form-action 'none'`. ⚠ Si se edita un script en línea el hash
+  cambia y el navegador lo bloquea **sin avisar en la página**: `tools/validar.py` ahora
+  recalcula los hashes y falla si no coinciden con `_headers`.
+- **Speculation Rules**: al pasar el ratón o tocar un enlace interno, el navegador
+  descarga la página destino por adelantado. Se usa **prefetch y no prerender** a
+  propósito — prerender ejecutaría el JS de destino y GA4 podría contar visitas a
+  páginas que nadie abrió, justo cuando la línea base de analítica está por construirse.
+- **View Transitions entre documentos** (`@view-transition`). Mejora progresiva: el
+  navegador que no la soporta navega igual que siempre. La cabecera y el botón flotante
+  llevan `view-transition-name` para que no parpadeen entre páginas.
+- **`decoding="async"`** en las imágenes no críticas.
+- `paymentAccepted` y **`valueAddedTaxIncluded`** en el schema.
+
+### Cambiado
+
+- **Los precios dicen que incluyen IGV**, confirmado por el cliente: son los montos
+  finales que paga el alumno. Está en las tablas de las 5 páginas, en las FAQ de precio
+  y en el schema.
+- **WCAG 2.2 §2.5.8**: los tres enlaces del pie medían 209×20 y ahora tienen 24 de alto
+  mínimo. Los enlaces dentro de un párrafo siguen igual porque la norma **los exime**:
+  su alto lo fija el interlineado del texto que los rodea.
+- **`robots.txt`** deja escrita la decisión de **permitir los rastreadores de IA**
+  (GPTBot, ClaudeBot, PerplexityBot, Google-Extended). Ya estaban permitidos por
+  omisión; ahora lo están por decisión, para que nadie lo "arregle".
+- Los `style=` en línea pasaron a clases (`.cta-centrado`, `.bloque-cierre`): un solo
+  atributo `style=` obliga a abrir el `style-src` de la CSP entero.
+- **`css/site.v1.css` → `css/site.v2.css`.** El archivo cambió y está cacheado un año:
+  renombrarlo es obligatorio.
+
+### Descartado, y por qué
+
+- **`content-visibility: auto`.** Estaba en la lista del doc 6, se midió y no vale la
+  pena aquí: en páginas de ~800 palabras el ahorro de pintado es de milisegundos y a
+  cambio se arriesga CLS si `contain-intrinsic-size` no acierta. Se aplica el principio
+  4 del prompt madre: medir el impacto antes de decidir si vale hacerlo.
 
 ---
 

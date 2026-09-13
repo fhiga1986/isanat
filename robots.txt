@@ -1,3 +1,14 @@
+# ISANAT — https://isanat.pe
+#
+# DECISION DELIBERADA: se permite el rastreo por parte de motores de IA
+# (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot y los que vengan).
+# Para un negocio local que quiere aparecer citado en respuestas generadas,
+# bloquearlos es autolesion: leer la pagina no le cuesta nada al negocio y ser
+# la fuente citada vale mucho. Si alguien "arregla" esto en el futuro, que sepa
+# que esta desconectando al sitio de una parte del trafico.
+#
+# No hay areas privadas, ni carrito, ni panel: todo el sitio es publico.
+
 User-agent: *
 Allow: /
 

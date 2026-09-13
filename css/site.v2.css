@@ -340,3 +340,38 @@ ul,ol{margin:0;padding:0;list-style:none}
 .nap-body{color:var(--body);line-height:1.9}
 .nap-body a{font-weight:500}
 .nap-body a:hover{text-decoration:underline}
+
+/* =====================================================================
+   v1.3.0 — accesibilidad y navegación entre páginas
+   ===================================================================== */
+
+/* ---- WCAG 2.2 · 2.5.8 Objetivo (mínimo): 24×24 CSS px ----
+   Los enlaces del pie iban en una lista y medían 209×20. Los enlaces dentro de
+   un párrafo (el NAP, los del cuerpo) están exentos por la propia norma, porque
+   su alto lo fija el interlineado del texto que los rodea. Estos no lo estaban. */
+.ft__links a{display:inline-block;min-height:24px;padding-block:2px}
+.nav__sub a{min-height:24px}
+.crumbs a{display:inline-block;min-height:24px;padding-block:2px}
+
+/* ---- Transiciones entre documentos ----
+   Mejora progresiva pura: el navegador que no la soporta ignora la regla y
+   navega como siempre. Hace que ir de la home a un programa se sienta continuo
+   en vez de un parpadeo en blanco. */
+@view-transition{navigation:auto}
+
+/* La cabecera es la misma en las cinco páginas: se le da nombre propio para que
+   no desaparezca y reaparezca en cada navegación. */
+.hdr{view-transition-name:cabecera}
+.wa-float{view-transition-name:whatsapp-flotante}
+
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*){animation:none}
+}
+
+/* ---- Dos utilidades que reemplazan los style= en línea ----
+   Existen para que la CSP pueda declarar style-src sin 'unsafe-inline':
+   un solo atributo style= en el HTML obliga a abrir la política entera. */
+.cta-centrado{text-align:center;margin-top:clamp(32px,4vw,52px)}
+.bloque-cierre{margin-top:2rem}

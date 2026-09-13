@@ -3,7 +3,7 @@
 Sitio web estático de ISANAT. Sin build, sin dependencias: son archivos HTML, CSS y
 JS planos que se suben tal cual. Cinco páginas indexables.
 
-**Versión actual: `1.2.1`** — ver [`CAMBIOS.md`](CAMBIOS.md).
+**Versión actual: `1.3.0`** — ver [`CAMBIOS.md`](CAMBIOS.md).
 
 Dominio de producción: **https://isanat.pe**
 
@@ -27,7 +27,7 @@ Dominio de producción: **https://isanat.pe**
 ├── _redirects                              301 de la URL retirada en la v1.2.0
 ├── 404.html                                Error, la sirve Cloudflare sola. Autocontenida
 ├── css/
-│   └── site.v1.css                         TODO el CSS del sitio (excepto el 404)
+│   └── site.v2.css                         TODO el CSS del sitio (excepto el 404)
 ├── js/
 │   └── site.v1.js                          TODO el JS del sitio
 ├── tools/
@@ -264,12 +264,13 @@ recomienda no se puede ejecutar sin estos datos, y ninguno depende de programar.
 | 13 | **Relación contractual con el colegio** y con AquaXtreme, que opera en la misma dirección. | La ficha de Google: dos negocios en una dirección compiten por el mismo pack de mapas | Ficha de Google |
 | 14 | **Código postal.** Se quitó del schema por no estar verificado. | `postalCode` del `PostalAddress` | Schema de las 5 páginas |
 
-### Resuelto con los datos del cliente (v1.2.0 y v1.2.1)
+### Resuelto con los datos del cliente (v1.2.0 · v1.2.1 · v1.3.0)
 
-Horarios por programa · **precios mensuales** por frecuencia · **que no hay matrícula** ·
-edades exactas (6 m–2 a, 3–15, 16+) · que **sí** se atienden bebés · el descuento del
-40 % de la comunidad VCSP · el proceso real de matrícula · las formas de pago · el RUC ·
-el segundo teléfono · la calificación MINSA · y que **no** existe nado libre.
+Horarios por programa · **precios mensuales** por frecuencia · **sin matrícula** ·
+**IGV incluido** · edades exactas (6 m–2 a, 3–15, 16+) · que **sí** se atienden bebés ·
+el descuento del 40 % de la comunidad VCSP · el proceso real de matrícula · las formas
+de pago · el RUC · el segundo teléfono · la calificación MINSA · y que **no** existe
+nado libre.
 
 **Nada de lo que está publicado depende ya de un dato sin confirmar**, salvo la
 discrepancia del sábado de niños, donde se publicó la versión conservadora.

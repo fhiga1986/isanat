@@ -11,7 +11,7 @@ generador: cuatro copias del mismo bloque que se van separando).
 
 Sale con código 1 si algo falla, para poder engancharlo a un hook de git.
 """
-import json, os, re, sys, unicodedata
+import base64, hashlib, json, os, re, sys, unicodedata
 from html import unescape
 
 try:
@@ -226,6 +226,47 @@ for nombre, variantes in chrome.items():
     if len(variantes) > 1:
         error("(varias)", f"el bloque <{nombre}> tiene {len(variantes)} versiones distintas: "
                           + " | ".join(", ".join(v) for v in variantes.values()))
+
+# 12 · CSP: los hashes de _headers tienen que ser los de los scripts y estilos
+#      en línea que hay HOY. Si no, el navegador los bloquea sin decir nada en la
+#      página y el sitio se rompe en silencio (GA4 deja de medir, el menú deja de
+#      abrirse) — es la clase de fallo que solo se ve abriendo la consola.
+hdr = os.path.join(RAIZ, "_headers")
+if os.path.exists(hdr):
+    csp = ""
+    for linea in open(hdr, encoding="utf-8"):
+        if linea.strip().startswith("Content-Security-Policy:"):
+            csp = linea.split(":", 1)[1].strip()
+    if csp:
+        reales = {"script": set(), "style": set()}
+        for rel, ruta in paginas():
+            s3 = BeautifulSoup(open(ruta, encoding="utf-8").read(), "html5lib")
+            for sc in s3.find_all("script"):
+                if sc.get("src") or sc.get("type") in ("application/ld+json", "speculationrules"):
+                    continue
+                reales["script"].add("'sha256-" + base64.b64encode(
+                    hashlib.sha256((sc.string or "").encode()).digest()).decode() + "'")
+            for st in s3.find_all("style"):
+                reales["style"].add("'sha256-" + base64.b64encode(
+                    hashlib.sha256((st.string or "").encode()).digest()).decode() + "'")
+        for clase in ("script", "style"):
+            declarados = set(re.findall(r"'sha256-[A-Za-z0-9+/=]+'",
+                             (re.search(clase + r"-src ([^;]+)", csp) or
+                              type("x", (), {"group": lambda s, n: ""})()).group(1)))
+            for h in reales[clase] - declarados:
+                error("_headers", f"la CSP no declara el hash de un <{clase}> en línea que sí existe: {h}")
+            for h in declarados - reales[clase]:
+                aviso("_headers", f"la CSP declara un hash de <{clase}> que ya no corresponde a ningún bloque: {h}")
+        for atr in ("style-src", "script-src"):
+            if "'unsafe-inline'" in (re.search(atr + r" ([^;]+)", csp) or
+                                     type("x", (), {"group": lambda s, n: ""})()).group(1):
+                aviso("_headers", f"{atr} usa 'unsafe-inline': se puede evitar con hashes")
+        # ningún atributo style= en línea, que obligaría a abrir la política
+        for rel, ruta in paginas():
+            crudo2 = open(ruta, encoding="utf-8").read()
+            for m in re.finditer(r'<[^>]+\sstyle="', crudo2):
+                error(rel, "atributo style= en línea: la CSP no lo permite sin 'unsafe-inline'")
+                break
 
 # 11 · Sitemap
 sm = os.path.join(RAIZ, "sitemap.xml")

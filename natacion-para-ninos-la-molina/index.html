@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ISANAT v1.2.1 · marcador de version: con Ctrl+U en el sitio publicado se ve
+<!-- ISANAT v1.3.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
      que version esta realmente desplegada. Tiene que coincidir con el archivo
      VERSION del repo y con el nombre del zip de la entrega. -->
-<meta name="version" content="1.2.1">
+<meta name="version" content="1.3.0">
 
 <title>Natación para Niños en La Molina | ISANAT</title>
 <meta name="description" content="Clases de natación para niños de 3 a 15 años en La Molina, de lunes a viernes por la tarde y sábados por la mañana. Desde S/ 280 al mes, sin matrícula.">
@@ -47,7 +47,18 @@
 
 <link rel="preload" href="/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/site.v1.css">
+<link rel="stylesheet" href="/css/site.v2.css">
+
+<!-- Speculation Rules: al pasar el raton o tocar un enlace interno, el navegador
+     descarga la pagina destino por adelantado. La navegacion entre paginas pasa a
+     ser casi instantanea y mejora el INP medido en campo.
+     Se usa PREFETCH y no PRERENDER a proposito: prerender ejecutaria el JS de la
+     pagina destino, y con ello GA4 podria contar visitas a paginas que nadie llego
+     a abrir. Con la linea base de analitica todavia sin construir, ensuciarla es
+     mas caro que el milisegundo que se gana. Revisar cuando haya datos propios. -->
+<script type="speculationrules">
+{"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -92,6 +103,7 @@
       ],
       "currenciesAccepted": "PEN",
       "priceRange": "S/ 280 - S/ 580",
+      "paymentAccepted": "Efectivo, transferencia bancaria, Yape",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -173,6 +185,7 @@
           }
         },
         "availability": "https://schema.org/InStock",
+        "valueAddedTaxIncluded": true,
         "url": "https://isanat.pe/horarios-y-precios/"
       },
       "availableChannel": {
@@ -219,7 +232,7 @@
           "name": "¿Cuánto cuestan las clases de natación para niños?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Son precios mensuales: S/ 280 al mes por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. No cobramos matrícula, y la comunidad VCSP tiene 40 % de descuento sobre esos precios."
+            "text": "Son precios mensuales y finales, con IGV incluido: S/ 280 al mes por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. No cobramos matrícula, y la comunidad VCSP tiene 40 % de descuento sobre esos precios."
           }
         },
         {
@@ -384,11 +397,11 @@
   </div>
 
       <h2>Precios</h2>
-      <p>El precio es mensual y depende de cuántas veces por semana vengas. Son las
-         mismas tarifas para todos los programas con profesor.</p>
+      <p>El precio es mensual, incluye IGV y depende de cuántas veces por semana
+         vengas. Son las mismas tarifas para todos los programas con profesor.</p>
       <div class="table-wrap">
     <table>
-      <caption>Precios mensuales · clases con profesor</caption>
+      <caption>Precios mensuales · clases con profesor · IGV incluido</caption>
       <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio al mes</th></tr></thead>
       <tbody>
         <tr><th scope="row">1 vez por semana</th><td>S/ 280</td></tr>
@@ -398,7 +411,7 @@
       </tbody>
     </table>
   </div>
-  <p>No cobramos matrícula ni cuota de inscripción: pagas solo la mensualidad del plan que elijas.</p>
+  <p>Los precios son finales: incluyen IGV y no hay matrícula ni cuota de inscripción. Pagas solo la mensualidad del plan que elijas.</p>
       <p>La comunidad VCSP —alumnos, ex alumnos y padres de familia de los colegios Villa Caritas y San Pedro— tiene 40 % de descuento sobre los precios regulares. Si eres colaborador de los colegios, pregúntanos por los beneficios.</p>
       <p><a href="/horarios-y-precios/" data-event="ver_horarios_click" data-origen="cuerpo">Ver todos los horarios y precios</a>, con los de los otros programas y las formas de pago.</p>
 
@@ -419,7 +432,7 @@
         </details>
         <details>
           <summary>¿Cuánto cuestan las clases de natación para niños?</summary>
-          <div class="faq__a"><p>Son precios mensuales: S/ 280 al mes por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. No cobramos matrícula, y la comunidad VCSP tiene 40 % de descuento sobre esos precios.</p></div>
+          <div class="faq__a"><p>Son precios mensuales y finales, con IGV incluido: S/ 280 al mes por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. No cobramos matrícula, y la comunidad VCSP tiene 40 % de descuento sobre esos precios.</p></div>
         </details>
         <details>
           <summary>¿Qué tiene que llevar mi hijo a la clase?</summary>
@@ -445,7 +458,7 @@
         <a href="/#ubicacion">Ver el mapa</a>
       </p>
       </div>
-      <div style="margin-top:2rem">
+      <div class="bloque-cierre">
         <a class="btn btn--navy" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20matricular%20a%20mi%20hijo/a%20en%20las%20clases%20de%20nataci%C3%B3n%20de%20ISANAT.%20Tiene%20___%20a%C3%B1os%20y%20me%20acomoda%20el%20horario%20de%20___."
    target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="cierre"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>Escríbenos por WhatsApp</a>
       </div>
@@ -462,7 +475,7 @@
     <div class="ft__grid">
       <div>
         <div class="ft__brand">
-          <img src="/img/logo.webp" width="52" height="52" alt="Logo de ISANAT Escuela de Natación" loading="lazy">
+          <img src="/img/logo.webp" width="52" height="52" alt="Logo de ISANAT Escuela de Natación" loading="lazy" decoding="async">
           <span><strong>ISANAT</strong><small>Swimming School</small></span>
         </div>
         <p>Academia de natación en La Molina, Lima. Aquabebé desde 6 meses,

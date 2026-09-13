@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ISANAT v1.2.1 · marcador de version: con Ctrl+U en el sitio publicado se ve
+<!-- ISANAT v1.3.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
      que version esta realmente desplegada. Tiene que coincidir con el archivo
      VERSION del repo y con el nombre del zip de la entrega. -->
-<meta name="version" content="1.2.1">
+<meta name="version" content="1.3.0">
 
 <!-- ============================================================
      META TAGS ESENCIALES  (§3.1 del playbook)
@@ -62,7 +62,18 @@
 <link rel="preload" href="/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="/css/site.v1.css">
+<link rel="stylesheet" href="/css/site.v2.css">
+
+<!-- Speculation Rules: al pasar el raton o tocar un enlace interno, el navegador
+     descarga la pagina destino por adelantado. La navegacion entre paginas pasa a
+     ser casi instantanea y mejora el INP medido en campo.
+     Se usa PREFETCH y no PRERENDER a proposito: prerender ejecutaria el JS de la
+     pagina destino, y con ello GA4 podria contar visitas a paginas que nadie llego
+     a abrir. Con la linea base de analitica todavia sin construir, ensuciarla es
+     mas caro que el milisegundo que se gana. Revisar cuando haya datos propios. -->
+<script type="speculationrules">
+{"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
+</script>
 
 <!-- ============================================================
      SCHEMA JSON-LD  (§3.3) — validar en search.google.com/test/rich-results
@@ -457,7 +468,7 @@
       <h1>Clases de natación en La Molina <em>para niños y adultos</em></h1>
       <p>Clases con profesor para bebés desde 6 meses, niños de 3 a 15 años y adultos,
          en la piscina del Colegio Villa Caritas, Rinconada del Lago. Desde S/ 280 al
-         mes y sin matrícula.</p>
+         mes, IGV incluido y sin matrícula.</p>
 
       <div class="hero__actions">
         <a class="btn btn--primary" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20inscribirme%20en%20las%20clases%20de%20nataci%C3%B3n%20de%20ISANAT."
@@ -617,12 +628,13 @@
         <span class="eyebrow">Precios</span>
         <h2>Cuánto cuestan las clases de natación</h2>
         <p class="lead">La misma tarifa mensual para aquabebé, niños y adultos: todas son
-           clases con profesor. El precio depende de cuántas veces por semana vengas.</p>
+           clases con profesor. Son montos finales, con IGV incluido, y dependen de
+           cuántas veces por semana vengas.</p>
       </div>
       <div class="prose">
         <div class="table-wrap">
     <table>
-      <caption>Precios mensuales · clases con profesor</caption>
+      <caption>Precios mensuales · clases con profesor · IGV incluido</caption>
       <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio al mes</th></tr></thead>
       <tbody>
         <tr><th scope="row">1 vez por semana</th><td>S/ 280</td></tr>
@@ -632,7 +644,7 @@
       </tbody>
     </table>
   </div>
-  <p>No cobramos matrícula ni cuota de inscripción: pagas solo la mensualidad del plan que elijas.</p>
+  <p>Los precios son finales: incluyen IGV y no hay matrícula ni cuota de inscripción. Pagas solo la mensualidad del plan que elijas.</p>
         <p>La comunidad VCSP —alumnos, ex alumnos y padres de familia de los colegios Villa Caritas y San Pedro— tiene 40 % de descuento sobre los precios regulares. Si eres colaborador de los colegios, pregúntanos por los beneficios.</p>
         <p><a href="/horarios-y-precios/" data-event="ver_horarios_click" data-origen="seccion_precios">Ver los horarios de cada programa y las formas de pago</a>.</p>
       </div>
@@ -671,7 +683,7 @@
         </li>
       </ol>
 
-      <div style="text-align:center;margin-top:clamp(32px,4vw,52px)">
+      <div class="cta-centrado">
         <a class="btn btn--navy" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20empezar%20en%20ISANAT.%20%C2%BFMe%20pueden%20orientar%3F"
            target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="como_empezar">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
@@ -794,7 +806,7 @@
     <div class="ft__grid">
       <div>
         <div class="ft__brand">
-          <img src="/img/logo.webp" width="52" height="52" alt="Logo de ISANAT Escuela de Natación" loading="lazy">
+          <img src="/img/logo.webp" width="52" height="52" alt="Logo de ISANAT Escuela de Natación" loading="lazy" decoding="async">
           <span><strong>ISANAT</strong><small>Swimming School</small></span>
         </div>
         <p>Academia de natación en La Molina, Lima. Aquabebé desde 6 meses,
