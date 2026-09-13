@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ISANAT v1.2.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
+<!-- ISANAT v1.2.1 · marcador de version: con Ctrl+U en el sitio publicado se ve
      que version esta realmente desplegada. Tiene que coincidir con el archivo
      VERSION del repo y con el nombre del zip de la entrega. -->
-<meta name="version" content="1.2.0">
+<meta name="version" content="1.2.1">
 
 <title>Horarios y Precios | ISANAT Natación La Molina</title>
-<meta name="description" content="Horarios y precios de las clases de natación en La Molina: aquabebé, niños y adultos. Desde S/ 280 por una vez a la semana, con 40 % de descuento VCSP.">
+<meta name="description" content="Horarios y precios de las clases de natación en La Molina: aquabebé, niños y adultos. Desde S/ 280 al mes, sin matrícula, con 40 % de descuento VCSP.">
 <link rel="canonical" href="https://isanat.pe/horarios-y-precios/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="ISANAT Escuela de Natación">
@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="ISANAT">
 <meta property="og:locale" content="es_PE">
 <meta property="og:title" content="Horarios y Precios | ISANAT Natación La Molina">
-<meta property="og:description" content="Horarios y precios de las clases de natación en La Molina: aquabebé, niños y adultos. Desde S/ 280 por una vez a la semana, con 40 % de descuento VCSP.">
+<meta property="og:description" content="Horarios y precios de las clases de natación en La Molina: aquabebé, niños y adultos. Desde S/ 280 al mes, sin matrícula, con 40 % de descuento VCSP.">
 <meta property="og:url" content="https://isanat.pe/horarios-y-precios/">
 <meta property="og:image" content="https://isanat.pe/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -37,7 +37,7 @@
 <meta property="og:image:alt" content="ISANAT Escuela de Natación — La Molina, Lima">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Horarios y Precios | ISANAT Natación La Molina">
-<meta name="twitter:description" content="Horarios y precios de las clases de natación en La Molina: aquabebé, niños y adultos. Desde S/ 280 por una vez a la semana, con 40 % de descuento VCSP.">
+<meta name="twitter:description" content="Horarios y precios de las clases de natación en La Molina: aquabebé, niños y adultos. Desde S/ 280 al mes, sin matrícula, con 40 % de descuento VCSP.">
 <meta name="twitter:image" content="https://isanat.pe/img/og-image.jpg">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -156,10 +156,15 @@
         "priceCurrency": "PEN",
         "price": "280",
         "priceSpecification": {
-          "@type": "PriceSpecification",
+          "@type": "UnitPriceSpecification",
           "minPrice": 280,
           "maxPrice": 580,
-          "priceCurrency": "PEN"
+          "priceCurrency": "PEN",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "MON"
+          }
         },
         "availability": "https://schema.org/InStock",
         "url": "https://isanat.pe/horarios-y-precios/"
@@ -173,7 +178,15 @@
           "name": "¿Cuánto cuestan las clases de natación?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "S/ 280 por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. Es la misma tarifa para aquabebé, niños y adultos, porque todas son clases con profesor."
+            "text": "Son precios mensuales: S/ 280 al mes por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. Es la misma tarifa para aquabebé, niños y adultos, porque todas son clases con profesor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Hay que pagar matrícula o cuota de inscripción?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. No cobramos matrícula ni cuota de inscripción: pagas solo la mensualidad del plan que elijas."
           }
         },
         {
@@ -355,12 +368,13 @@
       <p><a href="/natacion-para-adultos-la-molina/" data-event="ver_programa_click" data-origen="tabla_adultos">Ver el programa de adultos en detalle</a></p>
 
       <h2>Precios</h2>
-      <p>La tarifa depende de cuántas veces por semana vengas, y es la misma para los tres
-         programas porque todas las clases son con profesor.</p>
+      <p>La tarifa es <strong>mensual</strong> y depende de cuántas veces por semana
+         vengas. Es la misma para los tres programas, porque todas las clases son con
+         profesor.</p>
       <div class="table-wrap">
     <table>
-      <caption>Precios regulares · clases con profesor</caption>
-      <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio</th></tr></thead>
+      <caption>Precios mensuales · clases con profesor</caption>
+      <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio al mes</th></tr></thead>
       <tbody>
         <tr><th scope="row">1 vez por semana</th><td>S/ 280</td></tr>
         <tr><th scope="row">2 veces por semana</th><td>S/ 380</td></tr>
@@ -369,6 +383,7 @@
       </tbody>
     </table>
   </div>
+  <p>No cobramos matrícula ni cuota de inscripción: pagas solo la mensualidad del plan que elijas.</p>
       <p>La comunidad VCSP —alumnos, ex alumnos y padres de familia de los colegios Villa Caritas y San Pedro— tiene 40 % de descuento sobre los precios regulares. Si eres colaborador de los colegios, pregúntanos por los beneficios.</p>
 
       <h2>Cómo matricularse</h2>
@@ -377,7 +392,8 @@
             qué frecuencia quieres venir.</li>
         <li><strong>Escríbenos por WhatsApp</strong> al +51 915 236 322 con esos tres datos.
             Te confirmamos si hay cupo.</li>
-        <li><strong>Haz el pago</strong> con los datos que te enviamos y quedas matriculado.</li>
+        <li><strong>Haz el pago</strong> de la primera mensualidad con los datos que te
+            enviamos y quedas matriculado. No hay matrícula ni cuota de inscripción.</li>
       </ol>
 
       <h2>Formas de pago</h2>
@@ -388,7 +404,11 @@
       <div class="faq">
         <details>
           <summary>¿Cuánto cuestan las clases de natación?</summary>
-          <div class="faq__a"><p>S/ 280 por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. Es la misma tarifa para aquabebé, niños y adultos, porque todas son clases con profesor.</p></div>
+          <div class="faq__a"><p>Son precios mensuales: S/ 280 al mes por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. Es la misma tarifa para aquabebé, niños y adultos, porque todas son clases con profesor.</p></div>
+        </details>
+        <details>
+          <summary>¿Hay que pagar matrícula o cuota de inscripción?</summary>
+          <div class="faq__a"><p>No. No cobramos matrícula ni cuota de inscripción: pagas solo la mensualidad del plan que elijas.</p></div>
         </details>
         <details>
           <summary>¿Quién tiene el descuento del 40 %?</summary>

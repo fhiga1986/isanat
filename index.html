@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ISANAT v1.2.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
+<!-- ISANAT v1.2.1 · marcador de version: con Ctrl+U en el sitio publicado se ve
      que version esta realmente desplegada. Tiene que coincidir con el archivo
      VERSION del repo y con el nombre del zip de la entrega. -->
-<meta name="version" content="1.2.0">
+<meta name="version" content="1.2.1">
 
 <!-- ============================================================
      META TAGS ESENCIALES  (§3.1 del playbook)
@@ -15,7 +15,7 @@
      NO CAMBIAR EL TÍTULO POR AL MENOS 6 MESES (§8)
      ============================================================ -->
 <title>Clases de Natación en La Molina | ISANAT</title>
-<meta name="description" content="Academia de natación en La Molina: aquabebé desde 6 meses, niños de 3 a 15 y adultos. Piscina saludable MINSA en el Colegio Villa Caritas.">
+<meta name="description" content="Academia de natación en La Molina: aquabebé, niños de 3 a 15 y adultos. Desde S/ 280 al mes, sin matrícula. Piscina saludable MINSA.">
 <link rel="canonical" href="https://isanat.pe/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="ISANAT Escuela de Natación">
@@ -207,6 +207,17 @@
                 "@type": "City",
                 "name": "La Molina"
               }
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "minPrice": 280,
+              "maxPrice": 580,
+              "priceCurrency": "PEN",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": 1,
+                "unitCode": "MON"
+              }
             }
           },
           {
@@ -232,6 +243,17 @@
                 "@type": "City",
                 "name": "La Molina"
               }
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "minPrice": 280,
+              "maxPrice": 580,
+              "priceCurrency": "PEN",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": 1,
+                "unitCode": "MON"
+              }
             }
           },
           {
@@ -256,6 +278,17 @@
                 "@type": "City",
                 "name": "La Molina"
               }
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "minPrice": 280,
+              "maxPrice": 580,
+              "priceCurrency": "PEN",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": 1,
+                "unitCode": "MON"
+              }
             }
           }
         ]
@@ -265,10 +298,15 @@
         "priceCurrency": "PEN",
         "price": "280",
         "priceSpecification": {
-          "@type": "PriceSpecification",
+          "@type": "UnitPriceSpecification",
           "minPrice": 280,
           "maxPrice": 580,
-          "priceCurrency": "PEN"
+          "priceCurrency": "PEN",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "MON"
+          }
         },
         "availability": "https://schema.org/InStock",
         "url": "https://isanat.pe/horarios-y-precios/"
@@ -309,7 +347,15 @@
           "name": "¿Desde cuánto cuestan las clases?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Desde S/ 280 por una vez a la semana, y hasta S/ 580 por cinco veces. Es la misma tarifa para los tres programas. Puedes ver el cuadro completo en la página de horarios y precios."
+            "text": "Desde S/ 280 al mes por una vez a la semana, y hasta S/ 580 por cinco veces. Es la misma tarifa para los tres programas. Puedes ver el cuadro completo en la página de horarios y precios."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Hay que pagar matrícula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. No cobramos matrícula ni cuota de inscripción: pagas solo la mensualidad del plan que elijas."
           }
         },
         {
@@ -410,8 +456,8 @@
     <div class="wrap">
       <h1>Clases de natación en La Molina <em>para niños y adultos</em></h1>
       <p>Clases con profesor para bebés desde 6 meses, niños de 3 a 15 años y adultos,
-         en la piscina del Colegio Villa Caritas, Rinconada del Lago. Desde S/ 280 por
-         una vez a la semana.</p>
+         en la piscina del Colegio Villa Caritas, Rinconada del Lago. Desde S/ 280 al
+         mes y sin matrícula.</p>
 
       <div class="hero__actions">
         <a class="btn btn--primary" href="https://wa.me/51915236322?text=Hola%2C%20quisiera%20inscribirme%20en%20las%20clases%20de%20nataci%C3%B3n%20de%20ISANAT."
@@ -570,14 +616,14 @@
       <div class="head-center">
         <span class="eyebrow">Precios</span>
         <h2>Cuánto cuestan las clases de natación</h2>
-        <p class="lead">La misma tarifa para aquabebé, niños y adultos: todas son clases
-           con profesor. El precio depende de cuántas veces por semana vengas.</p>
+        <p class="lead">La misma tarifa mensual para aquabebé, niños y adultos: todas son
+           clases con profesor. El precio depende de cuántas veces por semana vengas.</p>
       </div>
       <div class="prose">
         <div class="table-wrap">
     <table>
-      <caption>Precios regulares · clases con profesor</caption>
-      <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio</th></tr></thead>
+      <caption>Precios mensuales · clases con profesor</caption>
+      <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio al mes</th></tr></thead>
       <tbody>
         <tr><th scope="row">1 vez por semana</th><td>S/ 280</td></tr>
         <tr><th scope="row">2 veces por semana</th><td>S/ 380</td></tr>
@@ -586,6 +632,7 @@
       </tbody>
     </table>
   </div>
+  <p>No cobramos matrícula ni cuota de inscripción: pagas solo la mensualidad del plan que elijas.</p>
         <p>La comunidad VCSP —alumnos, ex alumnos y padres de familia de los colegios Villa Caritas y San Pedro— tiene 40 % de descuento sobre los precios regulares. Si eres colaborador de los colegios, pregúntanos por los beneficios.</p>
         <p><a href="/horarios-y-precios/" data-event="ver_horarios_click" data-origen="seccion_precios">Ver los horarios de cada programa y las formas de pago</a>.</p>
       </div>
@@ -657,7 +704,11 @@
         </details>
         <details>
           <summary>¿Desde cuánto cuestan las clases?</summary>
-          <div class="faq__a"><p>Desde S/ 280 por una vez a la semana, y hasta S/ 580 por cinco veces. Es la misma tarifa para los tres programas. Puedes ver el cuadro completo en la página de horarios y precios.</p></div>
+          <div class="faq__a"><p>Desde S/ 280 al mes por una vez a la semana, y hasta S/ 580 por cinco veces. Es la misma tarifa para los tres programas. Puedes ver el cuadro completo en la página de horarios y precios.</p></div>
+        </details>
+        <details>
+          <summary>¿Hay que pagar matrícula?</summary>
+          <div class="faq__a"><p>No. No cobramos matrícula ni cuota de inscripción: pagas solo la mensualidad del plan que elijas.</p></div>
         </details>
         <details>
           <summary>¿Necesito saber nadar para empezar?</summary>

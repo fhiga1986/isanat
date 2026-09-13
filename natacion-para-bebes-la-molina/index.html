@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ISANAT v1.2.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
+<!-- ISANAT v1.2.1 · marcador de version: con Ctrl+U en el sitio publicado se ve
      que version esta realmente desplegada. Tiene que coincidir con el archivo
      VERSION del repo y con el nombre del zip de la entrega. -->
-<meta name="version" content="1.2.0">
+<meta name="version" content="1.2.1">
 
 <title>Natación para Bebés en La Molina | ISANAT</title>
 <meta name="description" content="Aquabebé en La Molina: clases de natación para bebés de 6 meses a 2 años, martes, jueves y sábados. Piscina del Colegio Villa Caritas.">
@@ -162,10 +162,15 @@
         "priceCurrency": "PEN",
         "price": "280",
         "priceSpecification": {
-          "@type": "PriceSpecification",
+          "@type": "UnitPriceSpecification",
           "minPrice": 280,
           "maxPrice": 580,
-          "priceCurrency": "PEN"
+          "priceCurrency": "PEN",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "MON"
+          }
         },
         "availability": "https://schema.org/InStock",
         "url": "https://isanat.pe/horarios-y-precios/"
@@ -214,7 +219,7 @@
           "name": "¿Cuánto cuesta Aquabebé?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Rige la misma tarifa que el resto de programas con profesor: S/ 280 por una vez a la semana, S/ 380 por dos y S/ 480 por tres. La comunidad VCSP tiene 40 % de descuento."
+            "text": "Rige la misma tarifa mensual que el resto de programas con profesor: S/ 280 al mes por una vez a la semana, S/ 380 por dos y S/ 480 por tres. No hay matrícula, y la comunidad VCSP tiene 40 % de descuento."
           }
         },
         {
@@ -377,12 +382,12 @@
   <p>Cada clase de aquabebé dura <strong>45 minutos</strong>.</p>
 
       <h2>Precios</h2>
-      <p>El precio depende de cuántas veces por semana vengas. Son las mismas tarifas
-         para todos los programas con profesor.</p>
+      <p>El precio es mensual y depende de cuántas veces por semana vengas. Son las
+         mismas tarifas para todos los programas con profesor.</p>
       <div class="table-wrap">
     <table>
-      <caption>Precios regulares · clases con profesor</caption>
-      <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio</th></tr></thead>
+      <caption>Precios mensuales · clases con profesor</caption>
+      <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio al mes</th></tr></thead>
       <tbody>
         <tr><th scope="row">1 vez por semana</th><td>S/ 280</td></tr>
         <tr><th scope="row">2 veces por semana</th><td>S/ 380</td></tr>
@@ -391,6 +396,7 @@
       </tbody>
     </table>
   </div>
+  <p>No cobramos matrícula ni cuota de inscripción: pagas solo la mensualidad del plan que elijas.</p>
       <p>La comunidad VCSP —alumnos, ex alumnos y padres de familia de los colegios Villa Caritas y San Pedro— tiene 40 % de descuento sobre los precios regulares. Si eres colaborador de los colegios, pregúntanos por los beneficios.</p>
       <p><a href="/horarios-y-precios/" data-event="ver_horarios_click" data-origen="cuerpo">Ver todos los horarios y precios</a>, con los de los otros programas y las formas de pago.</p>
 
@@ -411,7 +417,7 @@
         </details>
         <details>
           <summary>¿Cuánto cuesta Aquabebé?</summary>
-          <div class="faq__a"><p>Rige la misma tarifa que el resto de programas con profesor: S/ 280 por una vez a la semana, S/ 380 por dos y S/ 480 por tres. La comunidad VCSP tiene 40 % de descuento.</p></div>
+          <div class="faq__a"><p>Rige la misma tarifa mensual que el resto de programas con profesor: S/ 280 al mes por una vez a la semana, S/ 380 por dos y S/ 480 por tres. No hay matrícula, y la comunidad VCSP tiene 40 % de descuento.</p></div>
         </details>
         <details>
           <summary>¿El agua está a temperatura adecuada para un bebé?</summary>

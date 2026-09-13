@@ -16,10 +16,31 @@ tienen que coincidir:
 
 | Versión | Fecha | Deploy en Cloudflare | Qué cambió |
 |---|---|---|---|
-| **1.2.0** | 13/09/2026 | *(anotar el hash tras el push)* | Llegaron los datos del cliente: horarios, precios y edades reales. Sale nado libre, entran Aquabebé y horarios-y-precios |
+| **1.2.1** | 13/09/2026 | *(anotar el hash tras el push)* | Los precios son **mensuales** y **no hay matrícula**: confirmado por el cliente |
+| 1.2.0 | 13/09/2026 | *(no desplegada)* | Llegaron los datos del cliente: horarios, precios y edades reales. Sale nado libre, entran Aquabebé y horarios-y-precios |
 | 1.1.0 | 13/09/2026 | *(anotar el hash tras el push)* | El sitio pasa de una página a cuatro |
 | 1.0.1 | 13/09/2026 | `fb3d371` | Corrección del número de WhatsApp a +51 915 236 322 |
 | 1.0.0 | 12/09/2026 | `6e879c3` | Publicación inicial (one-page) y salida de la configuración de Vercel |
+
+---
+
+## 1.2.1 — 13/09/2026
+
+El cliente confirmó las dos preguntas que habían quedado abiertas en la v1.2.0.
+
+### Cambiado
+
+- **Los precios son mensuales.** Estaban publicados con la redacción exacta del cliente
+  ("1 vez por semana - S/ 280") porque él no indicaba el periodo. Ahora el cuadro dice
+  **"Precios mensuales"**, la columna dice **"Precio al mes"** y las FAQ lo repiten.
+- **No hay matrícula ni cuota de inscripción.** Es un diferenciador real y ahora está
+  dicho en las cinco páginas, en la meta description de la home, en el paso 3 de "Cómo
+  matricularse" y en una FAQ propia.
+- Schema: el precio pasa de `PriceSpecification` a **`UnitPriceSpecification`** con
+  `referenceQuantity` de 1 mes (`unitCode: MON`), que es como se declara un precio
+  periódico y evita que Google lo lea como pago único.
+
+*No quedan pendientes de datos que afecten a lo ya publicado.*
 
 ---
 

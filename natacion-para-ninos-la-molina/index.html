@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ISANAT v1.2.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
+<!-- ISANAT v1.2.1 · marcador de version: con Ctrl+U en el sitio publicado se ve
      que version esta realmente desplegada. Tiene que coincidir con el archivo
      VERSION del repo y con el nombre del zip de la entrega. -->
-<meta name="version" content="1.2.0">
+<meta name="version" content="1.2.1">
 
 <title>Natación para Niños en La Molina | ISANAT</title>
-<meta name="description" content="Clases de natación para niños de 3 a 15 años en La Molina, de lunes a viernes por la tarde y sábados por la mañana. Desde S/ 280 por una vez a la semana.">
+<meta name="description" content="Clases de natación para niños de 3 a 15 años en La Molina, de lunes a viernes por la tarde y sábados por la mañana. Desde S/ 280 al mes, sin matrícula.">
 <link rel="canonical" href="https://isanat.pe/natacion-para-ninos-la-molina/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="ISANAT Escuela de Natación">
@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="ISANAT">
 <meta property="og:locale" content="es_PE">
 <meta property="og:title" content="Natación para Niños en La Molina | ISANAT">
-<meta property="og:description" content="Clases de natación para niños de 3 a 15 años en La Molina, de lunes a viernes por la tarde y sábados por la mañana. Desde S/ 280 por una vez a la semana.">
+<meta property="og:description" content="Clases de natación para niños de 3 a 15 años en La Molina, de lunes a viernes por la tarde y sábados por la mañana. Desde S/ 280 al mes, sin matrícula.">
 <meta property="og:url" content="https://isanat.pe/natacion-para-ninos-la-molina/">
 <meta property="og:image" content="https://isanat.pe/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -37,7 +37,7 @@
 <meta property="og:image:alt" content="ISANAT Escuela de Natación — La Molina, Lima">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Natación para Niños en La Molina | ISANAT">
-<meta name="twitter:description" content="Clases de natación para niños de 3 a 15 años en La Molina, de lunes a viernes por la tarde y sábados por la mañana. Desde S/ 280 por una vez a la semana.">
+<meta name="twitter:description" content="Clases de natación para niños de 3 a 15 años en La Molina, de lunes a viernes por la tarde y sábados por la mañana. Desde S/ 280 al mes, sin matrícula.">
 <meta name="twitter:image" content="https://isanat.pe/img/og-image.jpg">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -162,10 +162,15 @@
         "priceCurrency": "PEN",
         "price": "280",
         "priceSpecification": {
-          "@type": "PriceSpecification",
+          "@type": "UnitPriceSpecification",
           "minPrice": 280,
           "maxPrice": 580,
-          "priceCurrency": "PEN"
+          "priceCurrency": "PEN",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "MON"
+          }
         },
         "availability": "https://schema.org/InStock",
         "url": "https://isanat.pe/horarios-y-precios/"
@@ -214,7 +219,7 @@
           "name": "¿Cuánto cuestan las clases de natación para niños?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "S/ 280 por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. La comunidad VCSP tiene 40 % de descuento sobre esos precios."
+            "text": "Son precios mensuales: S/ 280 al mes por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. No cobramos matrícula, y la comunidad VCSP tiene 40 % de descuento sobre esos precios."
           }
         },
         {
@@ -379,12 +384,12 @@
   </div>
 
       <h2>Precios</h2>
-      <p>El precio depende de cuántas veces por semana vengas. Son las mismas tarifas
-         para todos los programas con profesor.</p>
+      <p>El precio es mensual y depende de cuántas veces por semana vengas. Son las
+         mismas tarifas para todos los programas con profesor.</p>
       <div class="table-wrap">
     <table>
-      <caption>Precios regulares · clases con profesor</caption>
-      <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio</th></tr></thead>
+      <caption>Precios mensuales · clases con profesor</caption>
+      <thead><tr><th scope="col">Frecuencia</th><th scope="col">Precio al mes</th></tr></thead>
       <tbody>
         <tr><th scope="row">1 vez por semana</th><td>S/ 280</td></tr>
         <tr><th scope="row">2 veces por semana</th><td>S/ 380</td></tr>
@@ -393,6 +398,7 @@
       </tbody>
     </table>
   </div>
+  <p>No cobramos matrícula ni cuota de inscripción: pagas solo la mensualidad del plan que elijas.</p>
       <p>La comunidad VCSP —alumnos, ex alumnos y padres de familia de los colegios Villa Caritas y San Pedro— tiene 40 % de descuento sobre los precios regulares. Si eres colaborador de los colegios, pregúntanos por los beneficios.</p>
       <p><a href="/horarios-y-precios/" data-event="ver_horarios_click" data-origen="cuerpo">Ver todos los horarios y precios</a>, con los de los otros programas y las formas de pago.</p>
 
@@ -413,7 +419,7 @@
         </details>
         <details>
           <summary>¿Cuánto cuestan las clases de natación para niños?</summary>
-          <div class="faq__a"><p>S/ 280 por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. La comunidad VCSP tiene 40 % de descuento sobre esos precios.</p></div>
+          <div class="faq__a"><p>Son precios mensuales: S/ 280 al mes por una vez a la semana, S/ 380 por dos veces, S/ 480 por tres y S/ 580 por cinco. No cobramos matrícula, y la comunidad VCSP tiene 40 % de descuento sobre esos precios.</p></div>
         </details>
         <details>
           <summary>¿Qué tiene que llevar mi hijo a la clase?</summary>
