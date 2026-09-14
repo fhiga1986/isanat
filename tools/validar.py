@@ -242,7 +242,14 @@ if os.path.exists(hdr):
         for rel, ruta in paginas():
             s3 = BeautifulSoup(open(ruta, encoding="utf-8").read(), "html5lib")
             for sc in s3.find_all("script"):
-                if sc.get("src") or sc.get("type") in ("application/ld+json", "speculationrules"):
+                # Solo se excluyen los <script src> (los cubre 'self') y el JSON-LD,
+                # que es DATO: el navegador nunca lo ejecuta.
+                # ⚠ El bloque <script type="speculationrules"> SÍ necesita su hash.
+                # En cuanto la CSP lleva un solo hash en script-src, la palabra
+                # 'inline-speculation-rules' deja de aplicar y Chrome bloquea el
+                # bloque. Excluirlo de aquí fue el fallo de la v1.3.0: el validador
+                # daba verde y el navegador bloqueaba.
+                if sc.get("src") or sc.get("type") == "application/ld+json":
                     continue
                 reales["script"].add("'sha256-" + base64.b64encode(
                     hashlib.sha256((sc.string or "").encode()).digest()).decode() + "'")
@@ -257,6 +264,12 @@ if os.path.exists(hdr):
                 error("_headers", f"la CSP no declara el hash de un <{clase}> en línea que sí existe: {h}")
             for h in declarados - reales[clase]:
                 aviso("_headers", f"la CSP declara un hash de <{clase}> que ya no corresponde a ningún bloque: {h}")
+        script_src = (re.search(r"script-src ([^;]+)", csp) or
+                      type("x", (), {"group": lambda s, n: ""})()).group(1)
+        if "'inline-speculation-rules'" in script_src and "'sha256-" in script_src:
+            aviso("_headers", "script-src mezcla 'inline-speculation-rules' con hashes: "
+                              "la palabra queda INERTE y el bloque speculationrules "
+                              "necesita su propio hash")
         for atr in ("style-src", "script-src"):
             if "'unsafe-inline'" in (re.search(atr + r" ([^;]+)", csp) or
                                      type("x", (), {"group": lambda s, n: ""})()).group(1):

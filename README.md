@@ -346,7 +346,46 @@ archivos que cambiaron. Eso significa que se reemplaza la carpeta entera.
 > `GUIA-GIT-VERCEL.md` llegaron al repo justamente así. Hay que vaciar la carpeta
 > primero, **conservando `.git`**, que es donde vive el historial.
 
-En PowerShell, desde `D:\isanatgit`:
+> ⚠️ **Y la comprobación después de instalar NO es `git status`: es contar los
+> archivos.** El 13/09 la carpeta `nado-libre-la-molina/` sobrevivió a dos
+> instalaciones y a un push, y `git status` nunca dijo nada — el archivo estaba
+> *tracked* y no había cambiado, así que para git no pasaba nada. Lo cazó
+> `tools/validar.py` contando 7 páginas donde debía haber 6.
+
+### Opción A — símbolo del sistema (`cmd.exe`), el que se abre por defecto
+
+Si la ventana negra empieza con `D:\isanatgit>`, es esta. `Get-ChildItem` **no
+existe** aquí: da *"no se reconoce como un comando interno o externo"*.
+
+```bat
+cd /d D:\isanatgit
+
+REM 1 - Vaciar la carpeta SIN tocar .git.
+REM     Se llama a PowerShell para esta linea: en cmd hacerlo a mano es
+REM     largo y facil de equivocar, y equivocarse aqui borra el historial.
+powershell -NoProfile -Command "Get-ChildItem -Force -Exclude .git | Remove-Item -Recurse -Force"
+
+REM 2 - Descomprimir el zip nuevo aqui dentro, con el explorador de Windows.
+REM     Comprobar que quedaron VISIBLES index.html, VERSION y la carpeta css.
+
+REM 3 - Contar los archivos: tienen que ser los que trae el paquete
+dir /s /b /a-d | find /c /v ""
+
+REM 4 - Validar y subir
+git status
+python tools\validar.py
+git add -A
+git commit -m "v1.3.1 corrige la csp que bloqueaba las speculation rules"
+git push origin main
+```
+
+> ⚠️ Si el paso 1 deja la carpeta vacía y el paso 2 no llega a hacerse, `git status`
+> mostrará **decenas de archivos borrados**. No hay que commitear eso: se descomprime
+> el zip y vuelve a la normalidad. Y si hace falta deshacerlo todo, `git restore .`.
+
+### Opción B — PowerShell
+
+Si la ventana empieza con `PS D:\isanatgit>`, es esta:
 
 ```powershell
 cd D:\isanatgit

@@ -16,12 +16,55 @@ tienen que coincidir:
 
 | Versión | Fecha | Deploy en Cloudflare | Qué cambió |
 |---|---|---|---|
-| **1.3.0** | 13/09/2026 | *(anotar el hash tras el push)* | IGV incluido · CSP con hashes · Speculation Rules · View Transitions · WCAG 2.2 |
+| **1.3.1** | 14/09/2026 | *(anotar el hash tras el push)* | Corrige la CSP: las Speculation Rules estaban bloqueadas en producción |
+| 1.3.0 | 13/09/2026 | *(anotar el hash tras el push)* | IGV incluido · CSP con hashes · Speculation Rules · View Transitions · WCAG 2.2 |
 | 1.2.1 | 13/09/2026 | *(anotar el hash)* | Los precios son **mensuales** y **no hay matrícula**: confirmado por el cliente |
 | 1.2.0 | 13/09/2026 | *(no desplegada)* | Llegaron los datos del cliente: horarios, precios y edades reales. Sale nado libre, entran Aquabebé y horarios-y-precios |
 | 1.1.0 | 13/09/2026 | *(anotar el hash tras el push)* | El sitio pasa de una página a cuatro |
 | 1.0.1 | 13/09/2026 | `fb3d371` | Corrección del número de WhatsApp a +51 915 236 322 |
 | 1.0.0 | 12/09/2026 | `6e879c3` | Publicación inicial (one-page) y salida de la configuración de Vercel |
+
+---
+
+## 1.3.1 — 14/09/2026
+
+Corrección de un fallo propio introducido en la 1.3.0. **No cambia nada de lo que se
+ve**: ni contenido, ni estilos, ni textos. Solo `_headers` y el validador.
+
+### Corregido
+
+- **La CSP bloqueaba las Speculation Rules en producción.** La política llevaba la
+  palabra `'inline-speculation-rules'`, que es la forma documentada de habilitar el
+  bloque `<script type="speculationrules">`. Pero **en cuanto `script-src` lleva un
+  solo hash, esa palabra queda inerte**: el algoritmo de CSP descarta el "permitir todo
+  lo inline" en presencia de hashes, y Chrome bloqueó el bloque en las 5 páginas.
+  Ahora la política declara **el hash del bloque** y la palabra sale, por inútil y por
+  engañosa.
+  Consecuencia real mientras estuvo mal: se perdió **solo la descarga anticipada** de
+  la página siguiente. El sitio, la analítica, el mapa y los botones de WhatsApp
+  funcionaban con normalidad.
+- **`tools/validar.py` tenía el mismo punto ciego** y por eso dio verde: excluía
+  `type="speculationrules"` del cálculo de hashes. Ya no lo excluye — con la CSP de la
+  1.3.0 el validador ahora falla — y además **avisa** si alguien vuelve a mezclar
+  `'inline-speculation-rules'` con hashes.
+
+### Cómo se comprobó
+
+- El validador, contra la CSP de la 1.3.0: **1 error**, el hash que falta.
+- Navegador con la CSP nueva: **0 violaciones** en las 6 páginas, escuchando el evento
+  `securitypolicyviolation` del DOM.
+- Y la prueba de que funciona, no solo de que no se queja: al pasar el puntero sobre un
+  enlace interno se observa **una petición con `Sec-Purpose: prefetch`**.
+
+> ⚠ **Dos lecciones, y la segunda es la caras.**
+> 1. `page.on('console')` de Playwright **no ve** los avisos de CSP del navegador:
+>    llegan por el dominio `Log` de CDP, no por `console.*`. La prueba de CSP escuchaba
+>    la consola y por eso informó "sin violaciones" mientras el navegador bloqueaba.
+>    Ahora escucha el evento `securitypolicyviolation`, que sí los dispara todos.
+> 2. **Un hash no se transcribe de una captura de pantalla: se calcula del archivo.**
+>    El hash que aparecía en la consola se leyó como `…ZmjUnT2JKn1HG4…` y el real es
+>    `…ZmjUnT2JKnlHG4…` — un `1` donde había una `l`. Pegarlo a mano habría dejado la
+>    CSP igual de rota, con un error todavía más difícil de ver.
 
 ---
 

@@ -9,14 +9,17 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://*.googletagmanager.com 'inline-speculation-rules' 'sha256-6BSgd7435B57wGUFrNL+JXKuQnMr0MMZr+fGJn+HIBw=' 'sha256-fa3Ly6osmHuYfIIeRiq/p1pgiMiL0fZdE7Z+QOaKhp0=' 'sha256-p8NCUWxB8zr8v6XHpHYentGYK108ugPZGiH6FjxrCiE=' 'sha256-sWDLX5UIaJfOmZuVqkgEY/VC5q8Ll6nfD91dlhsULf4='; style-src 'self' 'sha256-QjP855/Iy/haUXrmqxaG55IK5WK7xo1TYU4miZIS/Nk='; img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.google.com; frame-ancestors 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://*.googletagmanager.com 'sha256-ceXDNKX1eA4/ZmjUnT2JKnlHG4WruVHbkdRcBqOjQUg=' 'sha256-6BSgd7435B57wGUFrNL+JXKuQnMr0MMZr+fGJn+HIBw=' 'sha256-fa3Ly6osmHuYfIIeRiq/p1pgiMiL0fZdE7Z+QOaKhp0=' 'sha256-p8NCUWxB8zr8v6XHpHYentGYK108ugPZGiH6FjxrCiE=' 'sha256-sWDLX5UIaJfOmZuVqkgEY/VC5q8Ll6nfD91dlhsULf4='; style-src 'self' 'sha256-QjP855/Iy/haUXrmqxaG55IK5WK7xo1TYU4miZIS/Nk='; img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.google.com; frame-ancestors 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests
 
 # Sobre la CSP de arriba:
 #   · script-src lleva el HASH de cada script en linea en vez de 'unsafe-inline'.
 #     Si se edita cualquiera de esos scripts, el hash cambia y el navegador BLOQUEA
 #     el script sin avisar en la pagina. tools/validar.py recalcula los hashes y
 #     falla si no coinciden con este archivo: correrlo antes de cada push.
-#   · 'inline-speculation-rules' habilita el <script type="speculationrules">.
+#   · El PRIMER hash es el del bloque <script type="speculationrules">.
+#     ⚠ NO sirve la palabra 'inline-speculation-rules': en cuanto script-src lleva
+#     un solo hash, esa palabra queda inerte y Chrome bloquea el bloque. Se probo
+#     en produccion en la v1.3.0 y ese es el motivo de esta linea.
 #   · Los dominios de Google son los que la propia documentacion de GA4 indica.
 #   · frame-src solo permite google.com, que es el mapa diferido de Ubicacion.
 #   · form-action 'none' y object-src 'none' porque el sitio no tiene formularios
