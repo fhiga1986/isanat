@@ -332,10 +332,11 @@ El orden de impacto, si los datos llegan en partes: **6 (instructores) → 7 y 8
 - **Los tres idiomas figuran siempre y en el mismo orden.** El actual va como `<span>`
   con `aria-current`, no como enlace. Mostrar solo los alternativos hacía que la lista
   cambiara de página a página y no se supiera en cuál idioma estabas.
-- **El logo en `/en/` y `/pt/` lleva al principio de esa misma página**, no a la home en
-  español: un logo que cambia el idioma es lo último que alguien espera de un logo, y el
-  que sufre el salto es justo quien no lee español. Si algún día hay más páginas por
-  idioma, vuelve a ser la home de ese idioma.
+- **El logo lleva siempre a `/`**, la home en español, también desde `/en/` y `/pt/`.
+  Es una decisión de producto tomada por el cliente en la v1.5.1 tras probar la
+  alternativa: para él esas dos son páginas satélite y el sitio de verdad es el español.
+  Está anotado en `comun.py` para que no se "arregle" de vuelta. El riesgo de caer en
+  español sin querer lo cubre el selector, que muestra los tres idiomas siempre.
 - ⚠️ **La cabecera colapsa a 1160 px** (= `--wrap`). Con los tres idiomas la fila
   necesita **1124 px** medidos. Fue 768 sin selector y 960 con dos idiomas: **cada cosa
   que se agregue a esa fila obliga a volver a medir**, con `pruebas.py`.

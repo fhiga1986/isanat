@@ -16,7 +16,8 @@ tienen que coincidir:
 
 | Versión | Fecha | Deploy en Cloudflare | Qué cambió |
 |---|---|---|---|
-| **1.5.0** | 15/09/2026 | *(anotar el hash tras el push)* | `/en/` y `/pt/` con el diseño de la home · los tres idiomas siempre visibles |
+| **1.5.1** | 15/09/2026 | *(anotar el hash tras el push)* | El logo lleva a la home en español también desde `/en/` y `/pt/` |
+| 1.5.0 | 15/09/2026 | *(anotar el hash)* | `/en/` y `/pt/` con el diseño de la home · los tres idiomas siempre visibles |
 | 1.4.0 | 14/09/2026 | *(anotar el hash)* | Inglés y portugués: `/en/` y `/pt/` + selector de idioma en la cabecera |
 | 1.3.1 | 14/09/2026 | `5a9d737` | Corrige la CSP: las Speculation Rules estaban bloqueadas en producción |
 | 1.3.0 | 13/09/2026 | `dc29e78` | IGV incluido · CSP con hashes · Speculation Rules · View Transitions · WCAG 2.2 |
@@ -25,6 +26,36 @@ tienen que coincidir:
 | 1.1.0 | 13/09/2026 | `da2297a` | El sitio pasa de una página a cuatro |
 | 1.0.1 | 13/09/2026 | `fb3d371` | Corrección del número de WhatsApp a +51 915 236 322 |
 | 1.0.0 | 12/09/2026 | `6e879c3` | Publicación inicial (one-page) y salida de la configuración de Vercel |
+
+---
+
+## 1.5.1 — 15/09/2026
+
+Un solo cambio, pedido por el cliente después de probar la 1.5.0 en vivo.
+
+### Cambiado
+
+- **El logo lleva siempre a `/`**, la home en español, también desde `/en/` y `/pt/`.
+
+En la 1.5.0 llevaba al principio de la propia página. El argumento era que un logo no
+debería cambiar el idioma sin avisar, y que quien sufre ese salto es justo el visitante
+que no lee español. **Al usarlo, el cliente lo pidió igual**, y su lectura del producto
+es la que manda: para él `/en/` y `/pt/` son páginas satélite y el sitio de verdad es el
+español, así que el logo tiene que llevar ahí.
+
+El riesgo que me preocupaba está cubierto desde la 1.5.0: **los tres idiomas figuran
+siempre en la cabecera**, así que quien cae en español sin querer vuelve con un clic
+rotulado en su propio idioma.
+
+> Queda anotado en `comun.py` que es una decisión discutida y tomada, no un descuido,
+> para que nadie lo "arregle" de vuelta en seis meses sin saber por qué está así.
+
+### Cómo se comprobó
+
+Clic real sobre el logo en `/en/`, `/pt/` y una página interior en español, a 390 y
+1280 px (en móvil abriendo antes el menú): las seis veces llega a `/` con
+`lang="es-PE"`. Y la batería completa —54 combinaciones de cabecera, 40 de CSP y
+desbordamiento, mapa y contraste— sigue en verde.
 
 ---
 
