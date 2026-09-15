@@ -24,16 +24,20 @@ Dominio de producción: **https://isanat.pe**
 │   └── index.html                          Aquabebé, 6 meses a 2 años
 ├── horarios-y-precios/
 │   └── index.html                          Horarios y tarifas, en tablas HTML
+├── en/
+│   └── index.html                          TODA la oferta en inglés, en una sola página
+├── pt/
+│   └── index.html                          TODA la oferta en portugués, en una sola página
 ├── _redirects                              301 de la URL retirada en la v1.2.0
 ├── 404.html                                Error, la sirve Cloudflare sola. Autocontenida
 ├── css/
-│   └── site.v2.css                         TODO el CSS del sitio (excepto el 404)
+│   └── site.v3.css                         TODO el CSS del sitio (excepto el 404)
 ├── js/
 │   └── site.v1.js                          TODO el JS del sitio
 ├── tools/
 │   └── validar.py                          Validador. Correr antes de cada push
 ├── robots.txt                              Permite indexación + apunta al sitemap
-├── sitemap.xml                             Las 4 URLs. Actualizar <lastmod> al cambiar contenido
+├── sitemap.xml                             Las 7 URLs. Actualizar <lastmod> al cambiar contenido
 ├── site.webmanifest                        Metadatos de PWA / icono al "agregar a inicio"
 ├── _headers                                Cache de estáticos y headers de seguridad
 ├── favicon.ico
@@ -57,7 +61,7 @@ Dominio de producción: **https://isanat.pe**
 El número de versión vive en **tres sitios que tienen que coincidir**:
 
 1. El archivo **`VERSION`** de la raíz.
-2. El **`<meta name="version">`** de las cinco páginas. Abre el sitio publicado,
+2. El **`<meta name="version">`** de las siete páginas y el 404. Abre el sitio publicado,
    pulsa `Ctrl+U` y lo ves en las primeras líneas: **eso es lo que está en vivo de
    verdad**, no lo que creas recordar haber subido.
 3. El **nombre del zip** de cada entrega.
@@ -309,11 +313,32 @@ El orden de impacto, si los datos llegan en partes: **6 (instructores) → 7 y 8
 - **No repetir las mismas FAQ en varias páginas.** El NAP repetido está bien; seis
   preguntas idénticas en cuatro URLs, no. Cada página con las suyas.
 - **Al tocar `css/site.vN.css` o `js/site.vN.js`, subir el número del nombre** y
-  actualizar las cuatro páginas. Están cacheados un año.
+  actualizar las **siete** páginas. Están cacheados un año.
+
+### Idiomas (desde la v1.4.0)
+
+- **`/en/` y `/pt/` son UNA página cada una, no un espejo del sitio.** Llevan toda la
+  oferta: programas, horarios, precios, ubicación y FAQ. El objetivo es que un lead que
+  no habla español y **ya llegó** pueda leerlo todo, no posicionar en esos idiomas.
+- **El `hreflang` recíproco vive solo entre `/`, `/en/` y `/pt/`**, más `x-default` al
+  español. Las páginas interiores en español **no** declaran alternativas porque no las
+  tienen: eso es correcto, no un olvido. `tools/validar.py` comprueba la reciprocidad.
+- **El hreflang no se duplica en el `sitemap.xml`.** Google acepta cualquiera de los
+  dos sitios; tenerlo en uno solo evita que las dos copias se contradigan.
+- **El selector de idioma es un único bloque** dentro de `<nav id="nav">`: en escritorio
+  cae a la izquierda del CTA de WhatsApp y en móvil entra en el menú desplegado. No se
+  duplica el marcado. Palabras y nunca banderas: una bandera es un país, no un idioma.
+- **Si cambias un horario o un precio en `datos.py`, hay que traducirlo también.** Los
+  diccionarios `DIAS`, `HORAS` y `FREQ` de `intl.py` hacen fallar la construcción si
+  aparece una etiqueta sin traducción — mejor un error que media tabla en español.
+- ⚠️ **La cabecera colapsa a 960 px, no a 768.** Con el selector dentro, entre 769 y
+  940 px la fila no cabía y el botón de WhatsApp del header quedaba fuera de pantalla.
+  Si añades algo más a la cabecera, mide de nuevo ese rango.
 - **Correr `python3 tools/validar.py` antes de cada push.** Falla si el HTML no parsea,
   si el schema no coincide con las FAQ visibles, si un enlace interno apunta a un
   archivo que no existe, si el title se pasa de 60 caracteres, si queda un `TODO`
-  visible o si la cabecera y el pie se desincronizaron entre páginas.
+  visible, si la cabecera o el pie se desincronizaron **dentro de un mismo idioma**, o
+  si una anotación `hreflang` no es recíproca.
 
 ---
 

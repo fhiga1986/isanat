@@ -208,7 +208,12 @@ ul,ol{margin:0;padding:0;list-style:none}
   .map{min-height:300px}
   .ft__grid{grid-template-columns:1fr 1fr;gap:2rem}
 }
-@media (max-width:768px){
+/* ⚠️ La CABECERA colapsa a 960px, no a 768. Con el selector de idioma dentro,
+   entre 769 y 940 px la fila no cabia y el boton de WhatsApp del header quedaba
+   FUERA de la pantalla — invisible, no roto, que es peor. Medido en la v1.4.0:
+   a 769 px el borde derecho del boton caia en 913 px. El resto de reglas
+   moviles (hero, pie) se quedan en 768: alli no habia problema. */
+@media (max-width:960px){
   .burger{display:block}
   .nav{position:fixed;inset:72px 0 auto;flex-direction:column;align-items:stretch;gap:0;
     background:#fff;border-bottom:1px solid var(--line);padding:.5rem 20px 1.25rem;
@@ -216,6 +221,10 @@ ul,ol{margin:0;padding:0;list-style:none}
   .nav[data-open="true"]{transform:translateY(0);visibility:visible}
   .nav a{padding:.95rem 0;border-bottom:1px solid var(--line);font-size:1.02rem}
   .nav a::after{display:none}
+}
+@media (max-width:768px){
+  /* Solo aqui desaparece el CTA del header y aparece el del menu: entre 769 y
+     960 px el del header SI cabe, y es la conversion — mejor visible que oculto. */
   .nav .btn{display:inline-flex;margin-top:1rem;border-bottom:0}
   .hdr__cta .btn{display:none}
   .hero__actions .btn{width:100%}
@@ -327,7 +336,7 @@ ul,ol{margin:0;padding:0;list-style:none}
   text-transform:uppercase;letter-spacing:.04em}
 .table-wrap tbody tr:last-child th,.table-wrap tbody tr:last-child td{border-bottom:0}
 
-@media (max-width:768px){
+@media (max-width:960px){
   .nav__group{border-bottom:1px solid var(--line)}
   .nav__group>summary{padding:.95rem 0;font-size:1.02rem;justify-content:space-between}
   .nav__sub{position:static;min-width:0;border:0;box-shadow:none;padding:0 0 .6rem .9rem;
@@ -375,3 +384,39 @@ ul,ol{margin:0;padding:0;list-style:none}
    un solo atributo style= en el HTML obliga a abrir la política entera. */
 .cta-centrado{text-align:center;margin-top:clamp(32px,4vw,52px)}
 .bloque-cierre{margin-top:2rem}
+
+/* =====================================================================
+   v1.4.0 — SELECTOR DE IDIOMA
+   ---------------------------------------------------------------------
+   Un solo bloque en el DOM, dentro de <nav id="nav">: en escritorio cae a la
+   izquierda del CTA de WhatsApp y en movil entra dentro del menu desplegado.
+   NO se duplica el marcado: duplicar un control de cabecera es exactamente
+   como se desincronizan las cabeceras entre paginas.
+   Palabras y no banderas: una bandera es un pais, no un idioma. Y cada idioma
+   escrito en su propio idioma, que es lo que un visitante busca con la vista.
+   ===================================================================== */
+.lang{display:flex;align-items:center;gap:.9rem}
+.lang__ico{width:17px;height:17px;flex:none;color:var(--body)}
+.lang a{display:inline-flex;align-items:center;min-height:24px;padding-block:2px;
+  color:var(--body);font-weight:500;font-size:.88rem}
+.lang a:hover{color:var(--teal-700)}
+.lang a::after{display:none}          /* sin el subrayado animado de .nav a */
+/* Punto separador en el hueco entre los dos idiomas: va posicionado fuera de la
+   caja del enlace para no agrandar el area tactil, que ya mide justo 24 px. */
+.lang a + a{position:relative}
+.lang a + a::before{content:"·";position:absolute;left:-.52rem;color:var(--muted);pointer-events:none}
+
+@media (max-width:960px){
+  .lang{padding:.95rem 0;border-bottom:1px solid var(--line);gap:1rem}
+  .lang a{font-size:1rem;padding:0;border-bottom:0}
+}
+
+/* Aviso honesto de /en/ y /pt/: el negocio responde en espanol.
+   El margen negativo colapsa contra el margin-bottom de .hero__actions
+   (2.6rem) y deja 1.1rem: es la separacion que queremos y es predecible. */
+.nota-idioma{margin:-1.5rem 0 0;font-size:.9rem;color:var(--body)}
+
+/* /en/ y /pt/ no llevan migas de pan —son raiz de idioma, hermanas de la home,
+   no hijas de nada—, asi que el hueco de la cabecera fija lo pone la propia
+   seccion. Sin esto el H1 queda POR DEBAJO del header y no se lee. */
+.page-head--solo{padding-top:calc(72px + 1.5rem)}

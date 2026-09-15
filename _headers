@@ -26,7 +26,7 @@
 #     ni objetos incrustados. Si algun dia se agrega un formulario, hay que abrirlo.
 
 # CSS y JS: el nombre lleva versión (site.v1.css), así que se puede cachear un año.
-# ⚠️ Al cambiar el contenido hay que SUBIR EL NÚMERO DEL NOMBRE (site.v2.css) y
+# ⚠️ Al cambiar el contenido hay que SUBIR EL NÚMERO DEL NOMBRE (site.v3.css) y
 # actualizar el <link> y el <script> de TODAS las páginas. Si cambias el archivo
 # sin cambiar el nombre, los visitantes que ya lo tienen seguirán viendo el viejo
 # hasta dentro de un año.

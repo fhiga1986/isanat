@@ -63,6 +63,16 @@ for rel, ruta in paginas():
 
     es404 = rel == "404.html"
 
+    # 0b · Idioma de la página. Se usa para agrupar la comprobación de cabecera
+    #      y pie: el español se compara contra el español y el inglés contra el
+    #      inglés. Sin esto, /en/ haría fallar la paridad y la tentación sería
+    #      aflojar el control, que es justo lo que no hay que hacer.
+    et_html = s.find("html")
+    lang = (et_html.get("lang") or "") if et_html else ""
+    if not lang:
+        error(rel, "el <html> no declara lang")
+    idioma = lang.split("-")[0].lower() or "?"
+
     # 0 · Marcador de versión: tiene que estar en TODAS las páginas y coincidir
     #     con el archivo VERSION. Es lo que permite saber, con Ctrl+U en el sitio
     #     publicado, qué versión está realmente desplegada.
@@ -212,7 +222,7 @@ for rel, ruta in paginas():
                 continue
             # se ignoran los aria-current, que sí cambian por página
             texto = re.sub(r'\s*aria-current="page"', "", str(nodo))
-            chrome.setdefault(nombre, {}).setdefault(norm(texto), []).append(rel)
+            chrome.setdefault((nombre, idioma), {}).setdefault(norm(texto), []).append(rel)
 
     # 10 · Assets compartidos
     if not es404:
@@ -222,10 +232,10 @@ for rel, ruta in paginas():
             error(rel, "no carga el script compartido /js/site.vN.js")
 
 # --------------------------------------------------------------------------
-for nombre, variantes in chrome.items():
+for (nombre, idi), variantes in sorted(chrome.items()):
     if len(variantes) > 1:
-        error("(varias)", f"el bloque <{nombre}> tiene {len(variantes)} versiones distintas: "
-                          + " | ".join(", ".join(v) for v in variantes.values()))
+        error("(varias)", f"el bloque <{nombre}> en [{idi}] tiene {len(variantes)} versiones "
+                          "distintas: " + " | ".join(", ".join(v) for v in variantes.values()))
 
 # 12 · CSP: los hashes de _headers tienen que ser los de los scripts y estilos
 #      en línea que hay HOY. Si no, el navegador los bloquea sin decir nada en la
@@ -280,6 +290,41 @@ if os.path.exists(hdr):
             for m in re.finditer(r'<[^>]+\sstyle="', crudo2):
                 error(rel, "atributo style= en línea: la CSP no lo permite sin 'unsafe-inline'")
                 break
+
+# 13 · hreflang: tiene que ser RECÍPROCO y 1:1. Si /en/ dice que su alternativa
+#      en español es / , entonces / tiene entre sus alternativas a /en/. Una
+#      anotación que no vuelve la ignora Google entera, y en silencio.
+#      Solo las tres home se anotan; las interiores en español no tienen
+#      equivalente y por eso no declaran nada — eso es correcto, no un olvido.
+alt = {}
+for rel, ruta in paginas():
+    s4 = BeautifulSoup(open(ruta, encoding="utf-8").read(), "html5lib")
+    enlaces = {}
+    for lk in s4.find_all("link", rel="alternate"):
+        hl = lk.get("hreflang")
+        if hl:
+            enlaces[hl] = lk.get("href", "")
+    if enlaces:
+        alt[SITIO + "/" + (os.path.dirname(rel) + "/" if os.path.dirname(rel) else "")] = enlaces
+
+# ⚠ x-default NO cuenta como reciprocidad: apunta siempre al español, así que si
+#   se lo dejara entrar, cualquier página con x-default parecería devolver el
+#   enlace a la home aunque hubiera perdido su hreflang="es". Se compara solo
+#   contra las anotaciones de idioma.
+idiomados = {u: {h for hl, h in e.items() if hl != "x-default"} for u, e in alt.items()}
+
+for url, enlaces in alt.items():
+    if "x-default" not in enlaces:
+        error(url, "declara hreflang y le falta x-default")
+    if url not in idiomados[url]:
+        error(url, "no se autorreferencia en su propio hreflang")
+    for hl, destino in enlaces.items():
+        if hl == "x-default":
+            continue
+        if destino not in alt:
+            error(url, f"apunta con hreflang={hl} a {destino}, que no declara hreflang de vuelta")
+        elif url not in idiomados[destino]:
+            error(url, f"hreflang={hl} hacia {destino} NO es recíproco: {destino} no lo devuelve")
 
 # 11 · Sitemap
 sm = os.path.join(RAIZ, "sitemap.xml")

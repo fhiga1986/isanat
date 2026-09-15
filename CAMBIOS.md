@@ -16,13 +16,93 @@ tienen que coincidir:
 
 | Versión | Fecha | Deploy en Cloudflare | Qué cambió |
 |---|---|---|---|
-| **1.3.1** | 14/09/2026 | *(anotar el hash tras el push)* | Corrige la CSP: las Speculation Rules estaban bloqueadas en producción |
-| 1.3.0 | 13/09/2026 | *(anotar el hash tras el push)* | IGV incluido · CSP con hashes · Speculation Rules · View Transitions · WCAG 2.2 |
-| 1.2.1 | 13/09/2026 | *(anotar el hash)* | Los precios son **mensuales** y **no hay matrícula**: confirmado por el cliente |
-| 1.2.0 | 13/09/2026 | *(no desplegada)* | Llegaron los datos del cliente: horarios, precios y edades reales. Sale nado libre, entran Aquabebé y horarios-y-precios |
-| 1.1.0 | 13/09/2026 | *(anotar el hash tras el push)* | El sitio pasa de una página a cuatro |
+| **1.4.0** | 14/09/2026 | *(anotar el hash tras el push)* | Inglés y portugués: `/en/` y `/pt/` + selector de idioma en la cabecera |
+| 1.3.1 | 14/09/2026 | `5a9d737` | Corrige la CSP: las Speculation Rules estaban bloqueadas en producción |
+| 1.3.0 | 13/09/2026 | `dc29e78` | IGV incluido · CSP con hashes · Speculation Rules · View Transitions · WCAG 2.2 |
+| 1.2.1 | 13/09/2026 | `abd6095` | Los precios son **mensuales** y **no hay matrícula**: confirmado por el cliente |
+| 1.2.0 | 13/09/2026 | `5183260` | Llegaron los datos del cliente: horarios, precios y edades reales. Sale nado libre, entran Aquabebé y horarios-y-precios |
+| 1.1.0 | 13/09/2026 | `da2297a` | El sitio pasa de una página a cuatro |
 | 1.0.1 | 13/09/2026 | `fb3d371` | Corrección del número de WhatsApp a +51 915 236 322 |
 | 1.0.0 | 12/09/2026 | `6e879c3` | Publicación inicial (one-page) y salida de la configuración de Vercel |
+
+---
+
+## 1.4.0 — 14/09/2026
+
+El sitio pasa a tener **selector de idioma** y **una página completa en inglés y otra
+en portugués**. El español no cambia de contenido: solo gana el selector en la cabecera.
+
+### Por qué una página por idioma y no un espejo de cinco
+
+El objetivo que planteó el cliente es que **un lead que no habla español y ya llegó al
+sitio pueda leer toda la oferta**, no posicionar en inglés ni en portugués. Con ese
+objetivo, una sola página por idioma es mejor que un espejo, no solo más barata:
+
+1. **El selector no miente en ninguna URL.** Con un espejo parcial, quien está en
+   `/horarios-y-precios/` y pulsa "English" cae en una página que no es la suya — el
+   fallo más común de los selectores de idioma. Si `/en/` **es** el sitio entero en
+   inglés, el enlace siempre cumple lo que promete.
+2. **El `hreflang` queda en un triángulo recíproco** (`/` ↔ `/en/` ↔ `/pt/` +
+   `x-default`) en vez de una matriz de 60 etiquetas mantenidas a mano.
+3. **Es el formato que quiere un no hispanohablante**: una página que responde edades,
+   precio, dónde y cómo escribir, sin navegar seis URLs en un idioma que no domina.
+
+Las URLs son `/en/` y `/pt/` y no `/en/swimming-lessons-la-molina/` a propósito: si
+algún día crece a espejo completo, `/en/` ya es la home de ese idioma y las demás
+cuelgan debajo **sin mover ninguna URL publicada**.
+
+### Añadido
+
+- **`/en/` y `/pt/`**, ~1.000 palabras cada una, con programas y edades, los tres
+  cuadros de horarios, el cuadro de precios con IGV incluido y sin matrícula, el
+  descuento VCSP, formas de pago, ubicación, seis preguntas frecuentes y CTA propio.
+  Schema por página: `WebPage` con `inLanguage`, `Service` y `FAQPage`.
+  ⚠ El nodo del negocio es **idéntico y con el mismo `@id`** que en las cinco páginas
+  en español: es la misma entidad, y la coherencia NAP pesa más que el idioma.
+- **Selector de idioma** en la cabecera de las siete páginas. Un único bloque dentro de
+  `<nav id="nav">`: en escritorio queda a la izquierda del CTA de WhatsApp, en móvil
+  entra dentro del menú. **Palabras y nunca banderas** —una bandera es un país, no un
+  idioma— y cada idioma escrito en el suyo. Sin JavaScript y sin hashes nuevos en la CSP.
+- **`hreflang` recíproco** entre las tres home, con `x-default` al español. Las páginas
+  interiores en español no declaran alternativas porque no las tienen.
+- **Aviso honesto en `/en/` y `/pt/`**: *"Our team replies in Spanish"*. El lead que se
+  entera al escribir se va; el que lo sabe antes escribe igual si le interesa.
+- **`data-origen` propios** (`hero_en`, `seccion_precios_pt`, `flotante_en`…) para que
+  GA4 pueda decir en 90 días si estas dos páginas convierten o si hay que retirarlas.
+
+### Cambiado
+
+- **`css/site.v2.css` → `css/site.v3.css`.** El archivo cambió y está cacheado un año.
+  Actualizado el `<link>` de las siete páginas.
+- ⚠ **La cabecera ahora colapsa a 960 px, no a 768.** Ver abajo.
+- **`tools/validar.py`**: la paridad de cabecera y pie se comprueba **por idioma**
+  (español contra español, inglés contra inglés) en vez de todo en un solo grupo, y
+  hay dos comprobaciones nuevas: que cada página declare `<html lang>` y que las
+  anotaciones `hreflang` sean **recíprocas**.
+- `sitemap.xml` pasa a 7 URLs, con `<lastmod>` al 14/09.
+
+### El fallo que se cazó midiendo, no mirando
+
+Con el selector dentro de la cabecera, **entre 769 y 940 px el botón de WhatsApp del
+header quedaba fuera de la pantalla**. No roto: invisible, que es peor. A 769 px su
+borde derecho caía en 913 px. `document.scrollWidth` no lo delataba porque la cabecera
+es `position:fixed` y no ensancha el documento.
+
+La causa es que a 769 px la fila **ya iba exactamente al límite** antes de este cambio
+—el botón terminaba en 749 con 769 de ancho, justo el padding del `.wrap`—: no había
+holgura para nada. La corrección es mover **solo las reglas de cabecera** al breakpoint
+de **960 px**; el resto (hero, pie) se queda en 768, donde no había problema. Entre 769
+y 960 aparece la hamburguesa pero **el CTA del header sigue visible**, porque ahí sí
+cabe y es la conversión.
+
+Comprobado en 16 anchos entre 360 y 1440 px: el CTA nunca sale de la pantalla y no hay
+desplazamiento horizontal en ninguna de las 8 páginas.
+
+> ⚠ **Y la comprobación del `hreflang` tenía un agujero que solo apareció al probarla.**
+> La primera versión daba verde aunque se le quitara a `/en/` su enlace al español:
+> `x-default` apunta siempre a `/`, así que contaba como si la reciprocidad existiera.
+> Ahora `x-default` queda fuera del cálculo. **Un control que no se prueba en negativo
+> no es un control** — es la misma lección del validador de la v1.3.1.
 
 ---
 
