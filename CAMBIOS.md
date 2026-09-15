@@ -16,7 +16,8 @@ tienen que coincidir:
 
 | Versión | Fecha | Deploy en Cloudflare | Qué cambió |
 |---|---|---|---|
-| **1.4.0** | 14/09/2026 | *(anotar el hash tras el push)* | Inglés y portugués: `/en/` y `/pt/` + selector de idioma en la cabecera |
+| **1.5.0** | 15/09/2026 | *(anotar el hash tras el push)* | `/en/` y `/pt/` con el diseño de la home · los tres idiomas siempre visibles |
+| 1.4.0 | 14/09/2026 | *(anotar el hash)* | Inglés y portugués: `/en/` y `/pt/` + selector de idioma en la cabecera |
 | 1.3.1 | 14/09/2026 | `5a9d737` | Corrige la CSP: las Speculation Rules estaban bloqueadas en producción |
 | 1.3.0 | 13/09/2026 | `dc29e78` | IGV incluido · CSP con hashes · Speculation Rules · View Transitions · WCAG 2.2 |
 | 1.2.1 | 13/09/2026 | `abd6095` | Los precios son **mensuales** y **no hay matrícula**: confirmado por el cliente |
@@ -24,6 +25,95 @@ tienen que coincidir:
 | 1.1.0 | 13/09/2026 | `da2297a` | El sitio pasa de una página a cuatro |
 | 1.0.1 | 13/09/2026 | `fb3d371` | Corrección del número de WhatsApp a +51 915 236 322 |
 | 1.0.0 | 12/09/2026 | `6e879c3` | Publicación inicial (one-page) y salida de la configuración de Vercel |
+
+---
+
+## 1.5.0 — 15/09/2026
+
+`/en/` y `/pt/` dejan de parecer páginas interiores y pasan a tener **el mismo diseño
+que la home**. El selector muestra siempre los **tres idiomas**. Ninguna página en
+español cambia de contenido.
+
+### Añadido a /en/ y /pt/
+
+- **El hero completo**: degradado navy→teal con las olas SVG, `H1` con la segunda
+  línea en teal, los dos CTA y la fila de sellos (*La Molina, Lima · De 6 meses a
+  adultos · Piscina saludable MINSA*). Es la parte que hace el trabajo de los diez
+  segundos, y era justo la que les faltaba a las páginas cuyos visitantes llegan con
+  menos contexto.
+- **Las tres tarjetas de programa**, con la etiqueta "MÁS CONSULTADO" en adultos y
+  **un botón de WhatsApp propio en cada una**, con el mensaje ya redactado según el
+  programa. Pasan de 5 a 9 puntos de conversión medibles por página.
+- **El mapa diferido**, con el mismo `id="map-load"` que la home, así que lo engancha
+  el mismo script sin una línea nueva.
+- El bloque de ubicación con la lista `.data` (dirección, WhatsApp, horarios).
+
+**Cero CSS nuevo por todo esto**: los bloques ya existían. Lo único que se añadió a la
+hoja fue el estilo del idioma actual del selector.
+
+### Cambiado
+
+- **Los tres idiomas figuran siempre y en el mismo orden** (`Español · English ·
+  Português`). El actual va como `<span>` con `aria-current`, más oscuro y sin ser
+  enlace. Antes se mostraban solo los dos alternativos: la lista cambiaba de página a
+  página y no se sabía en cuál idioma estabas. La redundancia es barata; la duda, no.
+- **El logo en `/en/` y `/pt/` lleva al principio de esa misma página**, no a la home
+  en español. Ver la nota de abajo.
+- **`js/site.v1.js` → `js/site.v2.js`**: el título del iframe del mapa —que lee un
+  lector de pantalla— ahora sale en el idioma de la página, tomado de `<html lang>`.
+- **`css/site.v3.css` → `css/site.v4.css`.**
+- **El icono de la tarjeta Aquabebé era el de una tarjeta de crédito**, heredado de la
+  "Membresía de nado libre" que se retiró en la v1.2.0 y que nadie cambió al reemplazar
+  la tarjeta. Ahora es una figura en el agua. Se corrigió también en la home.
+- **`.brand span small` ("Swimming School") daba 4,45:1 sobre blanco**, por debajo del
+  mínimo AA de 4,5. Venía así **desde la v1.0.0**. Es el mismo 4,45 del subtítulo de los
+  enlaces cruzados del 13/09 y la causa es siempre la misma: `--muted` sobre blanco.
+  Con `--body` queda en 7,41:1.
+
+### Por qué el logo NO lleva al español
+
+Se pidió que en `/en/` el logo llevara a la home en español. No se hizo, y conviene
+dejar escrito el motivo: **un logo que cambia el idioma de la página es lo último que
+alguien espera de un logo**. El que más sufre ese salto es justamente el visitante que
+no lee español, o sea la persona para la que existen esas páginas.
+
+Pero la observación de fondo era correcta: apuntando a su propia URL, el logo era un
+**control muerto** —recargaba y no pasaba nada visible—. Como `/en/` y `/pt/` son una
+sola página, ahora lleva al principio de esa misma página: ni muerto ni sorpresivo. Y
+con los tres idiomas siempre a la vista, ir al español es un clic rotulado.
+Si algún día hay más páginas por idioma, vuelve a ser la home de ese idioma.
+
+### La cicatriz: dos fallos que las pruebas no veían
+
+**1 · El texto de la cabecera se partía en dos líneas sin que nada lo delatara.** Al
+entrar el tercer idioma, flex encogió los items hasta su ancho de min-content y se leía
+"Horarios y / precios" y "SWIMMING / SCHOOL" **dentro** de los 72 px de la cabecera. Ni
+el scroll horizontal ni la altura de `.hdr` cambiaban: las dos pruebas que había daban
+verde mientras la cabecera se veía rota en una captura.
+
+La corrección tiene dos partes, y la segunda importa más que la primera:
+
+- `white-space:nowrap` en los elementos de la fila. Ahora, si algo no cabe, **desborda**
+  — y eso sí lo detecta una prueba. **Fallo detectable antes que fallo silencioso.**
+- Medido el ancho mínimo real barriendo de 1100 a 1164 px de 8 en 8: **1124 px**, con el
+  español como idioma más ancho. El breakpoint de la cabecera pasa a **1160 px**, que es
+  `--wrap`, o sea el ancho al que el contenido deja de crecer: 36 px de holgura y un
+  número con significado en vez de uno elegido a ojo.
+  Historia del breakpoint: 768 sin selector · 960 con dos idiomas · 1160 con tres.
+  **Cada cosa que se agregue a esa fila obliga a volver a medir.**
+
+**2 · La prueba de contraste inventaba un número sobre los degradados.** Cuando el fondo
+es un degradado, el color real no se puede deducir del CSS; la prueba devolvía navy "por
+si acaso" y marcaba como fallo el texto del mapa, que en realidad mide **10,13:1**
+(verificado muestreando los píxeles de una captura). Ahora esos casos se declaran **no
+medibles automáticamente** y se listan aparte. Una herramienta que no puede ver algo
+tiene que decirlo, no rellenarlo.
+
+### Nuevo en el generador: `pruebas.py`
+
+Las comprobaciones de navegador quedan en un solo archivo, con el fallo real que
+originó cada una anotado arriba. Son 54 combinaciones de cabecera, 40 de CSP y
+desbordamiento, el mapa en los tres idiomas y el contraste página por página.
 
 ---
 

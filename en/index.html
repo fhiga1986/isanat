@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ISANAT v1.4.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
+<!-- ISANAT v1.5.0 · marcador de version: con Ctrl+U en el sitio publicado se ve
      que version esta realmente desplegada. Tiene que coincidir con el archivo
      VERSION del repo y con el nombre del zip de la entrega. -->
-<meta name="version" content="1.4.0">
+<meta name="version" content="1.5.0">
 
 <title>Swimming Lessons in La Molina, Lima | ISANAT</title>
 <meta name="description" content="Swimming school in La Molina, Lima. Babies from 6 months, children 3 to 15 and adults. From S/ 280 a month, tax included, no joining fee.">
@@ -52,7 +52,7 @@
 
 <link rel="preload" href="/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/site.v3.css">
+<link rel="stylesheet" href="/css/site.v4.css">
 
 <!-- Speculation Rules: al pasar el raton o tocar un enlace interno, el navegador
      descarga la pagina destino por adelantado. La navegacion entre paginas pasa a
@@ -167,7 +167,7 @@
     {
       "@type": "Service",
       "@id": "https://isanat.pe/en/#service",
-      "name": "Swimming lessons in La Molina, Lima",
+      "name": "Swimming lessons in La Molina",
       "serviceType": "Swimming lessons",
       "provider": {
         "@id": "https://isanat.pe/#business"
@@ -297,7 +297,7 @@
 
 <header class="hdr">
   <div class="wrap hdr__in">
-    <a class="brand" href="/en/" aria-label="ISANAT — home">
+    <a class="brand" href="#inicio" aria-label="ISANAT — home">
       <img src="/img/logo.webp" width="44" height="44" alt="ISANAT Swimming School logo" fetchpriority="high">
       <span>ISANAT<small>Swimming School</small></span>
     </a>
@@ -310,6 +310,7 @@
       <div class="lang" role="group" aria-label="Change language">
         <svg class="lang__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.2 9h17.6M3.2 15h17.6M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
         <a href="/" hreflang="es" lang="es">Español</a>
+        <span class="lang__now" lang="en" aria-current="true">English</span>
         <a href="/pt/" hreflang="pt" lang="pt">Português</a>
       </div>
       <a class="btn btn--primary btn--sm" href="https://wa.me/51915236322?text=Hello%2C%20I%20am%20writing%20from%20the%20ISANAT%20website%20and%20I%20would%20like%20more%20information%20about%20swimming%20lessons."
@@ -327,20 +328,87 @@
 </header>
 
 <main id="main">
-  <section class="section page-head page-head--solo">
-    <div class="wrap wrap--narrow">
-      <h1>Swimming lessons in La Molina, Lima</h1>
-      <p class="lead">ISANAT is a swimming school in La Molina. We teach babies from 6 months, children aged 3 to 15 and adults from 16, in the pool of Colegio Villa Caritas, Urb. Rinconada del Lago. From S/ 280 a month, tax included and with no joining fee.</p>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <h1>Swimming lessons in La Molina <em>for children and adults</em></h1>
+      <p>ISANAT is a swimming school in La Molina. We teach babies from 6 months, children aged 3 to 15 and adults from 16, in the pool of Colegio Villa Caritas, Urb. Rinconada del Lago. From S/ 280 a month, tax included and with no joining fee.</p>
+
       <div class="hero__actions">
         <a class="btn btn--primary" href="https://wa.me/51915236322?text=Hello%2C%20I%20am%20writing%20from%20the%20ISANAT%20website%20and%20I%20would%20like%20more%20information%20about%20swimming%20lessons."
    target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="hero_en"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>Message us on WhatsApp</a>
-        <a class="btn btn--outline" href="#prices" data-event="ver_horarios_click" data-origen="hero_en">See schedules and prices</a>
+        <a class="btn btn--ghost" href="#prices" data-event="ver_horarios_click" data-origen="hero_en">See schedules and prices</a>
       </div>
-      <p class="nota-idioma" lang="en">Our team replies in Spanish.</p>
+      <p class="nota-idioma nota-idioma--hero" lang="en">Our team replies in Spanish.</p>
+
+      <ul class="hero__facts">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          La Molina, Lima
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 17c1.8 0 1.8 1.4 3.6 1.4S7.4 17 9.2 17s1.8 1.4 3.6 1.4S14.6 17 16.4 17s1.8 1.4 3.6 1.4"/><path d="M2 12.5c1.8 0 1.8 1.4 3.6 1.4s1.8-1.4 3.6-1.4 1.8 1.4 3.6 1.4 1.8-1.4 3.6-1.4 1.8 1.4 3.6 1.4"/><circle cx="15" cy="6" r="2"/><path d="m6 11 4-3 3 2"/></svg>
+          From 6 months to adults
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12.5 11 14.5 15.5 10"/><circle cx="12" cy="12" r="9"/></svg>
+          Healthy pool · MINSA
+        </li>
+      </ul>
+    </div>
+    <svg class="waves" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true" focusable="false"> <path fill="#ffffff" fill-opacity=".12" d="M0 52c120-26 240-26 360 0s240 26 360 0 240-26 360 0 240 26 360 0v58H0Z"/> <path fill="#ffffff" fill-opacity=".2" d="M0 72c120-22 240-22 360 0s240 22 360 0 240-22 360 0 240 22 360 0v38H0Z"/> <path fill="#ffffff" d="M0 90c120-18 240-18 360 0s240 18 360 0 240-18 360 0 240 18 360 0v20H0Z"/> </svg>
+  </section>
+
+  <section class="section" id="programs">
+    <div class="wrap">
+      <div class="head-center">
+        <span class="eyebrow">Our programs</span>
+        <h2>Swimming programs in La Molina</h2>
+        <p class="lead">Pick the one that fits and we sort out the rest over WhatsApp.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M2 17c1.5 0 1.5 1.2 3 1.2"/><path d="M19 18.2c1.5 0 1.5-1.2 3-1.2"/></svg></div>
+          <h3 id="kids">Swimming for children</h3>
+          <p>From 3 to 15 years old, both for those just getting used to the water and for those who already swim and want to work on their technique.</p>
+          <ul class="card__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>From 3 to 15 years old</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Monday to Friday, afternoons</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Saturday mornings</li>
+          </ul>
+          <a class="btn btn--outline btn--block" href="https://wa.me/51915236322?text=Hello%2C%20I%20would%20like%20information%20about%20swimming%20classes%20for%20children%20at%20ISANAT."
+   target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="tarjeta_ninos_en">Ask about children's classes</a>
+        </article>
+        <article class="card card--feature">
+          <span class="tag">Most asked about</span>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="6" r="2.2"/><path d="m4 12 5-4 4 3 3-1"/><path d="M2 18c1.8 0 1.8 1.5 3.6 1.5S7.4 18 9.2 18s1.8 1.5 3.6 1.5S14.6 18 16.4 18s1.8 1.5 3.6 1.5"/></svg></div>
+          <h3 id="adults">Swimming for adults</h3>
+          <p>From 16 years old. Start from scratch or polish your technique, early in the morning or at the end of the day.</p>
+          <ul class="card__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>From 16 years old</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>6 and 7 am · 6, 7 and 8 pm</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Saturdays 6, 7 and 8 am</li>
+          </ul>
+          <a class="btn btn--primary btn--block" href="https://wa.me/51915236322?text=Hello%2C%20I%20would%20like%20information%20about%20adult%20swimming%20classes%20at%20ISANAT."
+   target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="tarjeta_adultos_en">Ask about adult classes</a>
+        </article>
+        <article class="card">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="2.6"/><path d="M7.4 12.9c1.3-1.3 2.8-2 4.6-2s3.3.7 4.6 2"/><path d="M2 17.4c1.7 0 1.7 1.3 3.4 1.3s1.7-1.3 3.3-1.3 1.7 1.3 3.3 1.3 1.7-1.3 3.3-1.3 1.7 1.3 3.4 1.3"/><path d="M2 21c1.7 0 1.7 1.2 3.4 1.2S7.1 21 8.7 21s1.7 1.2 3.3 1.2S13.7 21 15.3 21s1.7 1.2 3.4 1.2"/></svg></div>
+          <h3 id="aquababy">Aquababy</h3>
+          <p>Our program for babies from 6 months to 2 years. 45-minute sessions on Tuesday and Thursday afternoons and Saturdays at midday.</p>
+          <ul class="card__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>From 6 months to 2 years</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>45-minute sessions</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>Tuesday, Thursday and Saturday</li>
+          </ul>
+          <a class="btn btn--outline btn--block" href="https://wa.me/51915236322?text=Hello%2C%20I%20would%20like%20information%20about%20the%20Aquababy%20program%20at%20ISANAT."
+   target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="tarjeta_bebes_en">Ask about Aquababy</a>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section class="section section--soft" id="programs">
+  <section class="section section--soft">
     <div class="wrap wrap--narrow">
       <div class="prose">
       <h2>Programs and ages</h2>
@@ -384,7 +452,6 @@
           </tbody>
         </table>
       </div>
-
       </div>
       <div class="callout"><p>The times above are for the 2026 winter season. ISANAT runs classes all year round, so please confirm availability on WhatsApp before enrolling.</p></div>
     </div>
@@ -418,7 +485,7 @@
   </section>
 
   <section class="section section--soft">
-    <div class="wrap wrap--narrow">
+    <div class="wrap">
       <div class="head-center">
         <h2>Why families in La Molina choose us</h2>
       </div>
@@ -445,19 +512,56 @@
   </section>
 
   <section class="section" id="location">
-    <div class="wrap wrap--narrow">
-      <div class="prose">
-      <h2>Where we are</h2>
-      <p>Classes are held in the pool of <strong>Colegio Villa Caritas</strong>, inside the Rinconada del Lago neighborhood in La Molina. Access is from Calle Hurón.</p>
-      <p class="nap-body">
-        Colegio Villa Caritas<br>
-        Calle Hurón 409, Urb. Rinconada del Lago<br>
-        La Molina, Lima, Perú<br>
-        <a href="tel:+51915236322" data-event="tel_click" data-origen="ubicacion_en">+51 915 236 322</a> ·
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA" target="_blank" rel="noopener" data-event="como_llegar_click" data-origen="ubicacion_en">Directions</a> ·
-        <a href="https://waze.com/ul?q=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA&amp;navigate=yes" target="_blank" rel="noopener" data-event="waze_click" data-origen="ubicacion_en">Waze</a> ·
-        <a href="/#ubicacion">See the map</a>
-      </p>
+    <div class="wrap">
+      <div class="place">
+        <div class="place__info">
+          <span class="eyebrow">Location</span>
+          <h2>Where we are: the pool of Colegio Villa Caritas, Rinconada del Lago</h2>
+          <p>Classes are held in the pool of <strong>Colegio Villa Caritas</strong>, inside the Rinconada del Lago neighborhood in La Molina. Access is from Calle Hurón.</p>
+          <p class="nap-body">
+            <a href="tel:+51915236322" data-event="tel_click" data-origen="ubicacion_en">+51 915 236 322</a> ·
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA" target="_blank" rel="noopener" data-event="como_llegar_click" data-origen="ubicacion_en">Directions</a> ·
+            <a href="https://waze.com/ul?q=Colegio%20Villa%20Caritas%2C%20Calle%20Hur%C3%B3n%20409%2C%20Urb.%20Rinconada%20del%20Lago%2C%20La%20Molina%2C%20Lima%2C%20Per%C3%BA&amp;navigate=yes" target="_blank" rel="noopener" data-event="waze_click" data-origen="ubicacion_en">Waze</a>
+          </p>
+
+          <ul class="data">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <h3>Address</h3>
+                <p>Colegio Villa Caritas<br>Calle Hurón 409, Urb. Rinconada del Lago<br>La Molina, Lima, Peru</p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+              <div>
+                <h3>WhatsApp</h3>
+                <p>+51 915 236 322</p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <div>
+                <h3>Opening times</h3>
+                <p>Ask us on WhatsApp about availability.</p>
+              </div>
+            </li>
+          </ul>
+
+          <a class="btn btn--navy" href="https://wa.me/51915236322?text=Hello%2C%20I%20would%20like%20to%20arrange%20a%20visit%20to%20ISANAT.%20I%20am%20writing%20from%20the%20English%20page."
+   target="_blank" rel="noopener" data-event="whatsapp_click" data-origen="ubicacion_en">Book a visit</a>
+        </div>
+
+        <!-- Mapa diferido: no descarga Google Maps hasta que el visitante lo pide.
+             Mismo id que en la home, asi que lo engancha el mismo site.vN.js. -->
+        <div class="map" id="map">
+          <div class="map__facade">
+            <div class="map__pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <p>Calle Hurón 409 — La Molina</p>
+            <button class="btn btn--outline btn--sm" id="map-load" type="button"
+                    data-event="maps_click" data-origen="ubicacion_en">Show map</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -557,6 +661,6 @@
    target="_blank" rel="noopener" aria-label="Message us on WhatsApp"
    data-event="whatsapp_click" data-origen="flotante_en"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.3.2-.6.1a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5L9.2 6.9c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4A3.3 3.3 0 0 0 6 9.3a5.8 5.8 0 0 0 1.2 3.1 13.2 13.2 0 0 0 5.1 4.5 8.3 8.3 0 0 0 3.6.7 3 3 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg></a>
 
-<script src="/js/site.v1.js" defer></script>
+<script src="/js/site.v2.js" defer></script>
 </body>
 </html>

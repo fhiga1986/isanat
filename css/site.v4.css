@@ -66,12 +66,20 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* ---------- Header ---------- */
 .hdr{position:fixed;inset:0 0 auto;z-index:100;background:rgba(255,255,255,.94);
+  /* El prefijo -webkit- hace falta para Safari 17 y anteriores, que todavia
+     tienen bastantes iPhone y iPad en uso. Sin el se pierde solo el desenfoque:
+     el fondo sigue siendo rgba(255,255,255,.94), asi que degrada sin romperse. */
+  -webkit-backdrop-filter:saturate(160%) blur(10px);
   backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
 .hdr__in{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:72px}
 .brand{display:flex;align-items:center;gap:.65rem;font-weight:700;color:var(--navy-800);
   letter-spacing:-.02em;font-size:1.12rem}
 .brand img{width:44px;height:44px}
-.brand span small{display:block;font-size:.62rem;font-weight:500;color:var(--muted);
+/* ⚠️ --body y no --muted: con --muted este texto daba 4,45:1 sobre blanco, por
+   debajo del minimo AA de 4,5. Es el mismo 4,45 que ya habia dado el subtitulo
+   de los enlaces cruzados el 13/09 — la causa siempre es --muted sobre blanco.
+   Con --body queda en 7,41:1. Venia asi desde la v1.0.0. */
+.brand span small{display:block;font-size:.62rem;font-weight:500;color:var(--body);
   letter-spacing:.1em;text-transform:uppercase;line-height:1.3}
 .nav{display:flex;align-items:center;gap:2rem}
 .nav a{color:var(--navy-800);font-weight:500;font-size:.96rem;position:relative;padding-block:.3rem}
@@ -208,12 +216,16 @@ ul,ol{margin:0;padding:0;list-style:none}
   .map{min-height:300px}
   .ft__grid{grid-template-columns:1fr 1fr;gap:2rem}
 }
-/* ⚠️ La CABECERA colapsa a 960px, no a 768. Con el selector de idioma dentro,
-   entre 769 y 940 px la fila no cabia y el boton de WhatsApp del header quedaba
-   FUERA de la pantalla — invisible, no roto, que es peor. Medido en la v1.4.0:
-   a 769 px el borde derecho del boton caia en 913 px. El resto de reglas
-   moviles (hero, pie) se quedan en 768: alli no habia problema. */
-@media (max-width:960px){
+/* ⚠️ La CABECERA colapsa a 1160px, no a 768. NO es un numero a ojo: con los tres
+   idiomas y sin partir palabras, la fila necesita 1124 px (medido barriendo de
+   1100 a 1164 de 8 en 8; el español es el idioma mas ancho). 1160 es --wrap, o
+   sea el ancho al que el contenido deja de crecer, y deja 36 px de holgura.
+   Historia: 768 hasta la v1.3.1 sin selector · 960 en la v1.4.0 con dos idiomas ·
+   1160 desde la v1.5.0 con tres. Cada cosa que se agregue a esta fila obliga a
+   volver a medir; hay una prueba que barre los anchos y otra que comprueba que
+   no se parta ninguna palabra. El resto de reglas moviles (hero, pie) se quedan
+   en 768: alli nunca hubo problema. */
+@media (max-width:1160px){
   .burger{display:block}
   .nav{position:fixed;inset:72px 0 auto;flex-direction:column;align-items:stretch;gap:0;
     background:#fff;border-bottom:1px solid var(--line);padding:.5rem 20px 1.25rem;
@@ -336,7 +348,7 @@ ul,ol{margin:0;padding:0;list-style:none}
   text-transform:uppercase;letter-spacing:.04em}
 .table-wrap tbody tr:last-child th,.table-wrap tbody tr:last-child td{border-bottom:0}
 
-@media (max-width:960px){
+@media (max-width:1160px){
   .nav__group{border-bottom:1px solid var(--line)}
   .nav__group>summary{padding:.95rem 0;font-size:1.02rem;justify-content:space-between}
   .nav__sub{position:static;min-width:0;border:0;box-shadow:none;padding:0 0 .6rem .9rem;
@@ -397,16 +409,22 @@ ul,ol{margin:0;padding:0;list-style:none}
    ===================================================================== */
 .lang{display:flex;align-items:center;gap:.9rem}
 .lang__ico{width:17px;height:17px;flex:none;color:var(--body)}
-.lang a{display:inline-flex;align-items:center;min-height:24px;padding-block:2px;
-  color:var(--body);font-weight:500;font-size:.88rem}
+.lang a,.lang__now{display:inline-flex;align-items:center;min-height:24px;
+  padding-block:2px;font-size:.88rem}
+.lang a{color:var(--body);font-weight:500}
 .lang a:hover{color:var(--teal-700)}
 .lang a::after{display:none}          /* sin el subrayado animado de .nav a */
-/* Punto separador en el hueco entre los dos idiomas: va posicionado fuera de la
-   caja del enlace para no agrandar el area tactil, que ya mide justo 24 px. */
-.lang a + a{position:relative}
-.lang a + a::before{content:"·";position:absolute;left:-.52rem;color:var(--muted);pointer-events:none}
+/* ⚠️ Los TRES idiomas figuran siempre. El actual NO es enlace: va como <span> con
+   aria-current y algo mas oscuro, para que se lea "estas aqui". Mostrar solo los
+   alternativos hacia que la lista cambiara de pagina a pagina y confundia. */
+.lang__now{color:var(--ink);font-weight:700;cursor:default}
+/* Punto separador en el hueco entre idiomas: posicionado FUERA de la caja del
+   enlace, para no agrandar el area tactil, que mide justo los 24 px de la norma. */
+.lang :is(a,span) + :is(a,span){position:relative}
+.lang :is(a,span) + :is(a,span)::before{content:"·";position:absolute;left:-.52rem;
+  color:var(--muted);pointer-events:none}
 
-@media (max-width:960px){
+@media (max-width:1160px){
   .lang{padding:.95rem 0;border-bottom:1px solid var(--line);gap:1rem}
   .lang a{font-size:1rem;padding:0;border-bottom:0}
 }
@@ -415,8 +433,23 @@ ul,ol{margin:0;padding:0;list-style:none}
    El margen negativo colapsa contra el margin-bottom de .hero__actions
    (2.6rem) y deja 1.1rem: es la separacion que queremos y es predecible. */
 .nota-idioma{margin:-1.5rem 0 0;font-size:.9rem;color:var(--body)}
+/* Dentro del hero hace falta ganarle a .hero p, que lo pondria en 19 px y lo
+   haria parecer un segundo parrafo de entrada en vez de una salvedad. */
+.hero p.nota-idioma{margin:-1.5rem 0 0;font-size:.9rem;color:rgba(255,255,255,.8)}
 
 /* /en/ y /pt/ no llevan migas de pan —son raiz de idioma, hermanas de la home,
    no hijas de nada—, asi que el hueco de la cabecera fija lo pone la propia
    seccion. Sin esto el H1 queda POR DEBAJO del header y no se lee. */
 .page-head--solo{padding-top:calc(72px + 1.5rem)}
+
+/* =====================================================================
+   v1.5.0 — LA FILA DE LA CABECERA NO PARTE PALABRAS
+   ---------------------------------------------------------------------
+   ⚠️ Sin esto el fallo es INVISIBLE para las pruebas: flex encoge los items
+   hasta su ancho de min-content y el texto se parte en dos lineas DENTRO de
+   los 72 px, asi que ni el scroll horizontal ni la altura de .hdr cambian y
+   todo parece correcto mientras se lee "Horarios y / precios" y
+   "SWIMMING / SCHOOL". Con nowrap, si algun dia no cabe, la fila DESBORDA —
+   y eso si lo detecta la prueba de anchos. Fallo detectable > fallo silencioso.
+   ===================================================================== */
+.brand span,.brand span small,.nav>a,.nav__group>summary,.lang a,.lang__now{white-space:nowrap}

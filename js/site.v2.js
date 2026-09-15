@@ -53,7 +53,15 @@
       f.src = 'https://www.google.com/maps?q=' +
         encodeURIComponent('Calle Hurón 409, Urb. Rinconada del Lago, La Molina, Lima, Perú') +
         '&z=16&output=embed';
-      f.title = 'Mapa de la ubicación de ISANAT en La Molina';
+      /* El titulo del iframe lo lee un lector de pantalla: tiene que ir en el
+         idioma de la pagina, no siempre en espanol. Se toma de <html lang>. */
+      var TITULO = {
+        es: 'Mapa de la ubicación de ISANAT en La Molina',
+        en: 'Map of the ISANAT location in La Molina, Lima',
+        pt: 'Mapa da localização da ISANAT em La Molina, Lima'
+      };
+      var idi = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
+      f.title = TITULO[idi] || TITULO.es;
       f.loading = 'lazy';
       f.referrerPolicy = 'no-referrer-when-downgrade';
       f.setAttribute('allowfullscreen', '');

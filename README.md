@@ -25,15 +25,15 @@ Dominio de producción: **https://isanat.pe**
 ├── horarios-y-precios/
 │   └── index.html                          Horarios y tarifas, en tablas HTML
 ├── en/
-│   └── index.html                          TODA la oferta en inglés, en una sola página
+│   └── index.html                          TODA la oferta en inglés, con el diseño de la home
 ├── pt/
-│   └── index.html                          TODA la oferta en portugués, en una sola página
+│   └── index.html                          TODA la oferta en portugués, con el diseño de la home
 ├── _redirects                              301 de la URL retirada en la v1.2.0
 ├── 404.html                                Error, la sirve Cloudflare sola. Autocontenida
 ├── css/
-│   └── site.v3.css                         TODO el CSS del sitio (excepto el 404)
+│   └── site.v4.css                         TODO el CSS del sitio (excepto el 404)
 ├── js/
-│   └── site.v1.js                          TODO el JS del sitio
+│   └── site.v2.js                          TODO el JS del sitio
 ├── tools/
 │   └── validar.py                          Validador. Correr antes de cada push
 ├── robots.txt                              Permite indexación + apunta al sitemap
@@ -327,13 +327,31 @@ El orden de impacto, si los datos llegan en partes: **6 (instructores) → 7 y 8
   dos sitios; tenerlo en uno solo evita que las dos copias se contradigan.
 - **El selector de idioma es un único bloque** dentro de `<nav id="nav">`: en escritorio
   cae a la izquierda del CTA de WhatsApp y en móvil entra en el menú desplegado. No se
-  duplica el marcado. Palabras y nunca banderas: una bandera es un país, no un idioma.
+  duplica el marcado. Palabras y nunca banderas: una bandera es un país, no un idioma
+  —y los emoji de bandera ni siquiera se dibujan en Chrome ni Edge sobre Windows—.
+- **Los tres idiomas figuran siempre y en el mismo orden.** El actual va como `<span>`
+  con `aria-current`, no como enlace. Mostrar solo los alternativos hacía que la lista
+  cambiara de página a página y no se supiera en cuál idioma estabas.
+- **El logo en `/en/` y `/pt/` lleva al principio de esa misma página**, no a la home en
+  español: un logo que cambia el idioma es lo último que alguien espera de un logo, y el
+  que sufre el salto es justo quien no lee español. Si algún día hay más páginas por
+  idioma, vuelve a ser la home de ese idioma.
+- ⚠️ **La cabecera colapsa a 1160 px** (= `--wrap`). Con los tres idiomas la fila
+  necesita **1124 px** medidos. Fue 768 sin selector y 960 con dos idiomas: **cada cosa
+  que se agregue a esa fila obliga a volver a medir**, con `pruebas.py`.
+- ⚠️ **Los elementos de la cabecera llevan `white-space:nowrap`** a propósito. Sin eso,
+  flex los encoge y el texto se parte en dos líneas *dentro* de los 72 px: ni el scroll
+  ni la altura cambian, así que el fallo es invisible para las pruebas. Con nowrap, si
+  no cabe, desborda — y el desborde sí se detecta.
 - **Si cambias un horario o un precio en `datos.py`, hay que traducirlo también.** Los
   diccionarios `DIAS`, `HORAS` y `FREQ` de `intl.py` hacen fallar la construcción si
   aparece una etiqueta sin traducción — mejor un error que media tabla en español.
 - ⚠️ **La cabecera colapsa a 960 px, no a 768.** Con el selector dentro, entre 769 y
   940 px la fila no cabía y el botón de WhatsApp del header quedaba fuera de pantalla.
   Si añades algo más a la cabecera, mide de nuevo ese rango.
+- **Correr `python3 tools/validar.py` antes de cada push**, y `pruebas.py` del
+  generador cuando el cambio sea visual: hay cosas que solo existen cuando el navegador
+  dibuja la página y el validador no puede verlas.
 - **Correr `python3 tools/validar.py` antes de cada push.** Falla si el HTML no parsea,
   si el schema no coincide con las FAQ visibles, si un enlace interno apunta a un
   archivo que no existe, si el title se pasa de 60 caracteres, si queda un `TODO`
